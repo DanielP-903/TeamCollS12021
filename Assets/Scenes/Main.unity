@@ -13532,7 +13532,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 607504351}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12, y: -1, z: -11}
+  m_LocalPosition: {x: -12, y: -0.5, z: -11}
   m_LocalScale: {x: 12, y: 1, z: 11}
   m_Children: []
   m_Father: {fileID: 0}
@@ -13706,15 +13706,39 @@ MonoBehaviour:
     m_ActionId: f9da814a-b8db-4f7e-af57-0b683539f4ac
     m_ActionName: Master/Backward[/Keyboard/s]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 475229160}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Left
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 719b61fa-a1bd-47c7-a0b9-3f594a77eb9d
     m_ActionName: Master/Left[/Keyboard/a]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 475229160}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Right
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 69cddda5-d26e-4b24-b332-4b377109fe14
     m_ActionName: Master/Right[/Keyboard/d]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Master
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Master
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -13821,7 +13845,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-7024
+  m_Name: pb_Mesh18232
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13996,7 +14020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1839639414909618971, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1839639414909618971, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14032,14 +14056,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1839639414909618975, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1839639414909618975, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1839639414909618975, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
-      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
