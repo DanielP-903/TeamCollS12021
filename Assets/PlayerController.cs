@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float m_speed;
     [SerializeField] private float m_rotationSpeed;
     [SerializeField] private CharacterController m_characterController;
+    [SerializeField] private TaskObject heldObject;
     private Vector3 m_left = new Vector3(0, 0, 0);
     private readonly Vector3 m_gravity = new Vector3(0, -9.8f, 0);
 
@@ -28,6 +29,11 @@ public class PlayerController : MonoBehaviour
         else if (m_moveBackward)
         {
             m_characterController.Move(-transform.right * (m_speed/2) * Time.deltaTime);
+            if (heldObject)
+            {
+                heldObject.IsPickedUp = false;
+                heldObject = null;
+            }
         }
 
         m_characterController.Move(m_gravity*Time.deltaTime);
@@ -69,5 +75,16 @@ public class PlayerController : MonoBehaviour
         float value = context.ReadValue<float>();
         m_rotRight = value > 0;
         Debug.Log("Backward detected");
+    }
+
+    // Pick-up
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<TaskObject>())
+        {
+            other.GetComponent<TaskObject>().IsPickedUp = true;
+            heldObject = other.GetComponent<TaskObject>();
+        }
+
     }
 }
