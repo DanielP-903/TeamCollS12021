@@ -13737,6 +13737,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 69cddda5-d26e-4b24-b332-4b377109fe14
     m_ActionName: Master/Right[/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 475229160}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: caa677ac-e7bb-4e59-8c96-1d0a30fa321a
+    m_ActionName: Master/Interact[/Keyboard/e,/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Master
@@ -13943,13 +13959,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerRef: {fileID: 475229160}
+  m_offsetZ: 1
 --- !u!43 &1529206900
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18232
+  m_Name: pb_Mesh18770
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14158,13 +14175,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1839639414909618974, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
+      propertyPath: m_Size.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839639414909618974, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839639414909618974, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
+      propertyPath: m_Center.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839639414909618974, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
+      propertyPath: m_Center.y
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1839639414909618975, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6450803443274969930, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
+      propertyPath: m_speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450803443274969930, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
       propertyPath: heldObject
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450803443274969930, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
+      propertyPath: m_rotationSpeed
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450803443274969930, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
+      propertyPath: m_timeBetweenInputs
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
