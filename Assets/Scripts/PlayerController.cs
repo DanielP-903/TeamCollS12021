@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,48 +12,56 @@ public class PlayerController : MonoBehaviour
     private bool m_rotLeft = false;
     private bool m_rotRight = false;
     private bool m_interact = false;
-    private float inputTimer = 0.0f;
-    private Vector3 m_addedVelocity = new Vector3(0,0,1);
-    [SerializeField] private float m_timeBetweenInputs;
+    private float m_inputTimer = 0.0f;
+
+    [SerializeField] private float m_velocityScale;
     [SerializeField] private float m_speed;
     [SerializeField] private float m_rotationSpeed;
-    [SerializeField] private CharacterController m_characterController;
-    [SerializeField] private GameObject heldObjectContainer;
-    private TaskObject heldObject;
-    private Vector3 m_left = new Vector3(0, 0, 0);
+    [SerializeField] private float m_timeBetweenInputs;
+
     private readonly Vector3 m_gravity = new Vector3(0, -9.8f, 0);
+    private CharacterController m_characterController;
+    private GameObject m_heldObjectContainer;
+    private TaskObject m_heldObject;
 
     void Start()
     {
+        if (TryGetComponent(out CharacterController charController))
+        {
+            m_characterController = charController;
+        }
+        else
+        {
+            Debug.LogError("ERROR: Player has no CharacterController component!");
+            Debug.DebugBreak();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(inputTimer);
-
         if (m_moveForward || m_moveBackward)
         {
             Vector3 move = m_moveForward ? (transform.right * m_speed * Time.deltaTime) : (-transform.right * (m_speed / 2) * Time.deltaTime);
             m_characterController.Move(move);
         }
 
-        if (inputTimer != 0.0f)
+        if (m_inputTimer != 0.0f)
         {
-            inputTimer -= Time.deltaTime * 2;
-            inputTimer = inputTimer < 0.01f ? 0.0f : inputTimer;
+            m_inputTimer -= Time.deltaTime * 2;
+            m_inputTimer = m_inputTimer < 0.01f ? 0.0f : m_inputTimer;
         }
 
-        if (inputTimer == 0.0f && heldObject)
+        if (m_inputTimer == 0.0f && m_heldObject)
         {
             if (m_interact)
             {
-                heldObject.IsPickedUp = false;
-                heldObjectContainer.GetComponent<Rigidbody>().velocity = m_characterController.velocity;
-                heldObject = null;
-                heldObjectContainer = null;
+                m_heldObject.IsPickedUp = false;
+                m_heldObjectContainer.GetComponent<Rigidbody>().velocity = m_characterController.velocity * m_velocityScale;
+                m_heldObject = null;
+                m_heldObjectContainer = null;
                 GetComponent<BoxCollider>().enabled = true;
-                inputTimer = m_timeBetweenInputs;
+                m_inputTimer = m_timeBetweenInputs;
             }
         }
 
@@ -99,22 +108,22 @@ public class PlayerController : MonoBehaviour
     public void Interact(InputAction.CallbackContext context)
     {
         float button = context.ReadValue<float>();
-        m_interact = button == 1 ? true : false;
+        m_interact = Math.Abs(button - 1.0f) < 0.1f ? true : false;
         //Debug.Log("Interact detected: " + m_interact);
     }
 
     // Pick-up
     void OnTriggerStay(Collider other)
     {
-        if (m_interact && inputTimer == 0.0f)
+        if (m_interact && m_inputTimer == 0.0f)
         {
-            if (other.GetComponent<TaskObject>() && heldObject == null)
+            if (other.GetComponent<TaskObject>() && m_heldObject == null)
             {
                 other.GetComponent<TaskObject>().IsPickedUp = true;
                 GetComponent<BoxCollider>().enabled = false;
-                heldObject = other.GetComponent<TaskObject>();
-                heldObjectContainer = other.gameObject;
-                inputTimer = m_timeBetweenInputs;
+                m_heldObject = other.GetComponent<TaskObject>();
+                m_heldObjectContainer = other.gameObject;
+                m_inputTimer = m_timeBetweenInputs;
                 Debug.Log("Detected!");
             }
         }
