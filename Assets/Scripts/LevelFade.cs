@@ -13,6 +13,11 @@ public class LevelFade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!m_level1 || !m_level2 || !m_level3)
+        {
+            Debug.LogError("ERROR: Level objects have not been assigned!");
+            Debug.DebugBreak();
+        }
         m_level1.SetActive(true);
         m_level2.SetActive(false);
         m_level3.SetActive(false);
