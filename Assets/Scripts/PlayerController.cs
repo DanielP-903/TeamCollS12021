@@ -24,8 +24,6 @@ public class PlayerController : MonoBehaviour
     private GameObject m_heldObjectContainer;
     private TaskObject m_heldObject;
 
-    bool isPressingEscape = false;
-
     void Start()
     {
         if (TryGetComponent(out CharacterController charController))
@@ -114,12 +112,6 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Interact detected: " + m_interact);
     }
 
-    public void Escape(InputAction.CallbackContext context)
-    {
-        float button = context.ReadValue<float>();
-        m_interact = Math.Abs(button - 1.0f) < 0.1f ? true : false;
-        //Debug.Log("Interact detected: " + m_interact);
-    }
 
     // Pick-up
     void OnTriggerStay(Collider other)
