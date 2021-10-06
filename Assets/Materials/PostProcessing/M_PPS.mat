@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Toon Shader Mat
-  m_Shader: {fileID: 4800000, guid: 399f1dd40a6225249b4bdac7bec870ea, type: 3}
+  m_Name: M_PPS
+  m_Shader: {fileID: 4800000, guid: d458385655871bd45b238782dfa6a143, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -35,10 +35,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Diffuse:
-        m_Texture: {fileID: 2800000, guid: 6d727a66cb0b12c4bad4faf8bdff458c, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -51,10 +47,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _NormalMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -63,52 +55,36 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SketchTex:
-        m_Texture: {fileID: 2800000, guid: a0d03d906b6264d4c8c02b0ffd7bc8c2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SpecularMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _ToonRamp:
-        m_Texture: {fileID: 2800000, guid: d199b5ee3f3282344b91834dc4e3703a, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _ASEOutlineWidth: 0.02
     - _BumpScale: 1
     - _Cutoff: 0.5
+    - _DepthMulti1: 354.2
+    - _DepthPower1: 2
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Gloss: 6
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _MaxDepth: 5000
     - _Metallic: 0
     - _Mode: 0
+    - _NormalMaskMulti: 1
+    - _NormalMulti: 9.35
+    - _NormalPower: 2
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RimOffset: -0.62
-    - _RimPower: 1
+    - _SampleStep: 2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SpecularIntensity: 0.3
     - _SrcBlend: 1
     - _UVSec: 0
-    - _UseNormalMap: 0
-    - _WorldSpaceScale: 3
     - _ZWrite: 1
-    - __dirty: 0
     m_Colors:
-    - _ASEOutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _RimColor: {r: 0.8584906, g: 0.19842473, b: 0.19842473, a: 0}
-    - _SketchColor: {r: 0.1509434, g: 0.1419248, b: 0.1419248, a: 0}
-    - _SketchScale: {r: 6, g: 6, b: 0, a: 0}
+    - _OutlineColor: {r: 0.745283, g: 0.5830794, b: 0.17928976, a: 0}
   m_BuildTextureStacks: []
