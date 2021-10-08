@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
         if (m_rotLeft || m_rotRight)
         {
             float multiplier = m_rotLeft ? -1 : 1;
-            transform.Rotate(0, m_rotationSpeed * multiplier, 0);
+            transform.Rotate(0, m_rotationSpeed * multiplier * Time.deltaTime * 200.0f, 0);
         }
 
     }
