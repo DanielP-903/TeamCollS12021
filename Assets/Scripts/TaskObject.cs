@@ -77,18 +77,33 @@ public class TaskObject : MonoBehaviour
         //UpdateProgression();
     }
 
+    void DropObject()
+    {
+    }
+
+    void OnCollisionStay(Collision collision)
+    {
+        //if (collision.gameObject.tag == "Interactable")
+        //{
+        //    if (collision.gameObject == m_heldObjectContainer)
+        //    {
+        //        Physics.IgnoreCollision(m_heldObjectContainer.GetComponent<Collider>(), GetComponent<Collider>());
+        //    }
+        //}
+    }
+
     private void UpdateProgression()
     {
-        if (transform.position.y < m_levelFade.m_level2Threshold + m_offsetY)
+        if (transform.position.y < m_levelFade.m_level2Threshold)
         {
             m_levelOwnership = Ownership.Level1;
         }
-        else if (transform.position.y >= m_levelFade.m_level2Threshold - m_offsetY &&
-                 transform.position.y < m_levelFade.m_level3Threshold + m_offsetY)
+        else if (transform.position.y >= m_levelFade.m_level2Threshold  &&
+                 transform.position.y < m_levelFade.m_level3Threshold)
         {
             m_levelOwnership = Ownership.Level2;
         }
-        else if (transform.position.y >= m_levelFade.m_level3Threshold - m_offsetY)
+        else if (transform.position.y >= m_levelFade.m_level3Threshold)
         {
             m_levelOwnership = Ownership.Level3;
         }

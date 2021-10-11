@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 7115844134428843067}
   - component: {fileID: 7115844134428843066}
   - component: {fileID: 7115844134428843047}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Interactable Object
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,7 +112,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!114 &7115844134428843047
 MonoBehaviour:
   m_ObjectHideFlags: 0

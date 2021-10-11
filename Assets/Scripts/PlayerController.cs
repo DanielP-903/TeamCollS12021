@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("ERROR: Player has no CharacterController component!");
             Debug.DebugBreak();
         }
+
     }
 
     // Update is called once per frame
@@ -62,6 +63,7 @@ public class PlayerController : MonoBehaviour
                 m_heldObjectContainer = null;
                 GetComponent<BoxCollider>().enabled = true;
                 m_inputTimer = m_timeBetweenInputs;
+                
             }
         }
 
@@ -129,4 +131,16 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    void OnCollisionStay(Collision collision)
+    {
+        //if (collision.gameObject.tag == "Interactable")
+        //{
+        //    if (collision.gameObject == m_heldObjectContainer)
+        //    {
+        //        Physics.IgnoreCollision(m_heldObjectContainer.GetComponent<Collider>(), GetComponent<Collider>());
+        //    }
+        //}
+    }
+
 }

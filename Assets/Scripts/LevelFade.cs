@@ -10,6 +10,10 @@ public class LevelFade : MonoBehaviour
     [SerializeField] internal float m_level3Threshold;
     [SerializeField] internal GameObject m_level3;
     private GameObject m_player;
+
+    [SerializeField] private int currentLevel = 0;
+    private int previousCurrentLevel = 0;
+    GameObject[] gameObjects;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,36 +39,102 @@ public class LevelFade : MonoBehaviour
             Debug.LogError("ERROR: No object with 'Player' tag assigned!");
             Debug.DebugBreak();
         }
+
+        gameObjects = GameObject.FindGameObjectsWithTag("Interactable");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //m_level2.SetActive(m_player.transform.position.y > m_level2Threshold);
-        //m_level3.SetActive(m_player.transform.position.y > m_level3Threshold);
 
+
+
+        DetermineCurrentLevel();
+    }
+
+    private void DetermineCurrentLevel()
+    {
         if (m_player.transform.position.y < m_level2Threshold)
         {
-            foreach (var meshRenderer in m_level2.GetComponentsInChildren<MeshRenderer>())
-            {
-                meshRenderer.enabled = false;
-            }
-            foreach (var meshRenderer in m_level3.GetComponentsInChildren<MeshRenderer>())
-            {
-                meshRenderer.enabled = false;
-            }
+            currentLevel = 0;
+        }
+        else if (m_player.transform.position.y >= m_level2Threshold && m_player.transform.position.y < m_level3Threshold)
+        {
+            currentLevel = 1;
         }
         else
         {
-            foreach (var meshRenderer in m_level2.GetComponentsInChildren<MeshRenderer>())
-            {
-                meshRenderer.enabled = true;
-            }
-            //foreach (var meshRenderer in m_level3.GetComponentsInChildren<MeshRenderer>())
-            //{
-            //    meshRenderer.enabled = true;
-            //}
+            currentLevel = 2;
         }
 
+        if (previousCurrentLevel != currentLevel)
+        {
+            HideMeshes();
+        }
+
+        previousCurrentLevel = currentLevel;
     }
+
+    private void HideMeshes()
+    {
+        switch (currentLevel)
+        {
+            case (0): { 
+                    foreach (var meshRenderer in m_level2.GetComponentsInChildren<MeshRenderer>())
+                    {
+                        meshRenderer.enabled = false;
+                    }
+                    foreach (var meshRenderer in m_level3.GetComponentsInChildren<MeshRenderer>())
+                    {
+                        meshRenderer.enabled = false;
+                    }
+
+                    foreach (var gameObject in gameObjects)
+                    {
+                        if (!gameObject.GetComponent<TaskObject>().IsPickedUp)
+                        {
+                            gameObject.GetComponent<MeshRenderer>().enabled = gameObject.transform.position.y < m_level2Threshold;
+                        }                      
+                    }
+                    break; 
+                };
+            case (1):
+                {
+                    foreach (var meshRenderer in m_level2.GetComponentsInChildren<MeshRenderer>())
+                    {
+                        meshRenderer.enabled = true;
+                    }
+                    foreach (var meshRenderer in m_level3.GetComponentsInChildren<MeshRenderer>())
+                    {
+                        meshRenderer.enabled = false;
+                    }
+                    foreach (var gameObject in gameObjects)
+                    {
+                        if (!gameObject.GetComponent<TaskObject>().IsPickedUp)
+                        {
+                            gameObject.GetComponent<MeshRenderer>().enabled = gameObject.transform.position.y < m_level3Threshold;
+                        }
+                    }
+                    break;
+                };
+            case (2):
+                {
+                    foreach (var meshRenderer in m_level3.GetComponentsInChildren<MeshRenderer>())
+                    {
+                        meshRenderer.enabled = true;
+                    }
+                    foreach (var gameObject in gameObjects)
+                    {
+                        if (!gameObject.GetComponent<TaskObject>().IsPickedUp)
+                        {
+                            gameObject.GetComponent<MeshRenderer>().enabled = true;
+                        }
+                    }
+                    break;
+                };
+            default: break;
+        }
+    }
+
 }
