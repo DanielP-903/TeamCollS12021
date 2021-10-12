@@ -8,7 +8,10 @@ public class TaskObject : MonoBehaviour
     {
         Level1,Level2,Level3
     };
-    
+    private enum Type
+    {
+        Book, Default
+    };
     private GameObject m_playerRef;
     private PlayerController m_playerController;
     private GameObject m_levelFadeRef;
@@ -19,6 +22,7 @@ public class TaskObject : MonoBehaviour
     [SerializeField] private float m_offsetY = 0.0f;
 
     [SerializeField] private Ownership m_levelOwnership;
+    [SerializeField] private Type m_type;
 
 
     void Start()
@@ -61,6 +65,11 @@ public class TaskObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        DetectObject();
+    }
+
+    protected void DetectObject()
+    {
         if (IsPickedUp)
         {
             transform.position = m_playerController.transform.position + (m_offsetZ * m_playerController.transform.right) + (m_offsetY * m_playerController.transform.up);
@@ -73,12 +82,6 @@ public class TaskObject : MonoBehaviour
             GetComponent<Rigidbody>().isKinematic = false;
             GetComponent<BoxCollider>().enabled = true;
         }
-
-        //UpdateProgression();
-    }
-
-    void DropObject()
-    {
     }
 
     void OnCollisionStay(Collision collision)
