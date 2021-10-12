@@ -27,6 +27,11 @@ public class TaskObject : MonoBehaviour
 
     void Start()
     {
+        LoadAssets();
+    }
+
+    protected void LoadAssets()
+    {
         m_levelFadeRef = GameObject.FindGameObjectWithTag("LevelFade");
         if (!m_levelFadeRef)
         {

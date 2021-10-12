@@ -35,7 +35,6 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("ERROR: Player has no CharacterController component!");
             Debug.DebugBreak();
         }
-
     }
 
     // Update is called once per frame

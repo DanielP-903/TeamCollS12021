@@ -7,9 +7,20 @@ public class TO_Book : TaskObject
     [SerializeField] private GameObject m_destination;
     [SerializeField] private bool m_isBookInBookcase = false;
 
+
+    void Start()
+    {
+        if (!m_destination)
+        {
+            Debug.LogError("No Destination object assigned!");
+            Debug.DebugBreak();
+        }
+
+        LoadAssets();
+    }
+
     void Update()
     {
-        Debug.Log("Book picked up!");
         DetectObject();
     }
 

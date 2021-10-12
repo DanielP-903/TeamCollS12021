@@ -8751,26 +8751,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4846295771437302889, guid: 8a088544de04cfb43b7e767ea2fdcf9f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4846295771437302889, guid: 8a088544de04cfb43b7e767ea2fdcf9f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4846295771437302889, guid: 8a088544de04cfb43b7e767ea2fdcf9f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4846295771437302889, guid: 8a088544de04cfb43b7e767ea2fdcf9f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4846295771437302889, guid: 8a088544de04cfb43b7e767ea2fdcf9f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
     - target: {fileID: 7115844134428843046, guid: 8a088544de04cfb43b7e767ea2fdcf9f, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -8819,6 +8799,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book
       objectReference: {fileID: 0}
+    - target: {fileID: 9088855183416464351, guid: 8a088544de04cfb43b7e767ea2fdcf9f, type: 3}
+      propertyPath: m_destination
+      value: 
+      objectReference: {fileID: 120808859}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a088544de04cfb43b7e767ea2fdcf9f, type: 3}
 --- !u!1001 &1839639414837190909
@@ -8834,15 +8818,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2052380013, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
       propertyPath: m_Radius
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 2052380013, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
       propertyPath: m_Center.x
-      value: 0
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2052380013, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
       propertyPath: m_Center.y
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2052380013, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
       propertyPath: m_Center.z
