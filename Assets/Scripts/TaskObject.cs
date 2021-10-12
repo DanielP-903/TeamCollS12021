@@ -10,7 +10,7 @@ public class TaskObject : MonoBehaviour
     };
     private enum Type
     {
-        Book, Default
+        Default, Book, Plate, Other
     };
     private GameObject m_playerRef;
     private PlayerController m_playerController;
@@ -80,12 +80,26 @@ public class TaskObject : MonoBehaviour
             transform.position = m_playerController.transform.position + (m_offsetZ * m_playerController.transform.right) + (m_offsetY * m_playerController.transform.up);
             transform.rotation = m_playerController.transform.rotation;
             GetComponent<Rigidbody>().isKinematic = true;
-            GetComponent<BoxCollider>().enabled = false;
+            if (TryGetComponent(out BoxCollider box))
+            {
+                GetComponent<BoxCollider>().enabled = false;
+            }
+            else if (TryGetComponent(out MeshCollider mesh))
+            {
+                GetComponent<MeshCollider>().enabled = false;
+            }
         }
         else
         {
             GetComponent<Rigidbody>().isKinematic = false;
-            GetComponent<BoxCollider>().enabled = true;
+            if (TryGetComponent(out BoxCollider box))
+            {
+                GetComponent<BoxCollider>().enabled = true;
+            }
+            else if (TryGetComponent(out MeshCollider mesh))
+            {
+                GetComponent<MeshCollider>().enabled = true;
+            }
         }
     }
 

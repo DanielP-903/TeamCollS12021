@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TO_Book : TaskObject
+public class TO_Basic : TaskObject
 {
     [SerializeField] private GameObject m_destination;
-    [SerializeField] private bool m_isBookInBookcase = false;
+    [SerializeField] private bool m_inDestination = false;
 
 
     void Start()
@@ -30,11 +30,11 @@ public class TO_Book : TaskObject
         {
             // Update no of books in bookcase here
             Debug.Log("In bookcase!");
-            m_isBookInBookcase = true;
+            m_inDestination = true;
         }
         else
         {
-            m_isBookInBookcase = false;
+            m_inDestination = false;
         }
     }
     
