@@ -20,6 +20,7 @@ public class TaskObject : MonoBehaviour
     [SerializeField] internal bool IsPickedUp { get; set; }
     [SerializeField] private float m_offsetZ = 0.0f;
     [SerializeField] private float m_offsetY = 0.0f;
+    [SerializeField] private float m_offsetX = 0.0f;
 
     [SerializeField] private Ownership m_levelOwnership;
     [SerializeField] private Type m_type;
@@ -77,7 +78,7 @@ public class TaskObject : MonoBehaviour
     {
         if (IsPickedUp)
         {
-            transform.position = m_playerController.transform.position + (m_offsetZ * m_playerController.transform.right) + (m_offsetY * m_playerController.transform.up);
+            transform.position = m_playerController.transform.position + (m_offsetZ * m_playerController.transform.right) + (m_offsetY * m_playerController.transform.up) + (m_offsetX * m_playerController.transform.forward);
             transform.rotation = m_playerController.transform.rotation;
             GetComponent<Rigidbody>().isKinematic = true;
             if (TryGetComponent(out BoxCollider box))
@@ -87,6 +88,10 @@ public class TaskObject : MonoBehaviour
             else if (TryGetComponent(out MeshCollider mesh))
             {
                 GetComponent<MeshCollider>().enabled = false;
+            }
+            else
+            {
+                GetComponentInChildren<MeshCollider>().enabled = false;
             }
         }
         else
@@ -99,6 +104,10 @@ public class TaskObject : MonoBehaviour
             else if (TryGetComponent(out MeshCollider mesh))
             {
                 GetComponent<MeshCollider>().enabled = true;
+            }
+            else
+            {
+                GetComponentInChildren<MeshCollider>().enabled = true;
             }
         }
     }
