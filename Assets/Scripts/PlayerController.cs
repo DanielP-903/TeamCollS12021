@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
 
     private readonly Vector3 m_gravity = new Vector3(0, -9.8f, 0);
     private CharacterController m_characterController;
-    private GameObject m_heldObjectContainer;
-    private TaskObject m_heldObject;
+    [SerializeField] private GameObject m_heldObjectContainer;
+    [SerializeField] private TaskObject m_heldObject;
 
     void Start()
     {
@@ -35,7 +35,6 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("ERROR: Player has no CharacterController component!");
             Debug.DebugBreak();
         }
-
     }
 
     // Update is called once per frame
@@ -120,7 +119,7 @@ public class PlayerController : MonoBehaviour
     {
         if (m_interact && m_inputTimer == 0.0f)
         {
-            if (other.GetComponent<TaskObject>() && m_heldObject == null)
+            if (other.tag == "Interactable" && m_heldObject == null)
             {
                 other.GetComponent<TaskObject>().IsPickedUp = true;
                 GetComponent<BoxCollider>().enabled = false;
