@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        if (TryGetComponent(out CharacterController charController))
+        if (transform.parent.gameObject.TryGetComponent(out CharacterController charController))
         {
             m_characterController = charController;
         }
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     {
         if (m_moveForward || m_moveBackward)
         {
-            Vector3 move = m_moveForward ? (transform.right * m_speed * Time.deltaTime) : (-transform.right * (m_speed / 2) * Time.deltaTime);
+            Vector3 move = m_moveForward ? (transform.forward * m_speed * Time.deltaTime) : (-transform.forward * (m_speed / 2) * Time.deltaTime);
             m_characterController.Move(move);
         }
 
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
     {
         if (m_interact && m_inputTimer == 0.0f)
         {
-            if (other.tag == "Interactable" && m_heldObject == null)
+            if (other.tag == "Interactable" && m_heldObject == null && !other.GetComponent<TO_Basic>().m_inDestination)
             {
                 other.GetComponent<TaskObject>().IsPickedUp = true;
                 GetComponent<BoxCollider>().enabled = false;
@@ -135,10 +135,7 @@ public class PlayerController : MonoBehaviour
     {
         //if (collision.gameObject.tag == "Interactable")
         //{
-        //    if (collision.gameObject == m_heldObjectContainer)
-        //    {
-        //        Physics.IgnoreCollision(m_heldObjectContainer.GetComponent<Collider>(), GetComponent<Collider>());
-        //    }
+        //    Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
         //}
     }
 
