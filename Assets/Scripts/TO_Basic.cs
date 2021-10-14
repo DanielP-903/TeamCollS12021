@@ -8,7 +8,7 @@ public class TO_Basic : TaskObject
     public bool m_inDestination = false;
     [SerializeField] public TaskSystem tasksystem;
     [SerializeField] public bool isplaced;
-
+    private bool m_startSleepTimer = false;
 
     void Start()
     {
@@ -23,23 +23,32 @@ public class TO_Basic : TaskObject
     void Update()
     {
         DetectObject();
+        //if (m_startSleepTimer)
+        //{
+
+        //}
     }
 
     void OnTriggerEnter(Collider collider)
     {
         if (collider == m_destination.GetComponent<Collider>() && !IsPickedUp)
         {
-            if (!isplaced)
+            if (m_type == Type.Book)
             {
-                tasksystem.Method();
-                // Update no of books in bookcase here
-                isplaced = true;
-                Debug.Log("In bookcase!");
-                m_inDestination = true;
-            }
-            else
-            {
-                m_inDestination = false;
+                if (!isplaced)
+                {
+                    tasksystem.Method();
+                    // Update no of books in bookcase here
+                    isplaced = true;
+                    Debug.Log("In bookcase!");
+                    m_inDestination = true;
+                    m_startSleepTimer = true;
+                }
+                else
+                {
+                    m_inDestination = false;
+                    m_startSleepTimer = false;
+                }
             }
         }
     }
