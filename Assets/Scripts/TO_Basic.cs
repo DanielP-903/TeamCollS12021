@@ -14,8 +14,7 @@ public class TO_Basic : TaskObject
     {
         if (!m_destination)
         {
-            Debug.LogError("No Destination object assigned!");
-            Debug.DebugBreak();
+            Debug.LogWarning("No Destination object assigned!");
         }
 
         LoadAssets();
