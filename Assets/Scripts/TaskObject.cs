@@ -79,8 +79,8 @@ public class TaskObject : MonoBehaviour
     {
         if (IsPickedUp)
         {
-            transform.position = m_playerController.transform.position + (m_offsetZ * m_playerController.transform.right) + (m_offsetY * m_playerController.transform.up) + (m_offsetX * m_playerController.transform.forward);
-            transform.rotation = m_playerController.transform.rotation;
+            transform.position = m_playerController.transform.position + (m_offsetZ * m_playerController.transform.forward) + (m_offsetY * m_playerController.transform.up) + (m_offsetX * m_playerController.transform.right);
+            transform.rotation = m_playerController.transform.rotation * Quaternion.Euler(0,90,0);
             GetComponent<Rigidbody>().isKinematic = true;
             if (TryGetComponent(out BoxCollider box))
             {
