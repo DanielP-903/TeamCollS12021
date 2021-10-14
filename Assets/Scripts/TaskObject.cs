@@ -23,7 +23,7 @@ public class TaskObject : MonoBehaviour
     [SerializeField] private float m_offsetX = 0.0f;
 
     [SerializeField] private Ownership m_levelOwnership;
-    [SerializeField] private Type m_type;
+    [SerializeField] internal Type m_type;
 
 
     void Start()

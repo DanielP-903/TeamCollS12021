@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
                 m_heldObject = other.GetComponent<TaskObject>();
                 m_heldObjectContainer = other.gameObject;
                 m_inputTimer = m_timeBetweenInputs;
-                Debug.Log("Detected!");
+                //Debug.Log("Detected!");
             }
         }
     }
