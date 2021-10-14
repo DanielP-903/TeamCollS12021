@@ -8,7 +8,7 @@ public class TaskObject : MonoBehaviour
     {
         Level1,Level2,Level3
     };
-    private enum Type
+    public enum Type
     {
         Default, Book, Plate, Other
     };
@@ -73,6 +73,7 @@ public class TaskObject : MonoBehaviour
     {
         DetectObject();
     }
+
 
     protected void DetectObject()
     {

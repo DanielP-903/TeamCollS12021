@@ -6,6 +6,8 @@ public class TO_Basic : TaskObject
 {
     [SerializeField] private GameObject m_destination;
     [SerializeField] private bool m_inDestination = false;
+    [SerializeField] public TaskSystem tasksystem;
+    [SerializeField] public bool isplaced;
 
 
     void Start()
@@ -24,18 +26,22 @@ public class TO_Basic : TaskObject
         DetectObject();
     }
 
-    void OnTriggerStay(Collider collider)
+    void OnTriggerEnter(Collider collider)
     {
         if (collider == m_destination.GetComponent<Collider>() && !IsPickedUp)
         {
-            // Update no of books in bookcase here
-            Debug.Log("In bookcase!");
-            m_inDestination = true;
-        }
-        else
-        {
-            m_inDestination = false;
+            if (!isplaced)
+            {
+                tasksystem.Method();
+                // Update no of books in bookcase here
+                isplaced = true;
+                Debug.Log("In bookcase!");
+                m_inDestination = true;
+            }
+            else
+            {
+                m_inDestination = false;
+            }
         }
     }
-    
 }
