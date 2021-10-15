@@ -31,7 +31,7 @@ public class TO_Basic : TaskObject
             if (m_sleepTimer < 0)
             {
                 m_startSleepTimer = false;
-
+                isplaced = true;
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             }
         }
@@ -47,7 +47,6 @@ public class TO_Basic : TaskObject
                 {
                     tasksystem.Method();
                     // Update no of books in bookcase here
-                    isplaced = true;
                     //Debug.Log("In bookcase!");
                     m_inDestination = true;
                     m_startSleepTimer = true;
