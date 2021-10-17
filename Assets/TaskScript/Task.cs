@@ -9,14 +9,19 @@ public class Task : MonoBehaviour
   
     public string description;
     public int reward;
-    public int xp;
+
+    public Text descriptionText;
+    public Text rewardText;
+    public Text currentamountText;
 
     public Animator anim;
 
 
     void Start()
     {
-       
+        descriptionText.text = description;
+        rewardText.text = reward.ToString();
+        currentamountText.text = currentAmount.ToString();
     }
 
     public enum TaskStatus
@@ -27,10 +32,7 @@ public class Task : MonoBehaviour
 
     public int currentAmount;
     public int requiredAmount;
-    public enum ItemType
-    { Default,book,plate,cup }
 
-    public ItemType itemtype;
     public bool isReached()
     {
         return (currentAmount >= requiredAmount);
@@ -39,7 +41,10 @@ public class Task : MonoBehaviour
     public void ItemsCollected()
     {
         currentAmount+=1;
+        currentamountText.text = currentAmount.ToString();
     }
+
+
     public void ItemsDisposed()
     {
         currentAmount--;
@@ -54,6 +59,7 @@ public class Task : MonoBehaviour
     {
         anim.SetBool("isChecked", true);
         yield return new WaitForSeconds(3f);
+        rewardText.text = reward.ToString();
         Destroy(this);
     }
 }

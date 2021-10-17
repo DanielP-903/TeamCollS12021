@@ -22,6 +22,7 @@ public class TO_Basic : TaskObject
 
     void Update()
     {
+      
         DetectObject();
         if (m_startSleepTimer)
         {
@@ -51,6 +52,22 @@ public class TO_Basic : TaskObject
                     m_inDestination = true;
                     m_startSleepTimer = true;
                     m_sleepTimer = 3.0f;
+                }
+                else
+                {
+                    m_inDestination = false;
+                    m_startSleepTimer = false;
+                }
+            }
+            else if(m_type==Type.Plate)
+            {
+                if(!isplaced)
+                {
+                    tasksystem.Method2();
+                    // Update no of plates in kitchen 
+                    m_inDestination = true;
+                    m_startSleepTimer = true;
+                    m_sleepTimer = 3.0F;
                 }
                 else
                 {

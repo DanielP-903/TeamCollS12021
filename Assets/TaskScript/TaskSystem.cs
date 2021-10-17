@@ -9,18 +9,16 @@ public class TaskSystem : MonoBehaviour
 
     public Text descriptionText;
     public Text rewardText;
-    public Text xpText;
     public Text currentamountText;
     public int rewarding;
-    public int xp;
     // Start is called before the first frame update
     void Start()
     {
-        descriptionText.text = tasks[0].description;
-        rewardText.text = tasks[0].reward.ToString();
-        xpText.text = tasks[0].xp.ToString();
-        currentamountText.text = tasks[0].currentAmount.ToString();
+       // descriptionText.text = tasks[0].description;
+     //   rewardText.text = tasks[0].reward.ToString();
+      //  currentamountText.text = tasks[0].currentAmount.ToString();
         tasks[0].CurrentStatus = Task.TaskStatus.Open;
+        tasks[1].CurrentStatus = Task.TaskStatus.Open;
        
     }
 
@@ -35,20 +33,35 @@ public class TaskSystem : MonoBehaviour
         if (tasks[0].CurrentStatus == Task.TaskStatus.Open)
         {
             tasks[0].ItemsCollected();
-            currentamountText.text = tasks[0].currentAmount.ToString();
+        //    currentamountText.text = tasks[0].currentAmount.ToString();
             if (tasks[0].isReached())
             {
                 tasks[0].TaskCompleted();
                 Debug.Log("Task has been completed");
+                rewarding = 450;
                 rewarding+= tasks[0].reward;
-                rewardText.text = rewarding.ToString();
+             //   rewardText.text = rewarding.ToString();
                 tasks[0].reward = rewarding;
                 Debug.Log("You have been rewarded");
-                xp+= tasks[0].xp;
-                Debug.Log("You have gained xp");
-                xpText.text = xp.ToString();
                 Debug.Log("You have finished a task");
-               Destroy(tasks[0]);              
+            }
+        }
+    }
+
+    public void Method2()
+    {
+        if(tasks[1].CurrentStatus==Task.TaskStatus.Open)
+        {
+            tasks[1].ItemsCollected();
+            if(tasks[1].isReached())
+            {
+                tasks[1].TaskCompleted();
+                Debug.Log("Second task has been completed");
+                rewarding = 1000;
+                rewarding += tasks[1].reward;
+                tasks[1].reward = rewarding;
+                Debug.Log("You have been rewarded");
+                Debug.Log("You have finished the second task");
             }
         }
     }
