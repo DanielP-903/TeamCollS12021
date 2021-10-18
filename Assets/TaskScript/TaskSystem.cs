@@ -34,12 +34,10 @@ public class TaskSystem : MonoBehaviour
         if (tasks[0].CurrentStatus == Task.TaskStatus.Open)
         {
             tasks[0].ItemsCollected();
-        //    currentamountText.text = tasks[0].currentAmount.ToString();
             if (tasks[0].isReached())
             {
                 tasks[0].TaskCompleted();
                 Debug.Log("Task has been completed");
-                rewarding = 450;
                 rewarding+= tasks[0].reward;
              //   rewardText.text = rewarding.ToString();
                 tasks[0].reward = rewarding;
@@ -58,7 +56,6 @@ public class TaskSystem : MonoBehaviour
             {
                 tasks[1].TaskCompleted();
                 Debug.Log("Second task has been completed");
-                rewarding = 1000;
                 rewarding += tasks[1].reward;
                 tasks[1].reward = rewarding;
                 Debug.Log("You have been rewarded");
@@ -76,7 +73,6 @@ public class TaskSystem : MonoBehaviour
             {
                 tasks[2].TaskCompleted();
                 Debug.Log("Third task has been completed");
-                rewarding = 1000;
                 rewarding += tasks[2].reward;
                 tasks[2].reward = rewarding;
                 Debug.Log("You have been rewarded");
@@ -94,7 +90,6 @@ public class TaskSystem : MonoBehaviour
             {
                 tasks[3].TaskCompleted();
                 Debug.Log("Third task has been completed");
-                rewarding = 1000;
                 rewarding += tasks[3].reward;
                 tasks[3].reward = rewarding;
                 Debug.Log("You have been rewarded");

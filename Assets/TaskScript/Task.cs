@@ -20,7 +20,6 @@ public class Task : MonoBehaviour
     void Start()
     {
         descriptionText.text = description;
-        rewardText.text = reward.ToString();
         currentamountText.text = currentAmount.ToString();
     }
 
@@ -60,6 +59,6 @@ public class Task : MonoBehaviour
         anim.SetBool("isChecked", true);
         yield return new WaitForSeconds(3f);
         rewardText.text = reward.ToString();
-        Destroy(this);
+      //  Destroy(this);
     }
 }
