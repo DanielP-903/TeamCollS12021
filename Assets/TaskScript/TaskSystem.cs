@@ -19,7 +19,8 @@ public class TaskSystem : MonoBehaviour
       //  currentamountText.text = tasks[0].currentAmount.ToString();
         tasks[0].CurrentStatus = Task.TaskStatus.Open;
         tasks[1].CurrentStatus = Task.TaskStatus.Open;
-       
+        tasks[2].CurrentStatus = Task.TaskStatus.Open;
+
     }
 
     // Update is called once per frame
@@ -62,6 +63,42 @@ public class TaskSystem : MonoBehaviour
                 tasks[1].reward = rewarding;
                 Debug.Log("You have been rewarded");
                 Debug.Log("You have finished the second task");
+            }
+        }
+    }
+
+    public void Method3()
+    {
+        if (tasks[2].CurrentStatus == Task.TaskStatus.Open)
+        {
+            tasks[2].ItemsCollected();
+            if (tasks[2].isReached())
+            {
+                tasks[2].TaskCompleted();
+                Debug.Log("Third task has been completed");
+                rewarding = 1000;
+                rewarding += tasks[2].reward;
+                tasks[2].reward = rewarding;
+                Debug.Log("You have been rewarded");
+                Debug.Log("You have finished the third task");
+            }
+        }
+    }
+
+    public void Method4()
+    {
+        if (tasks[3].CurrentStatus == Task.TaskStatus.Open)
+        {
+            tasks[3].ItemsCollected();
+            if (tasks[3].isReached())
+            {
+                tasks[3].TaskCompleted();
+                Debug.Log("Third task has been completed");
+                rewarding = 1000;
+                rewarding += tasks[3].reward;
+                tasks[3].reward = rewarding;
+                Debug.Log("You have been rewarded");
+                Debug.Log("You have finished the third task");
             }
         }
     }

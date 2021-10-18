@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         GroundUpdater();
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -158,13 +159,4 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
-    void OnCollisionStay(Collision collision)
-    {
-        //if (collision.gameObject.tag == "Interactable")
-        //{
-        //    Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
-        //}
-    }
-
 }

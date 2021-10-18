@@ -42,38 +42,44 @@ public class TO_Basic : TaskObject
     {
         if (collider == m_destination.GetComponent<Collider>() && !IsPickedUp)
         {
-            if (m_type == Type.Book)
+            if (!isplaced)
             {
-                if (!isplaced)
+                switch (m_type)
                 {
-                    tasksystem.Method();
-                    // Update no of books in bookcase here
-                    //Debug.Log("In bookcase!");
-                    m_inDestination = true;
-                    m_startSleepTimer = true;
-                    m_sleepTimer = 3.0f;
+                    case (Type.Book):
+                        {                
+                            tasksystem.Method();
+                            break;
+                        };
+                    case (Type.Plate):
+                        {
+                            tasksystem.Method2();
+                            break;
+                        };
+                    case (Type.Toy):
+                        {
+                            tasksystem.Method3();
+                            break;
+                        };
+                    case (Type.Soup):
+                        {
+                            break;
+                        };
+                    case (Type.Coat):
+                        {
+                            tasksystem.Method4();
+                            break;
+                        };
+                    default: break;
                 }
-                else
-                {
-                    m_inDestination = false;
-                    m_startSleepTimer = false;
-                }
+                m_inDestination = true;
+                m_startSleepTimer = true;
+                m_sleepTimer = 3.0f;
             }
-            else if(m_type==Type.Plate)
+            else
             {
-                if(!isplaced)
-                {
-                    tasksystem.Method2();
-                    // Update no of plates in kitchen 
-                    m_inDestination = true;
-                    m_startSleepTimer = true;
-                    m_sleepTimer = 3.0F;
-                }
-                else
-                {
-                    m_inDestination = false;
-                    m_startSleepTimer = false;
-                }
+                m_inDestination = false;
+                m_startSleepTimer = false;
             }
         }
     }
@@ -82,13 +88,14 @@ public class TO_Basic : TaskObject
     {
         if (collider == m_destination.GetComponent<Collider>() && !IsPickedUp)
         {
-            if (m_type == Type.Book)
-            {
+            //if (m_type == Type.Book || m_type == Type.Toy)
+            //{
                 m_sleepTimer = 3.0f;
                 m_startSleepTimer = false;
-                Debug.Log("OH NO IT FELL OUT");
                 isplaced = false;
-            }
+                m_inDestination = false;
+                Debug.Log("OH NO IT FELL OUT");
+            //}
         }
     }
 }

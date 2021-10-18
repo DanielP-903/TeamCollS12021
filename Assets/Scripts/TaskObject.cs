@@ -8,10 +8,12 @@ public class TaskObject : MonoBehaviour
     {
         Level1,Level2,Level3
     };
+
     public enum Type
     {
-        Default, Book, Plate, Other
+        Default, Book, Plate, Toy, Soup, Coat, Other
     };
+
     private GameObject m_playerRef;
     private PlayerController m_playerController;
     private GameObject m_levelFadeRef;
@@ -74,7 +76,6 @@ public class TaskObject : MonoBehaviour
         DetectObject();
     }
 
-
     protected void DetectObject()
     {
         if (IsPickedUp)
@@ -111,17 +112,6 @@ public class TaskObject : MonoBehaviour
                 GetComponentInChildren<MeshCollider>().enabled = true;
             }
         }
-    }
-
-    void OnCollisionStay(Collision collision)
-    {
-        //if (collision.gameObject.tag == "Interactable")
-        //{
-        //    if (collision.gameObject == m_heldObjectContainer)
-        //    {
-        //        Physics.IgnoreCollision(m_heldObjectContainer.GetComponent<Collider>(), GetComponent<Collider>());
-        //    }
-        //}
     }
 
     private void UpdateProgression()
