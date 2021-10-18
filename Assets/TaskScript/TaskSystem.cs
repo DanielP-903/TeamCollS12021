@@ -20,6 +20,7 @@ public class TaskSystem : MonoBehaviour
         tasks[0].CurrentStatus = Task.TaskStatus.Open;
         tasks[1].CurrentStatus = Task.TaskStatus.Open;
         tasks[2].CurrentStatus = Task.TaskStatus.Open;
+        tasks[3].CurrentStatus = Task.TaskStatus.Open;
 
     }
 
