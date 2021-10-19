@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
+using UnityEngine.InputSystem;
 
 public class ObjectRandomiser : MonoBehaviour
 {
@@ -22,10 +25,20 @@ public class ObjectRandomiser : MonoBehaviour
     private List<int> m_chosenNumbers = new List<int>();
 
     private int m_randomNo;
+
+    private bool m_interact;
     // Start is called before the first frame update
     void Start()
     {
         Randomise();
+    }
+
+    void Update()
+    {
+        if (m_interact)
+        {
+            Randomise();
+        }
     }
 
     private void Randomise()
@@ -51,5 +64,12 @@ public class ObjectRandomiser : MonoBehaviour
         m_nessie.GetComponent<TO_Basic>().m_destination = m_nessieDestination;
 
         Instantiate(m_nessie, m_nessieSpawnLocations[m_randomNo].transform.position, Quaternion.identity);
+    }
+
+    public void TestRandomise(InputAction.CallbackContext context)
+    {
+        float button = context.ReadValue<float>();
+        m_interact = Math.Abs(button - 1.0f) < 0.1f ? true : false;
+        //Debug.Log("Interact detected: " + m_interact);
     }
 }
