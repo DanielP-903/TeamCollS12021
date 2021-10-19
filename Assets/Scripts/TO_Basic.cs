@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TO_Basic : TaskObject
 {
-    [SerializeField] private GameObject m_destination;
+    [SerializeField] internal GameObject m_destination;
     public bool m_inDestination = false;
     [SerializeField] public TaskSystem tasksystem;
     [SerializeField] public bool isplaced;
