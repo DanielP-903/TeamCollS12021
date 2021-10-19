@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
             if (m_interact)
             {
                 m_heldObject.IsPickedUp = false;
-                m_heldObjectContainer.GetComponent<Rigidbody>().velocity = m_characterController.velocity * m_velocityScale;
+                m_heldObjectContainer.GetComponent<Rigidbody>().velocity = (m_characterController.velocity + (Vector3.up*2)) * m_velocityScale;
                 m_heldObject = null;
                 m_heldObjectContainer = null;
                 GetComponent<BoxCollider>().enabled = true;
