@@ -127,33 +127,12 @@ public class ObjectRandomiser : MonoBehaviour
 
     private void Randomise()
     {
-
         DestroyAllInteractables();
 
         UnityEngine.Random.InitState((int)System.DateTime.Now.Ticks);
 
         SpawnObject(TaskObject.Type.Toy);
         SpawnObject(TaskObject.Type.Plate);
-
-        //bool unique = false;
-        //for (int i = 0; i < m_noOfNessies; i++)
-        //{
-        //    unique = false;
-        //    while (!unique)
-        //    {
-        //        m_randomNo = UnityEngine.Random.Range(0, m_nessieSpawnLocations.Count);
-        //        if (!m_chosenNumbers.Contains(m_randomNo))
-        //        {
-        //            m_chosenNumbers.Add(m_randomNo);
-        //            unique = true;
-        //        }
-        //    }
-        //}
-
-        //m_nessie.GetComponent<TO_Basic>().tasksystem = m_taskSystem;
-        //m_nessie.GetComponent<TO_Basic>().m_destination = m_nessieDestination;
-
-        //Instantiate(m_nessie, m_nessieSpawnLocations[m_randomNo].transform.position, Quaternion.identity);
     }
 
     public void TestRandomise(InputAction.CallbackContext context)
