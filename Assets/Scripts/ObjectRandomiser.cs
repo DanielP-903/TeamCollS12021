@@ -30,18 +30,18 @@ public class ObjectRandomiser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Randomise();
+       // Randomise();
     }
 
     void Update()
     {
         if (m_interact)
         {
-            Randomise();
+           // Randomise();
         }
     }
 
-    private void Randomise()
+   /* private void Randomise()
     {
         Random.InitState((int)System.DateTime.Now.Ticks);
         bool unique = false;
@@ -64,7 +64,7 @@ public class ObjectRandomiser : MonoBehaviour
         m_nessie.GetComponent<TO_Basic>().m_destination = m_nessieDestination;
 
         Instantiate(m_nessie, m_nessieSpawnLocations[m_randomNo].transform.position, Quaternion.identity);
-    }
+    }*/
 
     public void TestRandomise(InputAction.CallbackContext context)
     {
