@@ -59,7 +59,7 @@ public class ObjectRandomiser : MonoBehaviour
         GameObject[] m_gameObjects = GameObject.FindGameObjectsWithTag("Interactable");
         foreach (var obj in m_gameObjects)
         {
-            if (obj.GetComponent<TO_Basic>().m_type == TaskObject.Type.Toy || obj.GetComponent<TO_Basic>().m_type == TaskObject.Type.Plate)
+            if (obj.GetComponent<TO_Basic>().m_type == TaskObject.Type.Toy || obj.GetComponent<TO_Basic>().m_type == TaskObject.Type.Plate || obj.GetComponent<TO_Basic>().m_type == TaskObject.Type.Book)
             {
                 Destroy(obj);
             }
@@ -133,6 +133,7 @@ public class ObjectRandomiser : MonoBehaviour
 
         SpawnObject(TaskObject.Type.Toy);
         SpawnObject(TaskObject.Type.Plate);
+        SpawnObject(TaskObject.Type.Book);
     }
 
     public void TestRandomise(InputAction.CallbackContext context)
