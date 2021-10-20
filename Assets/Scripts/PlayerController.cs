@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController m_characterController;
     [SerializeField] private GameObject m_heldObjectContainer;
     [SerializeField] private TaskObject m_heldObject;
-    [SerializeField] private bool isgrounded;
+    //[SerializeField] private bool isgrounded;
     public float velocity;
     public float fallforce;
 
@@ -41,27 +41,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void GroundUpdater()
-    {
-        isgrounded = false;
-        RaycastHit[] hit;
-        hit = Physics.RaycastAll(transform.position, Vector3.down, 0.8f);
-        foreach (var hits in hit)
-        {
-            Debug.DrawRay(hits.point, hits.normal, Color.red, 0.8f);
-            if (hits.collider.gameObject == gameObject)
-                continue;
-            else if (hits.collider.CompareTag("Ground"))
-            {
-                isgrounded = true;
-
-            }
-        }     
-    }
+    //void GroundUpdater()
+    //{
+    //    isgrounded = false;
+    //    RaycastHit[] hit;
+    //    hit = Physics.RaycastAll(transform.position, Vector3.down, 0.8f);
+    //    foreach (var hits in hit)
+    //    {
+    //        Debug.DrawRay(hits.point, hits.normal, Color.red, 0.8f);
+    //        if (hits.collider.gameObject == gameObject)
+    //            continue;
+    //        else if (hits.collider.CompareTag("Ground"))
+    //        {
+    //            isgrounded = true;
+    //        }
+    //    }     
+    //}
 
     void FixedUpdate()
     {
-        GroundUpdater();
+        //GroundUpdater();
     }
 
     // Update is called once per frame
