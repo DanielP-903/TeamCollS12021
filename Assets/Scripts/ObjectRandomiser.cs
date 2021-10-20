@@ -25,8 +25,8 @@ public class ObjectRandomiser : MonoBehaviour
     private List<int> m_chosenNumbers = new List<int>();
 
     private int m_randomNo;
-
-    private bool m_interact;
+    private float m_inputTimer = 0.0f;
+    private bool m_interact = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,15 +35,36 @@ public class ObjectRandomiser : MonoBehaviour
 
     void Update()
     {
-        if (m_interact)
+        if (m_inputTimer != 0.0f)
         {
+            m_inputTimer -= Time.deltaTime * 2;
+            m_inputTimer = m_inputTimer < 0.01f ? 0.0f : m_inputTimer;
+        }
+
+        if (m_interact && m_inputTimer == 0.0f)
+        {
+            m_inputTimer = 0.5f;
+            Debug.Log("Randomise!");
             Randomise();
         }
     }
 
     private void Randomise()
     {
-        Random.InitState((int)System.DateTime.Now.Ticks);
+
+        GameObject[] m_objects = GameObject.FindGameObjectsWithTag("Interactable");
+        List<GameObject> m_nessies = new List<GameObject>();
+        foreach (var obj in m_objects)
+        {
+            if (obj.GetComponent<TO_Basic>().m_type == TaskObject.Type.Toy)
+            {
+                Destroy(obj);
+            }
+        }
+
+
+        m_chosenNumbers.Clear();
+        UnityEngine.Random.InitState((int)System.DateTime.Now.Ticks);
         bool unique = false;
 
         for (int i = 0; i < m_noOfNessies; i++)
@@ -51,7 +72,7 @@ public class ObjectRandomiser : MonoBehaviour
             unique = false;
             while (!unique)
             {
-                m_randomNo = Random.Range(0, m_nessieSpawnLocations.Count);
+                m_randomNo = UnityEngine.Random.Range(0, m_nessieSpawnLocations.Count);
                 if (!m_chosenNumbers.Contains(m_randomNo))
                 {
                     m_chosenNumbers.Add(m_randomNo);
@@ -64,6 +85,7 @@ public class ObjectRandomiser : MonoBehaviour
         m_nessie.GetComponent<TO_Basic>().m_destination = m_nessieDestination;
 
         Instantiate(m_nessie, m_nessieSpawnLocations[m_randomNo].transform.position, Quaternion.identity);
+        Debug.Log("Spawn Nessie in location " + m_randomNo);
     }
 
     public void TestRandomise(InputAction.CallbackContext context)
