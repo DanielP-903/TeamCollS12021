@@ -9,10 +9,13 @@ public class Task : MonoBehaviour
   
     public string description;
     public int reward;
+    private string symbol = "/";
 
     public Text descriptionText;
     public Text rewardText;
     public Text currentamountText;
+    public Text symbolText;
+    public Text requiredamountText;
 
     public Animator anim;
 
@@ -21,6 +24,8 @@ public class Task : MonoBehaviour
     {
         descriptionText.text = description;
         currentamountText.text = currentAmount.ToString();
+        symbolText.text = symbol;
+        requiredamountText.text = requiredAmount.ToString();
     }
 
     public enum TaskStatus
