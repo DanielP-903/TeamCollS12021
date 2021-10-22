@@ -8,8 +8,8 @@ public class TO_Basic : TaskObject
     public bool m_inDestination = false;
     [SerializeField] public TaskSystem tasksystem;
     [SerializeField] public bool isplaced;
-    private bool m_startSleepTimer = false;
-    private float m_sleepTimer = 3.0f;
+    public bool m_startSleepTimer = false;
+    public float m_sleepTimer = 3.0f;
     void Start()
     {
         if (!m_destination)
@@ -22,13 +22,13 @@ public class TO_Basic : TaskObject
 
     void Update()
     {
-      
+
         DetectObject();
         if (m_startSleepTimer)
         {
             m_sleepTimer -= Time.deltaTime;
             Debug.Log("Sleep Timer: " + m_sleepTimer);
-            
+
             if (m_sleepTimer < 0)
             {
                 m_startSleepTimer = false;
@@ -46,8 +46,9 @@ public class TO_Basic : TaskObject
             {
                 switch (m_type)
                 {
+
                     case (Type.Book):
-                        {                
+                        {
                             tasksystem.Method();
                             break;
                         };
@@ -72,15 +73,15 @@ public class TO_Basic : TaskObject
                         };
                     default: break;
                 }
-                m_inDestination = true;
-                m_startSleepTimer = true;
-                m_sleepTimer = 3.0f;
             }
-            else
-            {
-                m_inDestination = false;
-                m_startSleepTimer = false;
-            }
+            m_inDestination = true;
+            m_startSleepTimer = true;
+            m_sleepTimer = 3.0f;
+        }
+        else
+        {
+            m_inDestination = false;
+            m_startSleepTimer = false;
         }
     }
 
@@ -88,14 +89,43 @@ public class TO_Basic : TaskObject
     {
         if (collider == m_destination.GetComponent<Collider>() && !IsPickedUp)
         {
-            //if (m_type == Type.Book || m_type == Type.Toy)
-            //{
+            if (m_type == Type.Book)
+            {
+                tasksystem.Bookmisplaced();
                 m_sleepTimer = 3.0f;
                 m_startSleepTimer = false;
                 isplaced = false;
                 m_inDestination = false;
                 Debug.Log("OH NO IT FELL OUT");
-            //}
+            }
+            else if(m_type==Type.Plate)
+            {
+                tasksystem.Platemisplaced();
+                m_sleepTimer = 3.0f;
+                m_startSleepTimer = false;
+                isplaced = false;
+                m_inDestination = false;
+                Debug.Log("OH NO IT FELL OUT");
+            }
+            else if (m_type == Type.Toy)
+            {
+                tasksystem.Toymisplaced();
+                m_sleepTimer = 3.0f;
+                m_startSleepTimer = false;
+                isplaced = false;
+                m_inDestination = false;
+                Debug.Log("OH NO IT FELL OUT");
+            }
+            else if (m_type == Type.Coat)
+            {
+                tasksystem.Coatmisplaced();
+                m_sleepTimer = 3.0f;
+                m_startSleepTimer = false;
+                isplaced = false;
+                m_inDestination = false;
+                Debug.Log("OH NO IT FELL OUT");
+            }
         }
+
     }
 }

@@ -48,6 +48,41 @@ public class TaskSystem : MonoBehaviour
         }
     }
 
+    public void Bookmisplaced()
+    {
+        if(tasks[0].CurrentStatus==Task.TaskStatus.Open)
+        {
+            tasks[0].ItemsDisposed();
+            Debug.Log("is working");
+        }
+    }
+
+    public void Platemisplaced()
+    {
+        if (tasks[1].CurrentStatus == Task.TaskStatus.Open)
+        {
+            tasks[1].ItemsDisposed();
+            Debug.Log("is working");
+        }
+    }
+    public void Toymisplaced()
+    {
+        if (tasks[2].CurrentStatus == Task.TaskStatus.Open)
+        {
+            tasks[2].ItemsDisposed();
+            Debug.Log("is working");
+        }
+    }
+
+    public void Coatmisplaced()
+    {
+        if (tasks[3].CurrentStatus == Task.TaskStatus.Open)
+        {
+            tasks[3].ItemsDisposed();
+            Debug.Log("is working");
+        }
+    }
+
     public void Method2()
     {
         if(tasks[1].CurrentStatus==Task.TaskStatus.Open)

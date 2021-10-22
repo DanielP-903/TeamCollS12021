@@ -51,7 +51,8 @@ public class Task : MonoBehaviour
 
     public void ItemsDisposed()
     {
-        currentAmount--;
+        currentAmount-=1;
+        currentamountText.text = currentAmount.ToString();
     }
     public void TaskCompleted()
     {
