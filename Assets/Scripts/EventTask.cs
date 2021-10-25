@@ -24,22 +24,24 @@ public class EventTask : Task
     {
         m_codeTimeFrame.x = (m_timeFrame.x / m_dayNightCycleRef.fullDayLength) * 2;
         m_codeTimeFrame.y = (m_timeFrame.y / m_dayNightCycleRef.fullDayLength) * 2;
+
+        descriptionText.text = description;
+        currentamountText.text = currentAmount.ToString();
+        symbolText.text = "/";
+        requiredamountText.text = requiredAmount.ToString();
     }
 
     void Update()
     {
         m_uiObjectRef.SetActive(m_isHappening);
 
-        if (!m_isHappening)
+        if (!m_isHappening && !m_dayNightCycleRef.isGameOver)
         {
             m_currentSecond = (int)((m_dayNightCycleRef.time / 2) * m_dayNightCycleRef.fullDayLength);
             if (m_dayNightCycleRef.time >= m_codeTimeFrame.x && m_dayNightCycleRef.time < m_codeTimeFrame.y && m_currentSecond > m_savedSecond)
             {
-                //Debug.Log("It is time! " + m_dayNightCycleRef.time + " ... " + m_codeTimeFrame.x);
                 RandomiseEvents();
             }
-            Debug.Log("currentSecond " + m_currentSecond);
-
         }
     }
 
@@ -49,12 +51,12 @@ public class EventTask : Task
         float randomNo = UnityEngine.Random.Range(0, 100);
         if (randomNo < m_likelihood)
         {
+            // DO EVENT STUFF HERE
             Debug.Log("Event has been triggered!");
             m_isHappening = true;
         }
 
         m_savedSecond = (int) ((m_dayNightCycleRef.time/2) * m_dayNightCycleRef.fullDayLength);
-        Debug.Log("savedSecond " + m_savedSecond);
-
+        Debug.Log("savedSecond " + m_savedSecond + " , Caused by: " + randomNo + " out of a possible " + m_likelihood);
     }
 }

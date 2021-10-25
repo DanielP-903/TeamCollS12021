@@ -22,7 +22,6 @@ public class TO_Basic : TaskObject
 
     void Update()
     {
-
         DetectObject();
         if (m_startSleepTimer)
         {
