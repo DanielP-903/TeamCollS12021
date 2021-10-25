@@ -5368,7 +5368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: Shoo away the seagulls!
-  reward: 0
+  reward: 50
   descriptionText: {fileID: 568022742}
   rewardText: {fileID: 1746516250}
   currentamountText: {fileID: 107703979}
@@ -5377,9 +5377,9 @@ MonoBehaviour:
   anim: {fileID: 580381563}
   CurrentStatus: 0
   currentAmount: 0
-  requiredAmount: 0
+  requiredAmount: 1
   m_timeFrame: {x: 14, y: 15}
-  m_likelihood: 100
+  m_likelihood: 50
   m_dayNightCycleRef: {fileID: 835042383}
   m_uiObjectRef: {fileID: 336667919}
 --- !u!4 &634569153
@@ -18296,7 +18296,7 @@ PrefabInstance:
       objectReference: {fileID: 294677976}
     - target: {fileID: 5440853642706771680, guid: ddf08e2c4fbdc9b478747c08f4b8099d, type: 3}
       propertyPath: tasks.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5440853642706771680, guid: ddf08e2c4fbdc9b478747c08f4b8099d, type: 3}
       propertyPath: currentamountText
@@ -18318,6 +18318,10 @@ PrefabInstance:
       propertyPath: tasks.Array.data[3]
       value: 
       objectReference: {fileID: 1871176853}
+    - target: {fileID: 5440853642706771680, guid: ddf08e2c4fbdc9b478747c08f4b8099d, type: 3}
+      propertyPath: tasks.Array.data[4]
+      value: 
+      objectReference: {fileID: 634569152}
     - target: {fileID: 5440853642706771681, guid: ddf08e2c4fbdc9b478747c08f4b8099d, type: 3}
       propertyPath: m_RootOrder
       value: 1
