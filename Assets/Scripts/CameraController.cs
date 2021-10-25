@@ -24,42 +24,8 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         float playerLerpY = Mathf.Lerp(transform.position.y, m_player.transform.position.y + offset, Time.deltaTime);
-        float playerLerpX = m_centre.x;
-        float playerLerpZ = m_centre.z; 
-        
-        //if (Mathf.Abs(m_player.transform.position.x - m_centre.x) > m_cameraMoveThreshold)
-        //{
-        //    playerLerpX = Mathf.Lerp(m_centre.x, m_player.transform.position.x, Time.deltaTime);
-        //}
-
-        playerLerpX = Mathf.Lerp(transform.position.x, (m_player.transform.position.x - offset) / 2, Time.deltaTime);
-        playerLerpZ = Mathf.Lerp(transform.position.z, (m_player.transform.position.z - offset) / 2, Time.deltaTime);
-
-        //if (playerLerpX < -m_cameraMoveThreshold + 5.0f)
-        //{
-        //    playerLerpX = -m_cameraMoveThreshold + 5.0f;
-        //}
-        //else if (playerLerpX < -m_cameraMoveThreshold)
-        //{
-        //    playerLerpX = -m_cameraMoveThreshold;
-        //}
-        //if (playerLerpZ < -m_cameraMoveThreshold + 5.0f)
-        //{
-        //    playerLerpZ = -m_cameraMoveThreshold + 5.0f;
-        //}
-        //else if (playerLerpZ < -m_cameraMoveThreshold)
-        //{
-        //    playerLerpZ = -m_cameraMoveThreshold;
-        //}
-        //playerLerpX = Mathf.Lerp(playerLerpX, m_centre.x, Time.deltaTime);
-        //if (playerLerpX < m_centre.x + 0.1f && playerLerpX > m_centre.x - 0.1f)
-        //{
-        //    playerLerpX = m_centre.x;
-        //}
-        //if (Mathf.Abs(m_player.transform.position.z - m_centre.z) > m_cameraMoveThreshold)
-        //{
-        //    playerLerpZ = Mathf.Lerp(m_centre.z, m_player.transform.position.z, Time.deltaTime);
-        //}
+        float playerLerpX = Mathf.Lerp(transform.position.x, (m_player.transform.position.x - offset) / m_cameraMoveThreshold, Time.deltaTime);
+        float playerLerpZ = Mathf.Lerp(transform.position.z, (m_player.transform.position.z - offset) / m_cameraMoveThreshold, Time.deltaTime);
 
         Vector3 newPos = new Vector3(playerLerpX, playerLerpY, playerLerpZ);
         transform.position = newPos;
