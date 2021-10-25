@@ -40,11 +40,8 @@ public class EventTask : Task
             m_currentSecond = (int)((m_dayNightCycleRef.time / 2) * m_dayNightCycleRef.fullDayLength);
             if (m_dayNightCycleRef.time >= m_codeTimeFrame.x && m_dayNightCycleRef.time < m_codeTimeFrame.y && m_currentSecond > m_savedSecond)
             {
-                //Debug.Log("It is time! " + m_dayNightCycleRef.time + " ... " + m_codeTimeFrame.x);
                 RandomiseEvents();
             }
-            //Debug.Log("currentSecond " + m_currentSecond);
-
         }
     }
 
@@ -60,6 +57,6 @@ public class EventTask : Task
         }
 
         m_savedSecond = (int) ((m_dayNightCycleRef.time/2) * m_dayNightCycleRef.fullDayLength);
-        Debug.Log("savedSecond " + m_savedSecond + " , Cause by: " + randomNo + " out of a possible " + m_likelihood);
+        Debug.Log("savedSecond " + m_savedSecond + " , Caused by: " + randomNo + " out of a possible " + m_likelihood);
     }
 }

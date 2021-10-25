@@ -156,6 +156,11 @@ public class PlayerController : MonoBehaviour
                 m_inputTimer = m_timeBetweenInputs;
                 //Debug.Log("Detected!");
             }
+            else if (other.tag == "Seagull" && m_heldObject == null)
+            {
+                other.GetComponent<TO_Seagulls>().Complete();
+                Debug.Log("I am interacting with the seagull trigger :)");
+            }
         }
     }
 }
