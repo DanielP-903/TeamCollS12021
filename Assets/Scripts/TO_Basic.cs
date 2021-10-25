@@ -27,7 +27,7 @@ public class TO_Basic : TaskObject
         if (m_startSleepTimer)
         {
             m_sleepTimer -= Time.deltaTime;
-            Debug.Log("Sleep Timer: " + m_sleepTimer);
+            //Debug.Log("Sleep Timer: " + m_sleepTimer);
 
             if (m_sleepTimer < 0)
             {
