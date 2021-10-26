@@ -23,6 +23,7 @@ public class TaskObject : MonoBehaviour
     [SerializeField] private float m_offsetZ = 0.0f;
     [SerializeField] private float m_offsetY = 0.0f;
     [SerializeField] private float m_offsetX = 0.0f;
+    [SerializeField] private Vector3 m_offsetRotation = new Vector3(0,90.0f,0);
 
     [SerializeField] private Ownership m_levelOwnership;
     [SerializeField] internal Type m_type;
@@ -87,7 +88,7 @@ public class TaskObject : MonoBehaviour
         if (IsPickedUp)
         {
             transform.position = m_playerController.transform.position + (m_offsetZ * m_playerController.transform.forward) + (m_offsetY * m_playerController.transform.up) + (m_offsetX * m_playerController.transform.right);
-            transform.rotation = m_playerController.transform.rotation * Quaternion.Euler(0,90,0);
+            transform.rotation = m_playerController.transform.rotation * Quaternion.Euler(m_offsetRotation);
             GetComponent<Rigidbody>().isKinematic = true;
             if (TryGetComponent(out BoxCollider box))
             {
