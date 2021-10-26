@@ -156,10 +156,27 @@ public class PlayerController : MonoBehaviour
                 m_inputTimer = m_timeBetweenInputs;
                 //Debug.Log("Detected!");
             }
+            else if (other.tag == "Match" && m_heldObject == null && !other.GetComponent<TO_Basic>().m_inDestination)
+            {
+                other.GetComponent<TaskObject>().IsPickedUp = true;
+                GetComponent<BoxCollider>().enabled = true;
+                m_heldObject = other.GetComponent<TaskObject>();
+                m_heldObjectContainer = other.gameObject;
+                m_inputTimer = m_timeBetweenInputs;
+            }
             else if (other.tag == "Seagull")
             {
                 other.GetComponent<TO_Seagulls>().Complete();
                 Debug.Log("I am interacting with the seagull trigger :)");
+            }
+        }
+
+        if (m_heldObject != null)
+        {
+            if (other.tag == "Candle" && m_heldObject.gameObject.tag == "Match")
+            {
+                other.GetComponent<TO_Candle>().Complete();
+                Debug.Log("I am interacting with the candle trigger :)");
             }
         }
     }

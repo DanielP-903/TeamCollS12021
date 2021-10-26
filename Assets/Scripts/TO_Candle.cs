@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TO_Seagulls : TaskObject
+public class TO_Candle : TaskObject
 {
     [SerializeField] public TaskSystem tasksystem;
+    internal bool Lit { get; set; }
 
     void Start()
     {
@@ -22,14 +23,13 @@ public class TO_Seagulls : TaskObject
         if (m_active)
         {
             //Debug.Log("active");
-            // Emit seagull noises here
+            // Do Candle
         }
     }
     
     public override void Complete()
     {
         m_active = false;
-        tasksystem.Method5();
+        tasksystem.Method6();
     }
-
 }

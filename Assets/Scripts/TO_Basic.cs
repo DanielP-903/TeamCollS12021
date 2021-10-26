@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TO_Basic : TaskObject
 {
+    [SerializeField] bool m_requiresDestination = true;
     [SerializeField] internal GameObject m_destination;
     public bool m_inDestination = false;
     [SerializeField] public TaskSystem tasksystem;
@@ -12,9 +13,12 @@ public class TO_Basic : TaskObject
     public float m_sleepTimer = 3.0f;
     void Start()
     {
-        if (!m_destination)
+        if (m_requiresDestination)
         {
-            Debug.LogWarning("No Destination object assigned!");
+            if (!m_destination)
+            {
+                Debug.LogWarning("No Destination object assigned!");
+            }
         }
 
         LoadAssets();
