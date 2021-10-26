@@ -5,7 +5,6 @@ using UnityEngine;
 public class TO_Seagulls : TaskObject
 {
     [SerializeField] public TaskSystem tasksystem;
-    private bool m_active = false;
 
     void Start()
     {
@@ -29,7 +28,8 @@ public class TO_Seagulls : TaskObject
     
     public override void Complete()
     {
-        m_active = true;
+        m_active = false;
         tasksystem.Method5();
     }
+
 }

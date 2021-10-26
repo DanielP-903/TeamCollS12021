@@ -60,7 +60,7 @@ public class EventTask : Task
         if (randomNo < m_likelihood)
         {
             // DO EVENT STUFF HERE
-            m_taskObject.Complete();
+            m_taskObject.m_active = true;
             Debug.Log("Event has been triggered!");
             m_isHappening = true;
         }

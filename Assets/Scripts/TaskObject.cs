@@ -27,6 +27,7 @@ public class TaskObject : MonoBehaviour
     [SerializeField] private Ownership m_levelOwnership;
     [SerializeField] internal Type m_type;
 
+    public bool m_active = false;
 
     void Start()
     {

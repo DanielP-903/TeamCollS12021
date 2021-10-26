@@ -143,11 +143,11 @@ public class TaskSystem : MonoBehaviour
             if (tasks[4].isReached())
             {
                 tasks[4].TaskCompleted();
-                Debug.Log("Optional event task has been completed");
+                //Debug.Log("Optional event task has been completed");
                 rewarding += tasks[4].reward;
                 tasks[4].reward = rewarding;
-                Debug.Log("You have been rewarded");
-                Debug.Log("You have finished the optional event task");
+                //Debug.Log("You have been rewarded");
+                //Debug.Log("You have finished the optional event task");
             }
         }
     }
