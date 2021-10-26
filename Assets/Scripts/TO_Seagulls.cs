@@ -11,7 +11,7 @@ public class TO_Seagulls : TaskObject
     {
         if (!TryGetComponent(out BoxCollider boxCollider))
         {
-            Debug.LogWarning("No Box Collider found!");
+            Debug.LogError("No Box Collider found!");
             Debug.DebugBreak();
         }
         LoadAssets();
@@ -22,13 +22,14 @@ public class TO_Seagulls : TaskObject
         GetComponent<BoxCollider>().enabled = m_active;
         if (m_active)
         {
+            Debug.Log("active");
             // Emit seagull noises here
         }
     }
     
-    public void Complete()
+    public override void Complete()
     {
-        m_active = false;
+        m_active = true;
         tasksystem.Method5();
     }
 }

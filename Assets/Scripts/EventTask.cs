@@ -15,6 +15,8 @@ public class EventTask : Task
 
     [SerializeField] private GameObject m_uiObjectRef;
 
+    [SerializeField] private TaskObject m_taskObject;
+
     private bool m_isHappening = false;
 
     private float m_currentSecond = 0.0f;
@@ -22,6 +24,12 @@ public class EventTask : Task
 
     void Start()
     {
+        if (!m_taskObject)
+        {
+            Debug.LogError("No Task Object assigned to Event Task!");
+            Debug.DebugBreak();
+        }
+
         m_codeTimeFrame.x = (m_timeFrame.x / m_dayNightCycleRef.fullDayLength) * 2;
         m_codeTimeFrame.y = (m_timeFrame.y / m_dayNightCycleRef.fullDayLength) * 2;
 
@@ -52,6 +60,7 @@ public class EventTask : Task
         if (randomNo < m_likelihood)
         {
             // DO EVENT STUFF HERE
+            m_taskObject.Complete();
             Debug.Log("Event has been triggered!");
             m_isHappening = true;
         }

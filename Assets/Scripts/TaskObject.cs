@@ -33,6 +33,11 @@ public class TaskObject : MonoBehaviour
         LoadAssets();
     }
 
+    virtual public void Complete()
+    {
+        // nothing for now...
+    }
+
     protected void LoadAssets()
     {
         m_levelFadeRef = GameObject.FindGameObjectWithTag("LevelFade");
