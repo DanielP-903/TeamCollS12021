@@ -15,7 +15,7 @@ public class EventTask : Task
 
     [SerializeField] private GameObject m_uiObjectRef;
 
-    [SerializeField] private TaskObject m_taskObject;
+    [SerializeField] private List<TaskObject> m_taskObject = new List<TaskObject>();
 
     private bool m_isHappening = false;
 
@@ -24,9 +24,9 @@ public class EventTask : Task
 
     void Start()
     {
-        if (!m_taskObject)
+        if (m_taskObject.Count == 0)
         {
-            Debug.LogError("No Task Object assigned to Event Task!");
+            Debug.LogError("No Task Objects assigned to list on Event Task!");
             Debug.DebugBreak();
         }
 
@@ -60,12 +60,15 @@ public class EventTask : Task
         if (randomNo < m_likelihood)
         {
             // DO EVENT STUFF HERE
-            m_taskObject.m_active = true;
-            Debug.Log("Event has been triggered!");
+            foreach (var task in m_taskObject)
+            {
+                task.m_active = true;
+            }
+            //Debug.Log("Event has been triggered!");
             m_isHappening = true;
         }
 
         m_savedSecond = (int) ((m_dayNightCycleRef.time/2) * m_dayNightCycleRef.fullDayLength);
-        Debug.Log("savedSecond " + m_savedSecond + " , Caused by: " + randomNo + " out of a possible " + m_likelihood);
+        //Debug.Log("savedSecond " + m_savedSecond + " , Caused by: " + randomNo + " out of a possible " + m_likelihood);
     }
 }

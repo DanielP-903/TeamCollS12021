@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3711926975103848331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3711926975103848437}
+  - component: {fileID: 3711926975103848436}
+  m_Layer: 0
+  m_Name: EventTask1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3711926975103848437
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3711926975103848331}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.4868145, y: 9.543148, z: 0.8817515}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3711926975103848436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3711926975103848331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cd60fb1812d09e4e895532f958d8ed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Shoo away the seagulls!
+  reward: 50
+  descriptionText: {fileID: 0}
+  rewardText: {fileID: 0}
+  currentamountText: {fileID: 0}
+  symbolText: {fileID: 0}
+  requiredamountText: {fileID: 0}
+  anim: {fileID: 0}
+  CurrentStatus: 0
+  currentAmount: 0
+  requiredAmount: 1
+  m_timeFrame: {x: 14, y: 15}
+  m_likelihood: 0
+  m_dayNightCycleRef: {fileID: 0}
+  m_uiObjectRef: {fileID: 0}
+  m_taskObject: {fileID: 0}
