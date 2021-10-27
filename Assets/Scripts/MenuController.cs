@@ -18,7 +18,7 @@ public class MenuController : MonoBehaviour
 	{
 
 		//mainMenuCamera.ChangePosition(1);
-		SceneManager.LoadScene("main");
+		SceneManager.LoadScene("LoadingScreen");
 		mainPanel.SetActive(false);
 	}
 
