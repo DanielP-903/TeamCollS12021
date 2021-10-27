@@ -6,6 +6,8 @@ public class TO_Seagulls : TaskObject
 {
     [SerializeField] public TaskSystem tasksystem;
 
+    private ParticleSystem m_particleSystem;
+
     void Start()
     {
         if (!TryGetComponent(out BoxCollider boxCollider))
@@ -13,16 +15,35 @@ public class TO_Seagulls : TaskObject
             Debug.LogError("No Box Collider found!");
             Debug.DebugBreak();
         }
+        if (!TryGetComponent(out ParticleSystem particleSystem))
+        {
+            Debug.LogError("No Particle System found!");
+            Debug.DebugBreak();
+        }
+
+        m_particleSystem = particleSystem;
+
         LoadAssets();
     }
-
+    
     void Update()
     {
         GetComponent<BoxCollider>().enabled = m_active;
         if (m_active)
         {
+            if (!m_particleSystem.isPlaying)
+            {
+                GetComponent<ParticleSystem>().Play();
+            }
             //Debug.Log("active");
             // Emit seagull noises here
+        }
+        else
+        {
+            if (m_particleSystem.isPlaying)
+            {
+                GetComponent<ParticleSystem>().Stop();
+            }
         }
     }
     
@@ -31,5 +52,4 @@ public class TO_Seagulls : TaskObject
         m_active = false;
         tasksystem.Method5();
     }
-
 }

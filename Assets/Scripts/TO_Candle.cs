@@ -5,6 +5,7 @@ using UnityEngine;
 public class TO_Candle : TaskObject
 {
     [SerializeField] public TaskSystem tasksystem;
+    private ParticleSystem m_particleSystem;
     internal bool Lit { get; set; }
 
     void Start()
@@ -14,7 +15,17 @@ public class TO_Candle : TaskObject
             Debug.LogError("No Box Collider found!");
             Debug.DebugBreak();
         }
+        if (!TryGetComponent(out ParticleSystem particleSystem))
+        {
+            Debug.LogError("No Particle System found!");
+            Debug.DebugBreak();
+        }
+
         LoadAssets();
+
+        m_particleSystem = particleSystem;
+        m_particleSystem.Stop();
+
     }
 
     void Update()
@@ -22,6 +33,7 @@ public class TO_Candle : TaskObject
         GetComponent<BoxCollider>().enabled = m_active;
         if (m_active)
         {
+
             //Debug.Log("active");
             // Do Candle
         }

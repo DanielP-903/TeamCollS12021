@@ -147,27 +147,28 @@ public class PlayerController : MonoBehaviour
     {
         if (m_interact && m_inputTimer == 0.0f)
         {
-            if (other.tag == "Interactable" && m_heldObject == null && !other.GetComponent<TO_Basic>().m_inDestination)
+            if (other.GetComponent<TO_Basic>())
             {
-                other.GetComponent<TaskObject>().IsPickedUp = true;
-                GetComponent<BoxCollider>().enabled = false;
-                m_heldObject = other.GetComponent<TaskObject>();
-                m_heldObjectContainer = other.gameObject;
-                m_inputTimer = m_timeBetweenInputs;
-                //Debug.Log("Detected!");
-            }
-            else if (other.tag == "Match" && m_heldObject == null && !other.GetComponent<TO_Basic>().m_inDestination)
-            {
-                other.GetComponent<TaskObject>().IsPickedUp = true;
-                GetComponent<BoxCollider>().enabled = true;
-                m_heldObject = other.GetComponent<TaskObject>();
-                m_heldObjectContainer = other.gameObject;
-                m_inputTimer = m_timeBetweenInputs;
-            }
-            else if (other.tag == "Seagull")
-            {
-                other.GetComponent<TO_Seagulls>().Complete();
-                Debug.Log("I am interacting with the seagull trigger :)");
+                if (m_heldObject == null && !other.GetComponent<TO_Basic>().m_inDestination)
+                {
+                    other.GetComponent<TaskObject>().IsPickedUp = true;
+                    m_heldObject = other.GetComponent<TaskObject>();
+                    m_heldObjectContainer = other.gameObject;
+                    m_inputTimer = m_timeBetweenInputs;
+                    if (other.tag == "Interactable")
+                    {
+                        GetComponent<BoxCollider>().enabled = false;
+                    }
+                    else if (other.tag == "Match")
+                    {
+                        GetComponent<BoxCollider>().enabled = true;
+                    }
+                }
+                else if (other.tag == "Seagull")
+                {
+                    other.GetComponent<TO_Seagulls>().Complete();
+                    Debug.Log("I am interacting with the seagull trigger :)");
+                }
             }
         }
 
@@ -176,6 +177,13 @@ public class PlayerController : MonoBehaviour
             if (other.tag == "Candle" && m_heldObject.gameObject.tag == "Match")
             {
                 other.GetComponent<TO_Candle>().Complete();
+                if (!other.GetComponent<ParticleSystem>().isPlaying)
+                {
+                    other.GetComponent<ParticleSystem>().Play();
+                }
+
+                other.GetComponent<Light>().enabled = true;
+                
                 Debug.Log("I am interacting with the candle trigger :)");
             }
         }
