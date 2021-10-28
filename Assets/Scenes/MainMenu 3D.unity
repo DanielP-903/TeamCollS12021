@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,57 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &32950132
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 32950134}
+  - component: {fileID: 32950133}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &32950133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32950132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5634f404fdd4e4a4d9ea53d27805f48d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicsMenu: {fileID: 8300000, guid: 7195ae7dd5dfde04d82cf46fc981ee3f, type: 3}
+  musicMenuVolume: 0.5
+  musicsGame: {fileID: 8300000, guid: cd8d6c9e9cb8e0446ad44d9fb0d520ce, type: 3}
+  musicsGameVolume: 0.5
+  soundClick: {fileID: 8300000, guid: 5b5ef19f77b92ee4181ab6ea714858ab, type: 3}
+  soundGamefinish: {fileID: 0}
+  soundGameover: {fileID: 0}
+  scenevalue: 1
+--- !u!4 &32950134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32950132}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1009.08795, y: 76.91217, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &74042406
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +277,6 @@ GameObject:
   m_Component:
   - component: {fileID: 124514461}
   - component: {fileID: 124514460}
-  - component: {fileID: 124514459}
   m_Layer: 0
   m_Name: UICamera
   m_TagString: Untagged
@@ -234,14 +284,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &124514459
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124514458}
-  m_Enabled: 1
 --- !u!20 &124514460
 Camera:
   m_ObjectHideFlags: 0
@@ -362,6 +404,8 @@ MonoBehaviour:
   mainPanel: {fileID: 5613504012439249910}
   optionsPanel: {fileID: 5613504011031274868}
   quitPanel: {fileID: 5613504012047638571}
+  soundClick: {fileID: 8300000, guid: 5b5ef19f77b92ee4181ab6ea714858ab, type: 3}
+  soundClickvolume: 0.5
 --- !u!4 &462542265
 Transform:
   m_ObjectHideFlags: 0
@@ -2115,7 +2159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10.642853, y: 0}
+  m_AnchoredPosition: {x: -10.642822, y: 0}
   m_SizeDelta: {x: -347.6043, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5613504011031274873

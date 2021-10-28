@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
 	public GameObject mainPanel, optionsPanel, quitPanel;
+	public AudioClip soundClick;
+	[Range(0, 1)]
+	public float soundClickvolume;
 
 	private MainMenuCamera mainMenuCamera;
 
@@ -18,7 +21,7 @@ public class MenuController : MonoBehaviour
 	{
 
 		//mainMenuCamera.ChangePosition(1);
-		SceneManager.LoadScene("main");
+		SceneManager.LoadScene("LoadingScreen");
 		mainPanel.SetActive(false);
 	}
 
@@ -26,6 +29,7 @@ public class MenuController : MonoBehaviour
     {
 		mainPanel.SetActive(false);
 		optionsPanel.SetActive(true);
+		SoundManager.PlaySfx(soundClick, soundClickvolume);
 		mainMenuCamera.ChangePosition(1);
     }
 
@@ -33,6 +37,7 @@ public class MenuController : MonoBehaviour
 	{
 		mainMenuCamera.ChangePosition(0);
 		mainPanel.SetActive(true);
+		SoundManager.PlaySfx(soundClick, soundClickvolume);
 		optionsPanel.SetActive(false);
 
 
@@ -42,17 +47,20 @@ public class MenuController : MonoBehaviour
     {
 		mainPanel.SetActive(false);
 		optionsPanel.SetActive(false);
+		SoundManager.PlaySfx(soundClick, soundClickvolume);
 		quitPanel.SetActive(true);
     }
 
 	public void YesQuit()
     {
 		Application.Quit();
+		SoundManager.PlaySfx(soundClick, soundClickvolume);
 		Debug.Log("Game has been exited");
     }
 
 	public void NoQuit()
     {
+		SoundManager.PlaySfx(soundClick, soundClickvolume);
 		mainPanel.SetActive(true);
 		quitPanel.SetActive(false);
     }
