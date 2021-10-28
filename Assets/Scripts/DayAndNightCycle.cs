@@ -97,7 +97,7 @@ public class DayAndNightCycle : MonoBehaviour
                 else if (Sun.intensity > 0 && Sun.gameObject.activeInHierarchy) // enable
                     Sun.gameObject.GetComponent<Light>().enabled = false;
             }
-
+            
             if (time > 1.0f)
             {
                 Moon.gameObject.SetActive(true);
