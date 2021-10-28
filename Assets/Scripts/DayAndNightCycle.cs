@@ -66,7 +66,7 @@ public class DayAndNightCycle : MonoBehaviour
 
             Sun.color = gd.Evaluate(time);  // Light component color over time
             Moon.color = gd2.Evaluate(time);
-
+            /*
             if (time <= 1.0f)
             {
                 Sun.gameObject.SetActive(true);
@@ -85,10 +85,28 @@ public class DayAndNightCycle : MonoBehaviour
                     Moon.gameObject.GetComponent<Light>().enabled = false;
                 else if (Moon.intensity > 0 && Moon.gameObject.activeInHierarchy) // enable
                     Moon.gameObject.GetComponent<Light>().enabled = true;
+            }*/
+
+            // Daniel change for build
+            if (time <= 1.0f)
+            {
+                Sun.gameObject.SetActive(true);
+                Moon.gameObject.SetActive(false);
+                if (Sun.intensity < 0 && Sun.gameObject.activeInHierarchy)  // disable 
+                    Sun.gameObject.GetComponent<Light>().enabled = false;
+                else if (Sun.intensity > 0 && Sun.gameObject.activeInHierarchy) // enable
+                    Sun.gameObject.GetComponent<Light>().enabled = false;
             }
 
-
-
+            if (time > 1.0f)
+            {
+                Moon.gameObject.SetActive(true);
+                Moon.gameObject.SetActive(false);
+                if (Moon.intensity < 0 && Moon.gameObject.activeInHierarchy) // disable
+                    Moon.gameObject.GetComponent<Light>().enabled = false;
+                else if (Moon.intensity > 0 && Moon.gameObject.activeInHierarchy) // enable
+                    Moon.gameObject.GetComponent<Light>().enabled = false;
+            }
 
             // lighting intensity
             RenderSettings.ambientIntensity = randomsunIntensity.Evaluate(time);
