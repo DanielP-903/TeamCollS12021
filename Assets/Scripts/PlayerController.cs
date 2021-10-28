@@ -164,11 +164,12 @@ public class PlayerController : MonoBehaviour
                         GetComponent<BoxCollider>().enabled = true;
                     }
                 }
-                else if (other.tag == "Seagull")
-                {
-                    other.GetComponent<TO_Seagulls>().Complete();
-                    Debug.Log("I am interacting with the seagull trigger :)");
-                }
+
+            }
+            else if (other.tag == "Seagull" && m_heldObject == null)
+            {
+                other.GetComponent<TO_Seagulls>().Complete();
+                Debug.Log("I am interacting with the seagull trigger :)");
             }
         }
 

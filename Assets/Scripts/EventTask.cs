@@ -42,7 +42,7 @@ public class EventTask : Task
     void Update()
     {
         m_uiObjectRef.SetActive(m_isHappening);
-
+        //Debug.Log(m_dayNightCycleRef.time.ToString());
         if (!m_isHappening && !m_dayNightCycleRef.isGameOver)
         {
             m_currentSecond = (int)((m_dayNightCycleRef.time / 2) * m_dayNightCycleRef.fullDayLength);
@@ -51,6 +51,9 @@ public class EventTask : Task
                 RandomiseEvents();
             }
         }
+
+        //Debug.Log("Current Second: " + (int)((m_dayNightCycleRef.time / 2) * m_dayNightCycleRef.fullDayLength));
+
     }
 
     private void RandomiseEvents()
@@ -64,11 +67,11 @@ public class EventTask : Task
             {
                 task.m_active = true;
             }
-            //Debug.Log("Event has been triggered!");
+            Debug.Log("Event has been triggered!");
             m_isHappening = true;
         }
 
         m_savedSecond = (int) ((m_dayNightCycleRef.time/2) * m_dayNightCycleRef.fullDayLength);
-        //Debug.Log("savedSecond " + m_savedSecond + " , Caused by: " + randomNo + " out of a possible " + m_likelihood);
+        Debug.Log("savedSecond " + m_savedSecond + " , Caused by: " + randomNo + " out of a possible " + m_likelihood);
     }
 }

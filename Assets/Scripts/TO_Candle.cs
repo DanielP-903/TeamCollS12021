@@ -34,7 +34,7 @@ public class TO_Candle : TaskObject
         if (m_active)
         {
 
-            //Debug.Log("active");
+            Debug.Log("active");
             // Do Candle
         }
     }
