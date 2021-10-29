@@ -55,13 +55,19 @@ public class SoundManager : MonoBehaviour
 			PlayMusic(musicsMenu, musicMenuVolume);
 			musicAudio.volume = musicMenuVolume;
 		}
-		else if(scenevalue==2)
+		else if (scenevalue == 2)
+		{
+			PlayMusic(musicsGame, musicsGameVolume);
+			musicAudio.volume = musicsGameVolume;
+
+		}
+		else if(scenevalue==3)
         {
 			PlayMusic(musicsGame, musicsGameVolume);
 			musicAudio.volume = musicsGameVolume;
         }
-	}
 
+	}
 	public static void PlaySfx(AudioClip clip)
 	{
 		Instance.PlaySound(clip, Instance.soundFx);

@@ -40,6 +40,6 @@ public class LoadingScreen : MonoBehaviour
     {
         anim.SetBool("isfade", true);
         yield return new WaitForSeconds(4f);
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Main");         // Load  main scene
     }
 }

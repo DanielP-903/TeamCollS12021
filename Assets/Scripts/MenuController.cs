@@ -30,7 +30,7 @@ public class MenuController : MonoBehaviour
 		mainPanel.SetActive(false);
 		optionsPanel.SetActive(true);
 		SoundManager.PlaySfx(soundClick, soundClickvolume);
-		mainMenuCamera.ChangePosition(1);
+		mainMenuCamera.ChangePosition(1); // changes to position
     }
 
 	public void BackToMainMenu()

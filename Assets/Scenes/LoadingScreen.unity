@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11655994, g: 0.11891933, b: 0.10062371, a: 1}
+  m_IndirectSpecularColor: {r: 0.116557986, g: 0.11891861, b: 0.10062483, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -574,13 +574,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403710653}
-  m_LocalRotation: {x: 0.7829812, y: -0.0022333171, z: 0.6218601, w: -0.01501994}
+  m_LocalRotation: {x: -0.81702495, y: 0.015041584, z: 0.5764024, w: 0.0020825788}
   m_LocalPosition: {x: 6.37, y: 18.19, z: -11.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 181.189, y: -76.92801, z: 1.2709961}
+  m_LocalEulerAnglesHint: {x: 181.189, y: -289.608, z: 1.2709961}
 --- !u!1 &615412415
 GameObject:
   m_ObjectHideFlags: 0
@@ -1523,6 +1523,8 @@ MonoBehaviour:
   m_heldObject: {fileID: 0}
   velocity: 0
   fallforce: 0
+  seagullsound: {fileID: 0}
+  seagullvolume: 0
 --- !u!4 &495839720969343234
 Transform:
   m_ObjectHideFlags: 0
