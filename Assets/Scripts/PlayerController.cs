@@ -26,7 +26,9 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] private bool isgrounded;
     public float velocity;
     public float fallforce;
-
+    private Animator m_animator;
+    private bool m_hasReceivedInput = false;
+    private float m_noInputTimer = 0.0f;
 
     void Start()
     {
@@ -37,6 +39,16 @@ public class PlayerController : MonoBehaviour
         else
         {
             Debug.LogError("ERROR: Player has no CharacterController component!");
+            Debug.DebugBreak();
+        }
+
+        if (gameObject.GetComponentInChildren<Animator>()) 
+        {
+            m_animator = gameObject.GetComponentInChildren<Animator>();
+        }
+        else
+        {
+            Debug.LogError("ERROR: Skeletal mesh has no Animator component!");
             Debug.DebugBreak();
         }
     }
@@ -66,10 +78,20 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        m_hasReceivedInput = false;
         if (m_moveForward || m_moveBackward)
         {
             Vector3 move = m_moveForward ? (transform.forward * m_speed * Time.deltaTime) : (-transform.forward * (m_speed / 2) * Time.deltaTime);
             m_characterController.Move(move);
+            m_animator.SetBool("IsWalking", true);
+            m_hasReceivedInput = true;
+
+            // AUDIO: Footstep audio?
+
+        }
+        else
+        {
+            m_animator.SetBool("IsWalking", false);
         }
 
         if (m_inputTimer != 0.0f)
@@ -88,7 +110,7 @@ public class PlayerController : MonoBehaviour
                 m_heldObjectContainer = null;
                 GetComponent<BoxCollider>().enabled = true;
                 m_inputTimer = m_timeBetweenInputs;
-                
+                m_hasReceivedInput = true;
             }
         }
 
@@ -100,8 +122,24 @@ public class PlayerController : MonoBehaviour
         {
             float multiplier = m_rotLeft ? -1 : 1;
             transform.Rotate(0, m_rotationSpeed * multiplier * Time.deltaTime * 200.0f, 0);
+            m_hasReceivedInput = true;
         }
 
+
+        if (!m_hasReceivedInput)
+        {
+            m_noInputTimer -= Time.deltaTime;
+            if (m_noInputTimer <= 0.0f)
+            {
+                m_noInputTimer = 0.0f;
+                m_animator.SetBool("IsSitting", true);
+            }
+        }
+        else
+        {
+            m_animator.SetBool("IsSitting", false);
+            m_noInputTimer = 1.0f;
+        }
     }
 
     // Input Actions
@@ -158,10 +196,12 @@ public class PlayerController : MonoBehaviour
                     if (other.tag == "Interactable")
                     {
                         GetComponent<BoxCollider>().enabled = false;
+                        // AUDIO: Pickup
                     }
                     else if (other.tag == "Match")
                     {
                         GetComponent<BoxCollider>().enabled = true;
+                        // AUDIO: Light match
                     }
                 }
 
@@ -170,6 +210,9 @@ public class PlayerController : MonoBehaviour
             {
                 other.GetComponent<TO_Seagulls>().Complete();
                 Debug.Log("I am interacting with the seagull trigger :)");
+
+                // AUDIO: Bark
+
             }
         }
 
@@ -186,6 +229,9 @@ public class PlayerController : MonoBehaviour
                 other.GetComponent<Light>().enabled = true;
                 
                 Debug.Log("I am interacting with the candle trigger :)");
+
+                // AUDIO: Light candle
+
             }
         }
     }
