@@ -30,6 +30,14 @@ public class PlayerController : MonoBehaviour
     private bool m_hasReceivedInput = false;
     private float m_noInputTimer = 0.0f;
 
+    [Header("Sound Effects")]
+    public AudioClip barksound;
+    public float barkvolume;
+    public AudioClip lightmatchsound;
+    public float lightmatchvolume;
+    public AudioClip lightcandlesound;
+    public float lightcandlevolume;
+
     void Start()
     {
         if (transform.parent.gameObject.TryGetComponent(out CharacterController charController))
@@ -196,12 +204,13 @@ public class PlayerController : MonoBehaviour
                     if (other.tag == "Interactable")
                     {
                         GetComponent<BoxCollider>().enabled = false;
-                        // AUDIO: Pickup
+                        // AUDIO: Pickup 
                     }
                     else if (other.tag == "Match")
                     {
                         GetComponent<BoxCollider>().enabled = true;
                         // AUDIO: Light match
+                        SoundManager.PlaySfx(lightmatchsound, lightmatchvolume);
                     }
                 }
 
@@ -212,6 +221,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("I am interacting with the seagull trigger :)");
 
                 // AUDIO: Bark
+                SoundManager.PlaySfx(barksound, barkvolume);
 
             }
         }
@@ -231,6 +241,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("I am interacting with the candle trigger :)");
 
                 // AUDIO: Light candle
+                SoundManager.PlaySfx(lightcandlesound, lightcandlevolume);
 
             }
         }

@@ -98,6 +98,9 @@ public class DayAndNightCycle : MonoBehaviour
                     Moon.gameObject.GetComponent<Light>().enabled = true;
             }*/
 
+
+                                        // teller of tell tales morning sound
+                                        // pippin afternoon and evening sound
             // Daniel change for build
             if (time <= 1.0f)
             {
@@ -106,22 +109,22 @@ public class DayAndNightCycle : MonoBehaviour
                 if (Sun.intensity < 0 && Sun.gameObject.activeInHierarchy)  // disable 
                     Sun.gameObject.GetComponent<Light>().enabled = false;
                 else if (Sun.intensity > 0 && Sun.gameObject.activeInHierarchy) // enable
-                    Sun.gameObject.GetComponent<Light>().enabled = false;
+                    Sun.gameObject.GetComponent<Light>().enabled = true;
             }
             
-            if (time > 1.0f)
+            if (time > 1.0f)                        //skye cullin night sound
             {
                 Moon.gameObject.SetActive(true);
-                Moon.gameObject.SetActive(false);
+                Sun.gameObject.SetActive(false);
                 if (Moon.intensity < 0 && Moon.gameObject.activeInHierarchy) // disable
                     Moon.gameObject.GetComponent<Light>().enabled = false;
                 else if (Moon.intensity > 0 && Moon.gameObject.activeInHierarchy) // enable
-                    Moon.gameObject.GetComponent<Light>().enabled = false;
+                    Moon.gameObject.GetComponent<Light>().enabled = true;
             }
 
             // lighting intensity
-            RenderSettings.ambientIntensity = randomsunIntensity.Evaluate(time);
-            RenderSettings.reflectionIntensity = randommoonIntensity.Evaluate(time);
+          //  RenderSettings.ambientIntensity = randomsunIntensity.Evaluate(time);
+          //  RenderSettings.reflectionIntensity = randommoonIntensity.Evaluate(time);
         }
     }
 
