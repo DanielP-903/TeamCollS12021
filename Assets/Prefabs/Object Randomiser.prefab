@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8127967601499279947
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8127967601499279945}
+  - component: {fileID: 8127967601499279946}
+  m_Layer: 0
+  m_Name: Object Randomiser
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8127967601499279945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8127967601499279947}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.55481625, y: -2.3969333, z: -11.291667}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8127967601499279946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8127967601499279947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34e0b241bcafd54799ed8aef657eae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bookSpawnLocations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_plateSpawnLocations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_nessieSpawnLocations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_nessie: {fileID: 6947510377892317145, guid: caf8b7348b19aa74f97521d264dfe5ed, type: 3}
+  m_nessieDestination: {fileID: 0}
+  m_book: {fileID: 7115844134428843069, guid: 8a088544de04cfb43b7e767ea2fdcf9f, type: 3}
+  m_bookDestination: {fileID: 0}
+  m_plate: {fileID: 7115844134428843069, guid: 0e82cb4a674cedd49945947f51ffa1be, type: 3}
+  m_plateDestination: {fileID: 0}
+  m_noOfBooks: 3
+  m_noOfPlates: 3
+  m_noOfNessies: 1
+  m_taskSystem: {fileID: 0}
