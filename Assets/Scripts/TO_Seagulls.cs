@@ -35,6 +35,9 @@ public class TO_Seagulls : TaskObject
             {
                 GetComponent<ParticleSystem>().Play();
             }
+
+            // AUDIO: Seagulls squawking
+
             //Debug.Log("active");
             // Emit seagull noises here
         }
