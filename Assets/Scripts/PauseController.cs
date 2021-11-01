@@ -14,6 +14,7 @@ public class PauseController : MonoBehaviour
     [Range(0, 1)]
     public float soundclickvolume;
     public Camera cam;
+    private DayAndNightCycle daynightcycle;
     
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class PauseController : MonoBehaviour
     {
         pausePanel.SetActive(false);
         settingsPanel.SetActive(false);
+        daynightcycle = GameObject.FindObjectOfType<DayAndNightCycle>();
     }
 
     public void EscapeButton(InputAction.CallbackContext context)
@@ -32,11 +34,14 @@ public class PauseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (m_Escape)
+        if (!daynightcycle.isGameOver)
         {
-            if (!isPaused)
+            if (m_Escape)
             {
-                PauseGame();
+                if (!isPaused)
+                {
+                    PauseGame();
+                }
             }
         }
     }

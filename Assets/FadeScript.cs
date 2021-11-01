@@ -11,14 +11,14 @@ public class FadeScript : MonoBehaviour
     void Start()
     {
         StartCoroutine(Fade());
-  
+        anim = fadescreen.GetComponent<Animator>();
+
     }
 
     private IEnumerator Fade()
     {
-        fadescreen.SetActive(true);
+        yield return new WaitForSeconds(1f);
         pausecontroller.SetActive(false);
-        anim = fadescreen.GetComponent<Animator>();
         anim.SetBool("isfadeout", true);
         yield return new WaitForSeconds(5f);
         fadescreen.SetActive(false);            // fade remove

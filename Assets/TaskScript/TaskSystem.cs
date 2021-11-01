@@ -11,6 +11,7 @@ public class TaskSystem : MonoBehaviour
     public Text rewardText;
     public Text currentamountText;
     public int rewarding;
+    public static int taskvalue;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +41,7 @@ public class TaskSystem : MonoBehaviour
             if (tasks[0].isReached())
             {
                 tasks[0].TaskCompleted();
+                taskvalue++;
                 Debug.Log("Task has been completed");
                 rewarding+= tasks[0].reward;
              //   rewardText.text = rewarding.ToString();
@@ -93,6 +95,7 @@ public class TaskSystem : MonoBehaviour
             if(tasks[1].isReached())
             {
                 tasks[1].TaskCompleted();
+                taskvalue++;
                 Debug.Log("Second task has been completed");
                 rewarding += tasks[1].reward;
                 tasks[1].reward = rewarding;
@@ -110,6 +113,7 @@ public class TaskSystem : MonoBehaviour
             if (tasks[2].isReached())
             {
                 tasks[2].TaskCompleted();
+                taskvalue++;
                 Debug.Log("Third task has been completed");
                 rewarding += tasks[2].reward;
                 tasks[2].reward = rewarding;
@@ -127,6 +131,7 @@ public class TaskSystem : MonoBehaviour
             if (tasks[3].isReached())
             {
                 tasks[3].TaskCompleted();
+                taskvalue++;
                 Debug.Log("Fourth task has been completed");
                 rewarding += tasks[3].reward;
                 tasks[3].reward = rewarding;
@@ -144,6 +149,7 @@ public class TaskSystem : MonoBehaviour
             if (tasks[4].isReached())
             {
                 tasks[4].TaskCompleted();
+                taskvalue++;
                 //Debug.Log("Optional event task has been completed");
                 rewarding += tasks[4].reward;
                 tasks[4].reward = rewarding;
@@ -161,6 +167,7 @@ public class TaskSystem : MonoBehaviour
             if (tasks[5].isReached())
             {
                 tasks[5].TaskCompleted();
+                taskvalue++;
                 //Debug.Log("Optional event task has been completed");
                 rewarding += tasks[5].reward;
                 tasks[5].reward = rewarding;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DayAndNightCycle : MonoBehaviour
 {
@@ -28,7 +29,10 @@ public class DayAndNightCycle : MonoBehaviour
     public AnimationCurve randommoonIntensity;
 
     public bool isGameOver;
-    public GameObject gameovertext;
+    public GameObject gameoverPanel;
+    public Text numberoftasks;
+    public TaskSystem tasksystem;
+    private float restartDelay;
 
 
     // Start is called before the first frame update
@@ -36,6 +40,7 @@ public class DayAndNightCycle : MonoBehaviour
     {
         TimeRate = 1.0f / fullDayLength;
         time = startTime;
+        gameoverPanel.SetActive(false);
 
 
     }
@@ -53,8 +58,14 @@ public class DayAndNightCycle : MonoBehaviour
             if (time >= 2.0f)                  // if time is 2.0 end game
             {
                 isGameOver = true;
-                gameovertext.SetActive(true);
+                gameoverPanel.SetActive(true);
+                numberoftasks.text = TaskSystem.taskvalue.ToString();
                 Time.timeScale = 0f;
+                
+            }
+            if(time<=2.0f)
+            {
+                Time.timeScale = 1f;
             }
 
             hourhandbase.transform.eulerAngles = new Vector3(0, 0, -dayover*360f); //rotate hour hand 
@@ -112,5 +123,21 @@ public class DayAndNightCycle : MonoBehaviour
             RenderSettings.ambientIntensity = randomsunIntensity.Evaluate(time);
             RenderSettings.reflectionIntensity = randommoonIntensity.Evaluate(time);
         }
+    }
+
+    public void PlayAgain()
+    {
+        isGameOver = false;
+        Invoke("Restart", 2f);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void QuitToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

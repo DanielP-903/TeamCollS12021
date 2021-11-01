@@ -16,13 +16,12 @@ public class SoundManager : MonoBehaviour
 
 	[Tooltip("Place the sound in this to call it in another script by: SoundManager.PlaySfx(soundname);")]
 	public AudioClip soundClick;
-	public AudioClip soundGamefinish;
-	public AudioClip soundGameover;
 
 	public int scenevalue;
 
-	private AudioSource musicAudio;
-	private AudioSource soundFx;
+	public AudioSource musicAudio;
+	public AudioSource uiFx;
+	public AudioSource soundFx;
 
 	public static float MusicVolume
 	{
@@ -34,14 +33,19 @@ public class SoundManager : MonoBehaviour
 		set { Instance.soundFx.volume = value; }
 		get { return Instance.soundFx.volume; }
 	}
+
+	public static float UiVolume
+	{
+		set { Instance.uiFx.volume = value; }
+		get { return Instance.uiFx.volume; }
+	}
 	// Use this for initialization
 	void Awake()
 	{
 		Instance = this;
-		musicAudio = gameObject.AddComponent<AudioSource>();
 		musicAudio.loop = true;
 
-		soundFx = gameObject.AddComponent<AudioSource>();
+	
 	}
 	void Start()
 	{
@@ -68,14 +72,16 @@ public class SoundManager : MonoBehaviour
         }
 
 	}
-	public static void PlaySfx(AudioClip clip)
-	{
-		Instance.PlaySound(clip, Instance.soundFx);
-	}
+
 
 	public static void PlaySfx(AudioClip clip, float volume)
 	{
 		Instance.PlaySound(clip, Instance.soundFx, volume);
+	}
+
+	public static void PlayUifx(AudioClip clip, float volume)
+	{
+		Instance.PlaySound(clip, Instance.uiFx, volume);
 	}
 
 	public static void PlayMusic(AudioClip clip)

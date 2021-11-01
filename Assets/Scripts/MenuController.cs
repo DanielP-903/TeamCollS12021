@@ -29,7 +29,7 @@ public class MenuController : MonoBehaviour
     {
 		mainPanel.SetActive(false);
 		optionsPanel.SetActive(true);
-		SoundManager.PlaySfx(soundClick, soundClickvolume);
+		SoundManager.PlayUifx(soundClick, soundClickvolume);
 		mainMenuCamera.ChangePosition(1); // changes to position
     }
 
@@ -37,7 +37,7 @@ public class MenuController : MonoBehaviour
 	{
 		mainMenuCamera.ChangePosition(0);
 		mainPanel.SetActive(true);
-		SoundManager.PlaySfx(soundClick, soundClickvolume);
+		SoundManager.PlayUifx(soundClick, soundClickvolume);
 		optionsPanel.SetActive(false);
 
 
@@ -47,20 +47,20 @@ public class MenuController : MonoBehaviour
     {
 		mainPanel.SetActive(false);
 		optionsPanel.SetActive(false);
-		SoundManager.PlaySfx(soundClick, soundClickvolume);
+		SoundManager.PlayUifx(soundClick, soundClickvolume);
 		quitPanel.SetActive(true);
     }
 
 	public void YesQuit()
     {
 		Application.Quit();
-		SoundManager.PlaySfx(soundClick, soundClickvolume);
+		SoundManager.PlayUifx(soundClick, soundClickvolume);
 		Debug.Log("Game has been exited");
     }
 
 	public void NoQuit()
     {
-		SoundManager.PlaySfx(soundClick, soundClickvolume);
+		SoundManager.PlayUifx(soundClick, soundClickvolume);
 		mainPanel.SetActive(true);
 		quitPanel.SetActive(false);
     }
