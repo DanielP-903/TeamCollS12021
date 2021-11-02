@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2935918617426278292}
-  m_LocalRotation: {x: -0, y: 0.9833938, z: -0, w: 0.1814849}
+  m_LocalRotation: {x: 0, y: 0.983393, z: 0, w: 0.18148899}
   m_LocalPosition: {x: -2.1959703, y: 7.8549995, z: 0.34070873}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -61,7 +61,10 @@ Animation:
   serializedVersion: 3
   m_Animation: {fileID: 0}
   m_Animations:
-  - {fileID: -8325907039637921516, guid: 4f41bdd31254b3546bb164bc8ef56938, type: 3}
+  - {fileID: 2667949614841947897, guid: 5423473321b4b384ea7cf61d364b4e2a, type: 3}
+  - {fileID: 3328158828640343348, guid: df65f261d6e4d2d4cbf53c1fef7508f9, type: 3}
+  - {fileID: -8294314962118491812, guid: 26e1ab33bedb8344d8239bcfc8ade2f1, type: 3}
+  - {fileID: -3311026716842163337, guid: 22de49ef2958de04e85eda8a44a8652d, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -146,11 +149,14 @@ MonoBehaviour:
   m_velocityScale: 1
   m_speed: 5
   m_rotationSpeed: 0.8
+  m_idleInputTime: 5
   m_timeBetweenInputs: 1
-  m_heldObjectContainer: {fileID: 0}
-  m_heldObject: {fileID: 0}
-  velocity: 0
-  fallforce: 0
+  barksound: {fileID: 0}
+  barkvolume: 0
+  lightmatchsound: {fileID: 0}
+  lightmatchvolume: 0
+  lightcandlesound: {fileID: 0}
+  lightcandlevolume: 0
 --- !u!1001 &6502157030000812688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -164,11 +170,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f3aecac0d6a3a3b44b02e63f01c60240, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f3aecac0d6a3a3b44b02e63f01c60240, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.25
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f3aecac0d6a3a3b44b02e63f01c60240, type: 3}
       propertyPath: m_LocalPosition.z

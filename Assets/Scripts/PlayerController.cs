@@ -14,22 +14,32 @@ public class PlayerController : MonoBehaviour
     private bool m_interact = false;
     private float m_inputTimer = 0.0f;
 
+    [Header("Player Speed Values")]
+    [Tooltip("Velocity scale of thrown objects")]
     [SerializeField] private float m_velocityScale;
+    [Tooltip("Base movement speed")]
     [SerializeField] private float m_speed;
+    [Tooltip("Base rotation speed")]
     [SerializeField] private float m_rotationSpeed;
+
+    [Header("Player Animation")]
+    [Tooltip("How long in seconds until Bonnie sits down from being idle")]
+    [SerializeField] private float m_idleInputTime;
+
+    [Header("Misc")]
     [SerializeField] private float m_timeBetweenInputs;
+
+    private float m_interactingTimer = 0.0f;
 
     private readonly  Vector3 m_gravity=new Vector3(0,-9.8f,0);
     private CharacterController m_characterController;
-    [SerializeField] private GameObject m_heldObjectContainer;
-    [SerializeField] private TaskObject m_heldObject;
-    //[SerializeField] private bool isgrounded;
-    public float velocity;
-    public float fallforce;
+    private GameObject m_heldObjectContainer;
+    private TaskObject m_heldObject;
+
     private Animator m_animator;
     private bool m_hasReceivedInput = false;
     private float m_noInputTimer = 0.0f;
-
+    private float m_sitWaitTimer = 0.0f;
     [Header("Sound Effects")]
     public AudioClip barksound;
     public float barkvolume;
@@ -61,28 +71,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //void GroundUpdater()
-    //{
-    //    isgrounded = false;
-    //    RaycastHit[] hit;
-    //    hit = Physics.RaycastAll(transform.position, Vector3.down, 0.8f);
-    //    foreach (var hits in hit)
-    //    {
-    //        Debug.DrawRay(hits.point, hits.normal, Color.red, 0.8f);
-    //        if (hits.collider.gameObject == gameObject)
-    //            continue;
-    //        else if (hits.collider.CompareTag("Ground"))
-    //        {
-    //            isgrounded = true;
-    //        }
-    //    }     
-    //}
-
-    void FixedUpdate()
-    {
-        //GroundUpdater();
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -91,16 +79,14 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 move = m_moveForward ? (transform.forward * m_speed * Time.deltaTime) : (-transform.forward * (m_speed / 2) * Time.deltaTime);
             m_characterController.Move(move);
-            m_animator.SetBool("IsWalking", true);
             m_hasReceivedInput = true;
 
             // AUDIO: Footstep audio?
+        }
 
-        }
-        else
-        {
-            m_animator.SetBool("IsWalking", false);
-        }
+
+        m_animator.SetBool("IsWalking", m_moveForward || m_moveBackward || m_rotLeft || m_rotRight);
+
 
         if (m_inputTimer != 0.0f)
         {
@@ -108,9 +94,9 @@ public class PlayerController : MonoBehaviour
             m_inputTimer = m_inputTimer < 0.01f ? 0.0f : m_inputTimer;
         }
 
-        if (m_inputTimer == 0.0f && m_heldObject)
+        if (m_inputTimer == 0.0f && m_interact)
         {
-            if (m_interact)
+            if (m_heldObject)
             {
                 m_heldObject.IsPickedUp = false;
                 m_heldObjectContainer.GetComponent<Rigidbody>().velocity = (m_characterController.velocity + (Vector3.up*2)) * m_velocityScale;
@@ -120,7 +106,18 @@ public class PlayerController : MonoBehaviour
                 m_inputTimer = m_timeBetweenInputs;
                 m_hasReceivedInput = true;
             }
+            m_animator.SetBool("IsInteracting", true);
+            m_interactingTimer = 1.625f / 5.0f;
         }
+        else
+        {
+            m_interactingTimer -= Time.deltaTime;
+            if (m_interactingTimer <= 0.0f)
+            {
+                m_animator.SetBool("IsInteracting", false);
+            }
+        }
+        
 
         m_characterController.Move(m_gravity*Time.deltaTime);
  
@@ -134,6 +131,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
+
         if (!m_hasReceivedInput)
         {
             m_noInputTimer -= Time.deltaTime;
@@ -141,12 +139,24 @@ public class PlayerController : MonoBehaviour
             {
                 m_noInputTimer = 0.0f;
                 m_animator.SetBool("IsSitting", true);
+                m_sitWaitTimer -= Time.deltaTime;
+                if (m_sitWaitTimer <= 0.0f)
+                {
+                    m_sitWaitTimer = 0.0f;
+                    m_animator.SetFloat("SitWait", 0.0f);
+                }
+                else
+                {
+                    m_animator.SetFloat("SitWait", 1.0f);
+                }
             }
         }
         else
         {
             m_animator.SetBool("IsSitting", false);
-            m_noInputTimer = 1.0f;
+            m_animator.SetFloat("SitWait", 1.0f);
+            m_noInputTimer = m_idleInputTime;
+            m_sitWaitTimer = 1.0f;
         }
     }
 
