@@ -28,10 +28,13 @@ public class TaskObject : MonoBehaviour
     [SerializeField] private Ownership m_levelOwnership;
     [SerializeField] internal Type m_type;
 
+    internal GameObject m_neckReference;
+
     public bool m_active = false;
 
     void Start()
     {
+
         LoadAssets();
     }
 
@@ -42,6 +45,8 @@ public class TaskObject : MonoBehaviour
 
     protected void LoadAssets()
     {
+        m_neckReference = GameObject.FindGameObjectWithTag("Player Neck");
+
         m_levelFadeRef = GameObject.FindGameObjectWithTag("LevelFade");
         if (!m_levelFadeRef)
         {
