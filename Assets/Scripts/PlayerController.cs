@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
     [Header("Sound Effects")]
     public AudioClip barksound;
     public float barkvolume;
+    public AudioClip pickupsound;
+    public float pickupvolume;
     public AudioClip lightmatchsound;
     public float lightmatchvolume;
     public AudioClip lightcandlesound;
@@ -215,6 +217,7 @@ public class PlayerController : MonoBehaviour
                     {
                         GetComponent<BoxCollider>().enabled = false;
                         // AUDIO: Pickup 
+                        SoundManager.PlaySfx(pickupsound, pickupvolume);
                     }
                     else if (other.tag == "Match")
                     {

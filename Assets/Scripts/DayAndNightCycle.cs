@@ -34,6 +34,18 @@ public class DayAndNightCycle : MonoBehaviour
     public TaskSystem tasksystem;
     private float restartDelay;
 
+    [Header("BG Music")]
+    public AudioClip track1;
+    [Range(0,1)]
+    public float trackvolume;
+    public AudioClip track2;
+    [Range(0, 1)]
+    public float trackvolume2;
+    public AudioClip track3;
+    [Range(0, 1)]
+    public float trackvolume3;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +53,7 @@ public class DayAndNightCycle : MonoBehaviour
         TimeRate = 1.0f / fullDayLength;
         time = startTime;
         gameoverPanel.SetActive(false);
+    
 
 
     }
@@ -69,14 +82,9 @@ public class DayAndNightCycle : MonoBehaviour
             }
 
             hourhandbase.transform.eulerAngles = new Vector3(0, 0, -dayover*360f); //rotate hour hand 
-            Sun.transform.eulerAngles = (time - 0.25f) * circlerotation * 3.0f;  
-            Moon.transform.eulerAngles = (time - 0.75f) * circlerotation * 3.0f;
+            Sun.transform.eulerAngles = (time - 0.25f) * circlerotation * 4.0f;  
+           // Moon.transform.eulerAngles = (time - 0.75f) * circlerotation * 4.0f;
 
-            Sun.intensity = SunIntensity.Evaluate(time); // Light component intensity over time
-            Moon.intensity = MoonIntensity.Evaluate(time);
-
-            Sun.color = gd.Evaluate(time);  // Light component color over time
-            Moon.color = gd2.Evaluate(time);
             /*
             if (time <= 1.0f)
             {
@@ -99,11 +107,14 @@ public class DayAndNightCycle : MonoBehaviour
             }*/
 
 
-                                        // teller of tell tales morning sound
-                                        // pippin afternoon and evening sound
+            // teller of tell tales morning sound
+            // pippin afternoon and evening sound
             // Daniel change for build
-            if (time <= 1.0f)
+            if (time < 1.0f)
             {
+               
+                Sun.intensity = SunIntensity.Evaluate(time);  // Light component intensity over time
+                Sun.color = gd.Evaluate(time);  // Light component color over time
                 Sun.gameObject.SetActive(true);
                 Moon.gameObject.SetActive(false);
                 if (Sun.intensity < 0 && Sun.gameObject.activeInHierarchy)  // disable 
@@ -112,8 +123,11 @@ public class DayAndNightCycle : MonoBehaviour
                     Sun.gameObject.GetComponent<Light>().enabled = true;
             }
             
-            if (time > 1.0f)                        //skye cullin night sound
+            if (time >= 1.0f)                        //skye cullin night sound
             {
+                Moon.transform.eulerAngles = (time - 0.75f) * circlerotation * 4.0f;    
+                Moon.intensity = MoonIntensity.Evaluate(time);
+                Moon.color = gd2.Evaluate(time);
                 Moon.gameObject.SetActive(true);
                 Sun.gameObject.SetActive(false);
                 if (Moon.intensity < 0 && Moon.gameObject.activeInHierarchy) // disable
@@ -122,11 +136,15 @@ public class DayAndNightCycle : MonoBehaviour
                     Moon.gameObject.GetComponent<Light>().enabled = true;
             }
 
+                
+
+
             // lighting intensity
-          //  RenderSettings.ambientIntensity = randomsunIntensity.Evaluate(time);
+           // RenderSettings.ambientIntensity = randomsunIntensity.Evaluate(time);
           //  RenderSettings.reflectionIntensity = randommoonIntensity.Evaluate(time);
         }
     }
+
 
     public void PlayAgain()
     {

@@ -14,14 +14,26 @@ public class SoundManager : MonoBehaviour
 	[Range(0, 1)]
 	public float musicsGameVolume = 0.5f;
 
+	public AudioClip track2;
+	[Range(0, 1)]
+	public float trackVolume2 = 0.5f;
+	public AudioClip track3;
+	[Range(0, 1)]
+	public float trackVolume3 = 0.5f;
+
 	[Tooltip("Place the sound in this to call it in another script by: SoundManager.PlaySfx(soundname);")]
-	public AudioClip soundClick;
 
 	public int scenevalue;
 
 	public AudioSource musicAudio;
 	public AudioSource uiFx;
 	public AudioSource soundFx;
+	public AudioClip[] clips;
+	int clipOrder=0;
+	public bool istrack2;
+	public bool istrack3;
+
+	private DayAndNightCycle daynight;
 
 	public static float MusicVolume
 	{
@@ -43,7 +55,7 @@ public class SoundManager : MonoBehaviour
 	void Awake()
 	{
 		Instance = this;
-		musicAudio.loop = true;
+		//musicAudio.loop = true;
 
 	
 	}
@@ -59,20 +71,59 @@ public class SoundManager : MonoBehaviour
 			PlayMusic(musicsMenu, musicMenuVolume);
 			musicAudio.volume = musicMenuVolume;
 		}
-		else if (scenevalue == 2)
-		{
-			PlayMusic(musicsGame, musicsGameVolume);
-			musicAudio.volume = musicsGameVolume;
-
-		}
-		else if(scenevalue==3)
+		if(scenevalue==2)
         {
-			PlayMusic(musicsGame, musicsGameVolume);
+		//	PlayMusic(musicsGame, musicsGameVolume);
 			musicAudio.volume = musicsGameVolume;
+			daynight = GameObject.FindObjectOfType<DayAndNightCycle>();
         }
-
 	}
 
+	void Update()
+	{
+			if(daynight.time<0.5f)
+            {
+			if (!musicAudio.isPlaying)
+			{
+				musicAudio.clip = GetNextClip();
+				musicAudio.Play();
+			}
+            }
+		    if(daynight.time>0.5f)
+            {
+			if (!istrack2)
+			{
+				istrack2 = true;
+				musicAudio.clip = GetNextClip();
+				musicAudio.Play();
+			}		
+		}
+			if(daynight.time>1f)
+        {
+			if(!istrack3)
+            {
+				istrack3 = true;
+				musicAudio.clip = GetNextClip();
+				musicAudio.Play();
+            }
+        }
+		}
+
+
+
+	// function to get the next clip in order, then repeat from the beginning of the list.
+	private AudioClip GetNextClip()
+	{
+		if (clipOrder >= clips.Length - 1)
+		{
+			clipOrder = 0;
+		}
+		else
+		{
+			clipOrder += 1;
+		}
+		return clips[clipOrder];
+	}
 
 	public static void PlaySfx(AudioClip clip, float volume)
 	{
@@ -118,9 +169,11 @@ public class SoundManager : MonoBehaviour
 			//			Debug.Log ("There are no audio file to play", gameObject);
 			return;
 		}
+	
 
 		if (audioOut == musicAudio)
 		{
+	
 			audioOut.clip = clip;
 			audioOut.Play();
 		}
