@@ -67,11 +67,11 @@ public class EventTask : Task
             {
                 task.m_active = true;
             }
-            Debug.Log("Event has been triggered!");
+            //Debug.Log("Event has been triggered!");
             m_isHappening = true;
         }
 
         m_savedSecond = (int) ((m_dayNightCycleRef.time/2) * m_dayNightCycleRef.fullDayLength);
-        Debug.Log("savedSecond " + m_savedSecond + " , Caused by: " + randomNo + " out of a possible " + m_likelihood);
+        //Debug.Log("savedSecond " + m_savedSecond + " , Caused by: " + randomNo + " out of a possible " + m_likelihood);
     }
 }

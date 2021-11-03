@@ -24,6 +24,7 @@ public class TaskSystem : MonoBehaviour
         tasks[3].CurrentStatus = Task.TaskStatus.Open;
         tasks[4].CurrentStatus = Task.TaskStatus.Open;
         tasks[5].CurrentStatus = Task.TaskStatus.Open;
+        tasks[6].CurrentStatus = Task.TaskStatus.Open;
 
     }
 
@@ -171,6 +172,24 @@ public class TaskSystem : MonoBehaviour
                 //Debug.Log("Optional event task has been completed");
                 rewarding += tasks[5].reward;
                 tasks[5].reward = rewarding;
+                //Debug.Log("You have been rewarded");
+                //Debug.Log("You have finished the optional event task");
+            }
+        }
+    }
+
+    public void Method7()
+    {
+        if (tasks[6].CurrentStatus == Task.TaskStatus.Open)
+        {
+            tasks[6].ItemsCollected();
+            if (tasks[6].isReached())
+            {
+                tasks[6].TaskCompleted();
+                taskvalue++;
+                //Debug.Log("Optional event task has been completed");
+                rewarding += tasks[6].reward;
+                tasks[6].reward = rewarding;
                 //Debug.Log("You have been rewarded");
                 //Debug.Log("You have finished the optional event task");
             }
