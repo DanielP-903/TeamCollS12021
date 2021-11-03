@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Stylized Skybox
-  m_Shader: {fileID: 4800000, guid: 86c2675e328834b42b448bb91ccdb4bb, type: 3}
+  m_Name: M_Water
+  m_Shader: {fileID: 4800000, guid: 43b29f01d0c121b449707e58edaa579f, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -55,50 +55,71 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _T_CloudNoise:
-        m_Texture: {fileID: 2800000, guid: 126ef3d65fae3b6459fbc2867615e642, type: 3}
+    - _WaterNormal:
+        m_Texture: {fileID: 2800000, guid: 00372394e6c166344b8e7c19dc8ffebe, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _Amplitude: -1.3
     - _BumpScale: 1
-    - _CloudEdge: 1
-    - _CloudHeight: 0.18
-    - _CloudSpeed: 5
-    - _CrescnetMoonRadius: 0.1
+    - _ChromaticAberration: 0.001
     - _Cutoff: 0.5
+    - _Depth: 200
+    - _DepthFadeDistance: 2.2
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FogHeight: 0.22
+    - _EdgeLength: 50
+    - _Falloff: 0.5
+    - _Float1: 2
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _HorizonFog: 33.02
     - _Metallic: 0
     - _Mode: 0
-    - _MoonExp: 33
-    - _MoonPhase: 0.04
-    - _MoonRadius: 0.12
+    - _Normal1Strength: 1.2
+    - _Normal2Strength: 1
+    - _Normal3Strength: 1.5
+    - _NormalSpeed: 0.18
+    - _NormalStrength: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _SkyboxScaleX: 6
-    - _SkyboxScaleY: 2
+    - _Prop1: 0
+    - _Refraction: 1.2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _Speed: 5
     - _SrcBlend: 1
-    - _StarAngleOffset: 50
-    - _StarScale: 18
-    - _StarSize: 50
-    - _StarThreshold: 0.54
-    - _SunExp: 15
-    - _SunRadius: 0.16
+    - _Steep: 10
+    - _TessMax: 2
+    - _TessMaxDisp: 1
+    - _TessMin: 1
+    - _TessPhongStrength: 0.73
+    - _TessValue: 32
+    - _TessellationAmount: 13.9
     - _UVSec: 0
+    - _Wavelength: 480
     - _ZWrite: 1
+    - __dirty: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DayHorizonColor: {r: 0.2941176, g: 0.572549, b: 0.9529411, a: 1}
-    - _DaySkyColor: {r: 0, g: 0.8627452, b: 0.8117648, a: 1}
+    - _Color0: {r: 0, g: 0.3431373, b: 0.32157892, a: 1}
+    - _Color1: {r: 0, g: 0.1254902, b: 0.2509804, a: 1}
+    - _DeepWater: {r: 0, g: 0.1803922, b: 0.2509804, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MoonColor: {r: 0.9857615, g: 1, b: 0.3930816, a: 0}
-    - _NightHorizonColor: {r: 0.07058818, g: 0.4352941, b: 0.6392157, a: 1}
-    - _NightSkyColor: {r: 0.6705883, g: 0.3764706, b: 0.4784313, a: 1}
+    - _FarWaterColor: {r: 0.43740347, g: 0.8455786, b: 0.9150943, a: 0}
+    - _NearWaterColor: {r: 0.26106557, g: 0.5329673, b: 0.75471693, a: 0}
+    - _NormalSpeed1: {r: 15, g: 8, b: 0, a: 0}
+    - _NormalSpeed2: {r: 5, g: -10, b: 0, a: 0}
+    - _NormalSpeed3: {r: -2.8, g: 2.1, b: 0, a: 0}
+    - _NormalSpeed5: {r: 5, g: -10, b: 0, a: 0}
+    - _ShallowWater: {r: 0, g: 1.372549, b: 1.286275, a: 1}
+    - _Vector1: {r: 2, g: 2, b: 0, a: 0}
+    - _WaveA: {r: 1, g: 1, b: 0.4, a: 1.5}
+    - _WaveB: {r: 3, g: -1, b: 0.3, a: 1}
+    - _WaveC: {r: -1, g: 4, b: 0.15, a: 1}
+    - _WaveD: {r: -1, g: -1, b: 0.05, a: 1}
   m_BuildTextureStacks: []
