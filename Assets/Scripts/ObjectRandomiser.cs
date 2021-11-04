@@ -18,6 +18,8 @@ public class ObjectRandomiser : MonoBehaviour
     [SerializeField] private GameObject m_plate;
     [SerializeField] private GameObject m_plateDestination;
 
+    [SerializeField] private GameObject m_playerNeck;
+
     [SerializeField] private int m_noOfBooks;
     [SerializeField] private int m_noOfPlates;
     [SerializeField] private int m_noOfNessies;
@@ -29,9 +31,6 @@ public class ObjectRandomiser : MonoBehaviour
     private int m_randomNo;
     private bool m_interact;
     private float m_inputTimer = 0.0f;
-
-
-    private
 
     // Start is called before the first frame update
     void Start()
@@ -105,6 +104,8 @@ public class ObjectRandomiser : MonoBehaviour
 
         m_object.GetComponent<TO_Basic>().tasksystem = m_taskSystem;
         m_object.GetComponent<TO_Basic>().m_destination = m_objectDestination;
+        m_object.GetComponent<TO_Basic>().m_neckReference = m_playerNeck;
+
 
         m_chosenNumbers.Clear();
         bool unique = false;

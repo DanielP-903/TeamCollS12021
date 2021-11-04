@@ -26,12 +26,19 @@ public class PlayerController : MonoBehaviour
     [Tooltip("How long in seconds until Bonnie sits down from being idle")]
     [SerializeField] private float m_idleInputTime;
 
+    //[Header("Tutorial")]
+    //[Tooltip("How long in seconds until Bonnie sits down from being idle")]
+    private bool m_moveTutorialComplete = false;
+    private bool m_interactTutorialComplete = false;
+    private ParticleSystem m_particleSystem;
+
     [Header("Misc")]
+    [Tooltip("Time interval between inputs")]
     [SerializeField] private float m_timeBetweenInputs;
 
     private float m_interactingTimer = 0.0f;
 
-    private readonly  Vector3 m_gravity=new Vector3(0,-9.8f,0);
+    private readonly  Vector3 m_gravity = new Vector3(0,-9.8f,0);
     private CharacterController m_characterController;
     private GameObject m_heldObjectContainer;
     private TaskObject m_heldObject;
@@ -71,18 +78,45 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("ERROR: Skeletal mesh has no Animator component!");
             Debug.DebugBreak();
         }
+
+        if (gameObject.GetComponentInChildren<ParticleSystem>())
+        {
+            m_particleSystem = gameObject.GetComponentInChildren<ParticleSystem>();
+        }
+        else
+        {
+            Debug.LogError("ERROR: Particle System component not found!");
+            Debug.DebugBreak();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!m_moveTutorialComplete)
+        {
+            Debug.Log("Press WASD to move :)");
+            if (!m_particleSystem.isPlaying)
+            {
+                m_particleSystem.Play();
+            }
+            // display movement bubble
+        }
         m_hasReceivedInput = false;
         if (m_moveForward || m_moveBackward)
         {
             Vector3 move = m_moveForward ? (transform.forward * m_speed * Time.deltaTime) : (-transform.forward * (m_speed / 2) * Time.deltaTime);
             m_characterController.Move(move);
             m_hasReceivedInput = true;
-
+            if (!m_moveTutorialComplete)
+            {
+                m_moveTutorialComplete = true;
+                Debug.Log("Tutorial complete!");
+                if (m_particleSystem.isPlaying)
+                {
+                    m_particleSystem.Stop();
+                }
+            }
             // AUDIO: Footstep audio?
         }
 
@@ -130,6 +164,15 @@ public class PlayerController : MonoBehaviour
             float multiplier = m_rotLeft ? -1 : 1;
             transform.Rotate(0, m_rotationSpeed * multiplier * Time.deltaTime * 200.0f, 0);
             m_hasReceivedInput = true;
+            if (!m_moveTutorialComplete)
+            {
+                m_moveTutorialComplete = true;
+                Debug.Log("Tutorial complete!");
+                if (m_particleSystem.isPlaying)
+                {
+                    m_particleSystem.Stop();
+                }
+            }
         }
 
 
@@ -205,6 +248,12 @@ public class PlayerController : MonoBehaviour
     {
         if (m_interact && m_inputTimer == 0.0f)
         {
+            if (other.tag == "Door" && m_heldObject == null)
+            {
+                //Debug.Log("Interacting with door :)");
+                other.GetComponent<TO_AnswerDoor>().Complete();
+
+            }
             if (other.GetComponent<TO_Basic>())
             {
                 if (m_heldObject == null && !other.GetComponent<TO_Basic>().m_inDestination)
@@ -231,11 +280,10 @@ public class PlayerController : MonoBehaviour
             else if (other.tag == "Seagull" && m_heldObject == null)
             {
                 other.GetComponent<TO_Seagulls>().Complete();
-                Debug.Log("I am interacting with the seagull trigger :)");
+                //Debug.Log("I am interacting with the seagull trigger :)");
 
                 // AUDIO: Bark
                 SoundManager.PlaySfx(barksound, barkvolume);
-
             }
         }
 
@@ -250,8 +298,8 @@ public class PlayerController : MonoBehaviour
                 }
 
                 other.GetComponent<Light>().enabled = true;
-                
-                Debug.Log("I am interacting with the candle trigger :)");
+
+               // Debug.Log("I am interacting with the candle trigger :)");
 
                 // AUDIO: Light candle
                 SoundManager.PlaySfx(lightcandlesound, lightcandlevolume);
