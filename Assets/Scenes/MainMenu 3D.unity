@@ -157,11 +157,17 @@ MonoBehaviour:
   musicMenuVolume: 0.244
   musicsGame: {fileID: 8300000, guid: cd8d6c9e9cb8e0446ad44d9fb0d520ce, type: 3}
   musicsGameVolume: 0.5
-  soundClick: {fileID: 8300000, guid: 5b5ef19f77b92ee4181ab6ea714858ab, type: 3}
+  track2: {fileID: 0}
+  trackVolume2: 0.5
+  track3: {fileID: 0}
+  trackVolume3: 0.5
   scenevalue: 1
   musicAudio: {fileID: 32950135}
   uiFx: {fileID: 500389548}
   soundFx: {fileID: 138304680}
+  clips: []
+  istrack2: 0
+  istrack3: 0
 --- !u!4 &32950134
 Transform:
   m_ObjectHideFlags: 0
@@ -631,7 +637,7 @@ MonoBehaviour:
   mainPanel: {fileID: 5613504012439249910}
   optionsPanel: {fileID: 5613504011031274868}
   quitPanel: {fileID: 5613504012047638571}
-  soundClick: {fileID: 8300000, guid: 5b5ef19f77b92ee4181ab6ea714858ab, type: 3}
+  soundClick: {fileID: 8300000, guid: 10bd7053bea055d4dbe18dcadd714ecf, type: 3}
   soundClickvolume: 1
 --- !u!4 &462542265
 Transform:

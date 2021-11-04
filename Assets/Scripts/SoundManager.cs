@@ -109,6 +109,18 @@ public class SoundManager : MonoBehaviour
         }
 		}
 
+	public void OffSound()
+    {
+		AudioListener.pause = true;
+		musicAudio.Pause();
+    }
+
+	public void OnSound()
+    {
+		AudioListener.pause = false;
+		musicAudio.Play();
+    }
+
 
 
 	// function to get the next clip in order, then repeat from the beginning of the list.

@@ -38,6 +38,7 @@ public class PauseController : MonoBehaviour
         {
             if (m_Escape)
             {
+                Time.timeScale = 0f;
                 if (!isPaused)
                 {
                     PauseGame();
@@ -48,8 +49,6 @@ public class PauseController : MonoBehaviour
 
     public void PauseGame()
     {
-        isPaused = true;
-        Time.timeScale = 0f;
         pausePanel.SetActive(true);
     }
 
@@ -66,14 +65,15 @@ public class PauseController : MonoBehaviour
     {
         settingsPanel.SetActive(true);
         SoundManager.PlaySfx(Soundclick, soundclickvolume);
+        isPaused = true;
         pausePanel.SetActive(false);
 
     }
 
     public void Back()
     {
-        isPaused = true;
         SoundManager.PlaySfx(Soundclick, soundclickvolume);
+        isPaused = true;
         settingsPanel.SetActive(false);
         pausePanel.SetActive(true);
     }
@@ -83,16 +83,6 @@ public class PauseController : MonoBehaviour
         Application.Quit();
         SoundManager.PlaySfx(Soundclick, soundclickvolume);
        
-    }
-
-    public void OffSound()
-    {
-        cam.GetComponent<AudioListener>().enabled = false;  // one audio listener must remain
-    }
-
-    public void OnSound()
-    {
-        cam.GetComponent<AudioListener>().enabled = true;
     }
 
     public void DisableQuality()
