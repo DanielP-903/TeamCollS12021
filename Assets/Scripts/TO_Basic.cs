@@ -7,10 +7,15 @@ public class TO_Basic : TaskObject
     [SerializeField] bool m_requiresDestination = true;
     [SerializeField] internal GameObject m_destination;
     public bool m_inDestination = false;
-    [SerializeField] public TaskSystem tasksystem;
     [SerializeField] public bool isplaced;
     public bool m_startSleepTimer = false;
     public float m_sleepTimer = 3.0f;
+
+    [SerializeField] private float m_offsetZ = 0.0f;
+    [SerializeField] private float m_offsetY = 0.0f;
+    [SerializeField] private float m_offsetX = 0.0f;
+    [SerializeField] private Vector3 m_offsetRotation = new Vector3(0, 90.0f, 0);
+
     void Start()
     {
         if (m_requiresDestination)
@@ -41,6 +46,43 @@ public class TO_Basic : TaskObject
         }
     }
 
+    protected void DetectObject()
+    {
+        if (IsPickedUp)
+        {
+            transform.position = m_playerController.transform.position + (m_offsetZ * m_playerController.transform.forward) + (m_offsetY * m_playerController.transform.up) + (m_offsetX * m_playerController.transform.right);
+            transform.rotation = m_playerController.transform.rotation * Quaternion.Euler(m_offsetRotation);
+            GetComponent<Rigidbody>().isKinematic = true;
+            if (TryGetComponent(out BoxCollider box))
+            {
+                GetComponent<BoxCollider>().enabled = false;
+            }
+            else if (TryGetComponent(out MeshCollider mesh))
+            {
+                GetComponent<MeshCollider>().enabled = false;
+            }
+            else
+            {
+                GetComponentInChildren<MeshCollider>().enabled = false;
+            }
+        }
+        else
+        {
+            GetComponent<Rigidbody>().isKinematic = false;
+            if (TryGetComponent(out BoxCollider box))
+            {
+                GetComponent<BoxCollider>().enabled = true;
+            }
+            else if (TryGetComponent(out MeshCollider mesh))
+            {
+                GetComponent<MeshCollider>().enabled = true;
+            }
+            else
+            {
+                GetComponentInChildren<MeshCollider>().enabled = true;
+            }
+        }
+    }
     void OnTriggerEnter(Collider collider)
     {
         if (collider == m_destination.GetComponent<Collider>() && !IsPickedUp)
@@ -52,17 +94,17 @@ public class TO_Basic : TaskObject
 
                     case (Type.Book):
                         {
-                            tasksystem.Method();
+                            m_taskSystem.Method();
                             break;
                         };
                     case (Type.Plate):
                         {
-                            tasksystem.Method2();
+                            m_taskSystem.Method2();
                             break;
                         };
                     case (Type.Toy):
                         {
-                            tasksystem.Method3();
+                            m_taskSystem.Method3();
                             break;
                         };
                     case (Type.Soup):
@@ -71,7 +113,7 @@ public class TO_Basic : TaskObject
                         };
                     case (Type.Coat):
                         {
-                            tasksystem.Method4();
+                            m_taskSystem.Method4();
                             break;
                         };
                     default: break;
@@ -94,7 +136,7 @@ public class TO_Basic : TaskObject
         {
             if (m_type == Type.Book)
             {
-                tasksystem.Bookmisplaced();
+                m_taskSystem.Bookmisplaced();
                 m_sleepTimer = 3.0f;
                 m_startSleepTimer = false;
                 isplaced = false;
@@ -103,7 +145,7 @@ public class TO_Basic : TaskObject
             }
             else if(m_type==Type.Plate)
             {
-                tasksystem.Platemisplaced();
+                m_taskSystem.Platemisplaced();
                 m_sleepTimer = 3.0f;
                 m_startSleepTimer = false;
                 isplaced = false;
@@ -112,7 +154,7 @@ public class TO_Basic : TaskObject
             }
             else if (m_type == Type.Toy)
             {
-                tasksystem.Toymisplaced();
+                m_taskSystem.Toymisplaced();
                 m_sleepTimer = 3.0f;
                 m_startSleepTimer = false;
                 isplaced = false;
@@ -121,7 +163,7 @@ public class TO_Basic : TaskObject
             }
             else if (m_type == Type.Coat)
             {
-                tasksystem.Coatmisplaced();
+                m_taskSystem.Coatmisplaced();
                 m_sleepTimer = 3.0f;
                 m_startSleepTimer = false;
                 isplaced = false;

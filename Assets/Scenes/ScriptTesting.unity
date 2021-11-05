@@ -2538,14 +2538,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7f723353636b454b9660beec94eb6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_offsetZ: 0
-  m_offsetY: 0
-  m_offsetX: 0
-  m_offsetRotation: {x: 0, y: 90, z: 0}
   m_levelOwnership: 0
   m_type: 0
   m_active: 0
-  tasksystem: {fileID: 584905029}
 --- !u!43 &567897944
 Mesh:
   m_ObjectHideFlags: 0
@@ -2886,6 +2881,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5440853642706771683, guid: ddf08e2c4fbdc9b478747c08f4b8099d, type: 3}
       propertyPath: m_Name
+      value: TaskSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440853642706771683, guid: ddf08e2c4fbdc9b478747c08f4b8099d, type: 3}
+      propertyPath: m_TagString
       value: TaskSystem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -13707,7 +13706,11 @@ MonoBehaviour:
   musicAudio: {fileID: 1201204639}
   uiFx: {fileID: 1048403039}
   soundFx: {fileID: 1104125121}
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: f07a6ef80dad1ca4fb17fd7ab5ef52f7, type: 3}
+  - {fileID: 8300000, guid: 1e94c818ac285474a8ecf8ac0624464b, type: 3}
+  - {fileID: 8300000, guid: a24102ebd0716fc41b9a5c2b23bbfd3d, type: 3}
+  - {fileID: 8300000, guid: ab68d8f0fea6cea45b8b8ccab072f5ad, type: 3}
   istrack2: 0
   istrack3: 0
 --- !u!4 &1201204641

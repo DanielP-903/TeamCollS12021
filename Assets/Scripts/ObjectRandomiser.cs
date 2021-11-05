@@ -102,7 +102,7 @@ public class ObjectRandomiser : MonoBehaviour
                 break;
         }
 
-        m_object.GetComponent<TO_Basic>().tasksystem = m_taskSystem;
+        m_object.GetComponent<TO_Basic>().m_taskSystem = m_taskSystem;
         m_object.GetComponent<TO_Basic>().m_destination = m_objectDestination;
         m_object.GetComponent<TO_Basic>().m_neckReference = m_playerNeck;
 

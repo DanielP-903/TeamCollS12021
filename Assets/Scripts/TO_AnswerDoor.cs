@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TO_AnswerDoor : TaskObject
 {
-    [SerializeField] public TaskSystem tasksystem;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +31,12 @@ public class TO_AnswerDoor : TaskObject
     public override void Complete()
     {
         m_active = false;
-        tasksystem.Method7();
+        m_taskSystem.Method7();
     }
+
+    private void RandomiseDoorEvent()
+    {
+
+    }
+
 }

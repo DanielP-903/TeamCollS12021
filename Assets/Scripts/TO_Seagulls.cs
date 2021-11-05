@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TO_Seagulls : TaskObject
 {
-    [SerializeField] public TaskSystem tasksystem;
 
     private ParticleSystem m_particleSystem;
 
@@ -53,6 +52,6 @@ public class TO_Seagulls : TaskObject
     public override void Complete()
     {
         m_active = false;
-        tasksystem.Method5();
+        m_taskSystem.Method5();
     }
 }

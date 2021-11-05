@@ -15,15 +15,12 @@ public class TaskObject : MonoBehaviour
     };
 
     private GameObject m_playerRef;
-    private PlayerController m_playerController;
+    internal PlayerController m_playerController;
     private GameObject m_levelFadeRef;
     private LevelFade m_levelFade;
+    internal TaskSystem m_taskSystem;
 
     [SerializeField] internal bool IsPickedUp { get; set; }
-    [SerializeField] private float m_offsetZ = 0.0f;
-    [SerializeField] private float m_offsetY = 0.0f;
-    [SerializeField] private float m_offsetX = 0.0f;
-    [SerializeField] private Vector3 m_offsetRotation = new Vector3(0,90.0f,0);
 
     [SerializeField] private Ownership m_levelOwnership;
     [SerializeField] internal Type m_type;
@@ -70,61 +67,35 @@ public class TaskObject : MonoBehaviour
             Debug.LogError("ERROR: No object with 'Player' tag assigned!");
             Debug.DebugBreak();
         }
-
         if (m_playerRef.TryGetComponent(out PlayerController playerController))
         {
-            m_playerController = m_playerRef.GetComponent<PlayerController>();
+            m_playerController = playerController;
         }
         else
         {
             Debug.LogError("ERROR: Player object does not have a PlayerController script component!");
             Debug.DebugBreak();
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        DetectObject();
-    }
 
-    protected void DetectObject()
-    {
-        if (IsPickedUp)
+        GameObject tSys = GameObject.FindGameObjectWithTag("TaskSystem");
+        if (!tSys)
         {
-            transform.position = m_playerController.transform.position + (m_offsetZ * m_playerController.transform.forward) + (m_offsetY * m_playerController.transform.up) + (m_offsetX * m_playerController.transform.right);
-            transform.rotation = m_playerController.transform.rotation * Quaternion.Euler(m_offsetRotation);
-            GetComponent<Rigidbody>().isKinematic = true;
-            if (TryGetComponent(out BoxCollider box))
-            {
-                GetComponent<BoxCollider>().enabled = false;
-            }
-            else if (TryGetComponent(out MeshCollider mesh))
-            {
-                GetComponent<MeshCollider>().enabled = false;
-            }
-            else
-            {
-                GetComponentInChildren<MeshCollider>().enabled = false;
-            }
+            Debug.LogError("ERROR: No object with 'TaskSystem' tag assigned!");
+            Debug.DebugBreak();
+        }
+        if (tSys.TryGetComponent(out TaskSystem taskSystem))
+        {
+            m_taskSystem = taskSystem;
         }
         else
         {
-            GetComponent<Rigidbody>().isKinematic = false;
-            if (TryGetComponent(out BoxCollider box))
-            {
-                GetComponent<BoxCollider>().enabled = true;
-            }
-            else if (TryGetComponent(out MeshCollider mesh))
-            {
-                GetComponent<MeshCollider>().enabled = true;
-            }
-            else
-            {
-                GetComponentInChildren<MeshCollider>().enabled = true;
-            }
+            Debug.LogError("ERROR: Player object does not have a PlayerController script component!");
+            Debug.DebugBreak();
         }
+
     }
+
 
     private void UpdateProgression()
     {

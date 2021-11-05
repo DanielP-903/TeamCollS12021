@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TO_Candle : TaskObject
 {
-    [SerializeField] public TaskSystem tasksystem;
     private ParticleSystem m_particleSystem;
     internal bool Lit { get; set; }
 
@@ -44,6 +43,6 @@ public class TO_Candle : TaskObject
     public override void Complete()
     {
         m_active = false;
-        tasksystem.Method6();
+        m_taskSystem.Method6();
     }
 }
