@@ -43,6 +43,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 262692e28285619459be88c89cfac4c1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _DiffuseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -92,7 +96,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _ASEOutlineWidth: 0.2
+    - _ASEOutlineWidth: 0.4
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -115,9 +119,11 @@ Material:
     - _SpecularHighlights: 1
     - _SpecularIntensity: 3.96
     - _SpecularMaskIntensity: 0.4
+    - _SpecularOffset: 0.98
     - _SpecularOffset2: 0.98
     - _SrcBlend: 1
     - _UVSec: 0
+    - _UseDiffuseMap: 1
     - _UseNormalMap: 0
     - _ZWrite: 1
     - __dirty: 0
@@ -125,6 +131,7 @@ Material:
     - _ASEOutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color0: {r: 1, g: 1, b: 1, a: 0}
+    - _DiffuseColor: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HighLightColor: {r: 1, g: 1, b: 1, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 0}
