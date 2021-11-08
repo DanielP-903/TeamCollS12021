@@ -18,7 +18,7 @@ public class ObjectRandomiser : MonoBehaviour
     [SerializeField] private GameObject m_plate;
     [SerializeField] private GameObject m_plateDestination;
 
-    [SerializeField] private GameObject m_playerNeck;
+    private GameObject m_playerNeck;
 
     [SerializeField] private int m_noOfBooks;
     [SerializeField] private int m_noOfPlates;
@@ -35,6 +35,7 @@ public class ObjectRandomiser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_playerNeck = GameObject.FindGameObjectWithTag("Player Neck");
         Randomise();
     }
 
