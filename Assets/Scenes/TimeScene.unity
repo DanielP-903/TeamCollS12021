@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.17606533, g: 0.22034284, b: 0.30266994, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &31157877
 Light:
   m_ObjectHideFlags: 0
@@ -13845,13 +13845,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.5577182, y: -0.25030977, z: 0.065820165, w: 0.7886464}
   m_LocalPosition: {x: 0, y: 16.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 65.872, y: -51.835, z: -25.408}
 --- !u!1 &754856547
 GameObject:
   m_ObjectHideFlags: 0
@@ -13971,7 +13971,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1839639414837190914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: Forward
         m_Mode: 0
@@ -13987,7 +13987,7 @@ MonoBehaviour:
     m_ActionName: Master/Forward[/Keyboard/w]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1839639414837190914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: Backward
         m_Mode: 0
@@ -14003,7 +14003,7 @@ MonoBehaviour:
     m_ActionName: Master/Backward[/Keyboard/s]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1839639414837190914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: Left
         m_Mode: 0
@@ -14019,7 +14019,7 @@ MonoBehaviour:
     m_ActionName: Master/Left[/Keyboard/a]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1839639414837190914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: Right
         m_Mode: 0
@@ -14035,7 +14035,7 @@ MonoBehaviour:
     m_ActionName: Master/Right[/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1839639414837190914}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: Interact
         m_Mode: 0
@@ -14210,7 +14210,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh23254
+  m_Name: pb_Mesh18964
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14733,7 +14733,15 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   isGameOver: 0
-  gameovertext: {fileID: 297404248}
+  gameoverPanel: {fileID: 0}
+  numberoftasks: {fileID: 0}
+  tasksystem: {fileID: 0}
+  track1: {fileID: 0}
+  trackvolume: 0
+  track2: {fileID: 0}
+  trackvolume2: 0
+  track3: {fileID: 0}
+  trackvolume3: 0
 --- !u!4 &1589781995
 Transform:
   m_ObjectHideFlags: 0
@@ -14941,17 +14949,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1839639414909618975, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
   m_PrefabInstance: {fileID: 1839639414837190909}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1839639414837190914 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6450803443274969930, guid: 16d418021ee34e446a30ae186ea693dd, type: 3}
-  m_PrefabInstance: {fileID: 1839639414837190909}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1839639414837190910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6537c22e60bc96849831de6cebe4e5c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7115844133205731254
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -81,33 +81,36 @@ public class SoundManager : MonoBehaviour
 
 	void Update()
 	{
-			if(daynight.time<0.5f)
-            {
-			if (!musicAudio.isPlaying)
+		if (scenevalue == 2)
+		{
+			if (daynight.time < 0.5f)
 			{
-				musicAudio.clip = GetNextClip();
-				musicAudio.Play();
+				if (!musicAudio.isPlaying)
+				{
+					musicAudio.clip = GetNextClip();
+					musicAudio.Play();
+				}
 			}
-            }
-		    if(daynight.time>0.5f)
-            {
-			if (!istrack2)
+			if (daynight.time > 0.5f)
 			{
-				istrack2 = true;
-				musicAudio.clip = GetNextClip();
-				musicAudio.Play();
-			}		
+				if (!istrack2)
+				{
+					istrack2 = true;
+					musicAudio.clip = GetNextClip();
+					musicAudio.Play();
+				}
+			}
+			if (daynight.time > 1f)
+			{
+				if (!istrack3)
+				{
+					istrack3 = true;
+					musicAudio.clip = GetNextClip();
+					musicAudio.Play();
+				}
+			}
 		}
-			if(daynight.time>1f)
-        {
-			if(!istrack3)
-            {
-				istrack3 = true;
-				musicAudio.clip = GetNextClip();
-				musicAudio.Play();
-            }
-        }
-		}
+	}
 
 	public void OffSound()
     {

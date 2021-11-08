@@ -45,7 +45,6 @@ public class TaskSystem : MonoBehaviour
                 taskvalue++;
                 Debug.Log("Task has been completed");
                 rewarding+= tasks[0].reward;
-             //   rewardText.text = rewarding.ToString();
                 tasks[0].reward = rewarding;
                 Debug.Log("You have been rewarded");
                 Debug.Log("You have finished a task");

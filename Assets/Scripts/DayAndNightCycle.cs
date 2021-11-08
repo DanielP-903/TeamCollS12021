@@ -31,19 +31,7 @@ public class DayAndNightCycle : MonoBehaviour
     public bool isGameOver;
     public GameObject gameoverPanel;
     public Text numberoftasks;
-    public TaskSystem tasksystem;
-    private float restartDelay;
-
-    [Header("BG Music")]
-    public AudioClip track1;
-    [Range(0,1)]
-    public float trackvolume;
-    public AudioClip track2;
-    [Range(0, 1)]
-    public float trackvolume2;
-    public AudioClip track3;
-    [Range(0, 1)]
-    public float trackvolume3;
+    private TaskSystem tasksystem;
 
 
 
@@ -53,6 +41,7 @@ public class DayAndNightCycle : MonoBehaviour
         TimeRate = 1.0f / fullDayLength;
         time = startTime;
         gameoverPanel.SetActive(false);
+        tasksystem = GameObject.FindObjectOfType<TaskSystem>();
     
 
 
@@ -82,7 +71,7 @@ public class DayAndNightCycle : MonoBehaviour
             }
 
             hourhandbase.transform.eulerAngles = new Vector3(0, 0, -dayover*360f); //rotate hour hand 
-            Sun.transform.eulerAngles = (time - 0.25f) * circlerotation * 4.0f;  
+          //  Sun.transform.eulerAngles = (time - 0.25f) * circlerotation * 4.0f;  
            // Moon.transform.eulerAngles = (time - 0.75f) * circlerotation * 4.0f;
 
             /*
@@ -112,24 +101,19 @@ public class DayAndNightCycle : MonoBehaviour
             // Daniel change for build
             if (time < 1.0f)
             {
-               
+                Sun.transform.eulerAngles = (time - 0.25f) * circlerotation * 3.0f;
                 Sun.intensity = SunIntensity.Evaluate(time);  // Light component intensity over time
                 Sun.color = gd.Evaluate(time);  // Light component color over time
-                Sun.gameObject.SetActive(true);
-                Moon.gameObject.SetActive(false);
                 if (Sun.intensity < 0 && Sun.gameObject.activeInHierarchy)  // disable 
                     Sun.gameObject.GetComponent<Light>().enabled = false;
                 else if (Sun.intensity > 0 && Sun.gameObject.activeInHierarchy) // enable
                     Sun.gameObject.GetComponent<Light>().enabled = true;
             }
-            
             if (time >= 1.0f)                        //skye cullin night sound
             {
-                Moon.transform.eulerAngles = (time - 0.75f) * circlerotation * 4.0f;    
-                Moon.intensity = MoonIntensity.Evaluate(time);
-                Moon.color = gd2.Evaluate(time);
-                Moon.gameObject.SetActive(true);
-                Sun.gameObject.SetActive(false);
+                Sun.transform.eulerAngles = (time - 0.25f) * circlerotation * 3.0f;    
+                Sun.intensity = MoonIntensity.Evaluate(time);
+                Sun.color = gd2.Evaluate(time);
                 if (Moon.intensity < 0 && Moon.gameObject.activeInHierarchy) // disable
                     Moon.gameObject.GetComponent<Light>().enabled = false;
                 else if (Moon.intensity > 0 && Moon.gameObject.activeInHierarchy) // enable
