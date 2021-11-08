@@ -8,9 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Bonnie
-  m_Shader: {fileID: 4800000, guid: cc7a360f2a6c2d845aba11177773bb47, type: 3}
-  m_ShaderKeywords: _USENORMALMAP_ON
-  m_LightmapFlags: 4
+  m_Shader: {fileID: 4800000, guid: 1c011b1638dca2d46bf5037235d4e6dc, type: 3}
+  m_ShaderKeywords: _USEDIFFUSEMAP_ON _USENORMALMAP_ON
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -36,6 +36,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Diffuse:
+        m_Texture: {fileID: 2800000, guid: 70ec6033d0d6c5c4082045acdc91a621, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DiffuseMap:
         m_Texture: {fileID: 2800000, guid: 70ec6033d0d6c5c4082045acdc91a621, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -71,6 +75,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 73fea88ac7eb3dd45be3d53cee69fa56, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _T_Specular:
+        m_Texture: {fileID: 2800000, guid: 73fea88ac7eb3dd45be3d53cee69fa56, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _ToonRamp:
         m_Texture: {fileID: 2800000, guid: 8008c1b7ec5390146b51f74f817bb5b4, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -89,26 +97,33 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _HighLightOffset: 0.999
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _RimOffset: -0.14
-    - _RimPower: 4.33
+    - _RimOffset1: 0.213
+    - _RimPower: 15.9
     - _ScreenUVTiling1: 30
     - _SketchBrightness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpecularIntensity: 0.05
+    - _SpecularMaskIntensity: 0
+    - _SpecularOffset: 0.99
     - _SrcBlend: 1
     - _UVSec: 0
+    - _UseDiffuseMap: 1
     - _UseNormalMap: 1
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
     - _ASEOutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DiffuseColor: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _HighLightColor: {r: 1, g: 1, b: 1, a: 0}
     - _RimColor: {r: 2, g: 2, b: 2, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
