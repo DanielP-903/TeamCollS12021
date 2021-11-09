@@ -254,6 +254,12 @@ public class PlayerController : MonoBehaviour
                 other.GetComponent<TO_AnswerDoor>().Complete();
 
             }
+            if (other.tag == "End Switch" && m_heldObject == null)
+            {
+                Debug.Log("Please end the game :)");
+                other.GetComponent<TO_EndSwitch>().Complete();
+
+            }
             if (other.GetComponent<TO_Basic>())
             {
                 if (m_heldObject == null && !other.GetComponent<TO_Basic>().m_inDestination)

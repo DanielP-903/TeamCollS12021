@@ -11,7 +11,7 @@ public class EventTask : Task
     // 0-100 in % of how likely this event will occur
     [SerializeField] private float m_likelihood;
 
-    [SerializeField] private DayAndNightCycle m_dayNightCycleRef;
+    private DayAndNightCycle m_dayNightCycleRef;
 
     [SerializeField] private GameObject m_uiObjectRef;
 
@@ -24,6 +24,7 @@ public class EventTask : Task
 
     void Start()
     {
+        m_dayNightCycleRef = GameObject.FindGameObjectWithTag("DayNight Cycle").GetComponent<DayAndNightCycle>();
         if (m_taskObject.Count == 0)
         {
             Debug.LogError("No Task Objects assigned to list on Event Task!");
@@ -37,6 +38,8 @@ public class EventTask : Task
         currentamountText.text = currentAmount.ToString();
         symbolText.text = "/";
         requiredamountText.text = requiredAmount.ToString();
+
+
     }
 
     void Update()

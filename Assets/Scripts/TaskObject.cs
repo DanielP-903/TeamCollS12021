@@ -35,7 +35,7 @@ public class TaskObject : MonoBehaviour
         LoadAssets();
     }
 
-    virtual public void Complete()
+    public virtual void Complete()
     {
         // nothing for now...
     }
