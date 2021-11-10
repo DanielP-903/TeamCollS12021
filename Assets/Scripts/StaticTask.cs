@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StaticTask : Task
 {
     private DayAndNightCycle m_dayNightCycleRef;
 
-    [SerializeField] private GameObject m_uiObjectRef;
 
     [SerializeField] private List<TaskObject> m_taskObject = new List<TaskObject>();
 
@@ -20,14 +20,20 @@ public class StaticTask : Task
             Debug.DebugBreak();
         }
 
-        descriptionText.text = description;
-        currentamountText.text = currentAmount.ToString();
-        symbolText.text = "/";
-        requiredamountText.text = requiredAmount.ToString();
+        descriptionText = m_uiObjectRef.transform.GetChild(0).gameObject;
+        currentamountText = m_uiObjectRef.transform.GetChild(1).gameObject;
+        symbolText = m_uiObjectRef.transform.GetChild(2).gameObject;
+        requiredamountText = m_uiObjectRef.transform.GetChild(3).gameObject;
 
-        currentamountText.enabled = false;
-        requiredamountText.enabled = false;
-        symbolText.enabled = false;
+        descriptionText.GetComponent<Text>().text = description;
+        currentamountText.GetComponent<Text>().text = currentAmount.ToString();
+        requiredamountText.GetComponent<Text>().text = requiredAmount.ToString();
+
+        symbolText.GetComponent<Text>().text = "/";
+
+        currentamountText.SetActive(false);
+        requiredamountText.SetActive(false);
+        symbolText.SetActive(false);
 
     }
 

@@ -14,7 +14,6 @@ public class EventTask : Task
 
     private DayAndNightCycle m_dayNightCycleRef;
 
-    [SerializeField] private GameObject m_uiObjectRef;
 
     [SerializeField] private List<TaskObject> m_taskObject = new List<TaskObject>();
 
@@ -35,10 +34,14 @@ public class EventTask : Task
         m_codeTimeFrame.x = (m_timeFrame.x / m_dayNightCycleRef.fullDayLength) * 2;
         m_codeTimeFrame.y = (m_timeFrame.y / m_dayNightCycleRef.fullDayLength) * 2;
 
-        descriptionText.text = m_uiObjectRef.transform.GetChild(0).GetComponent<Text>().text;
-        currentamountText.text = m_uiObjectRef.transform.GetChild(1).GetComponent<Text>().text;
-        symbolText.text = "/";
-        requiredamountText.text = m_uiObjectRef.transform.GetChild(3).GetComponent<Text>().text;
+        descriptionText = m_uiObjectRef.transform.GetChild(0).gameObject;
+        currentamountText = m_uiObjectRef.transform.GetChild(1).gameObject;
+        symbolText = m_uiObjectRef.transform.GetChild(2).gameObject;
+        requiredamountText = m_uiObjectRef.transform.GetChild(3).gameObject;
+        descriptionText.GetComponent<Text>().text = description;
+        currentamountText.GetComponent<Text>().text = currentAmount.ToString();
+        requiredamountText.GetComponent<Text>().text = requiredAmount.ToString();
+        symbolText.GetComponent<Text>().text = "/";
 
 
     }

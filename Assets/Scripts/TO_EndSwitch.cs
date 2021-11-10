@@ -38,6 +38,6 @@ public class TO_EndSwitch : TaskObject
         m_active = false;
         Debug.Log("End Game!");
         m_animator.SetBool("Activate", true);
-        //m_dayNightCycleRef.time = 2.0f;
+        m_dayNightCycleRef.time = 1.98f;
     }
 }

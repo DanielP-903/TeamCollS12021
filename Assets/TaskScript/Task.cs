@@ -10,10 +10,12 @@ public class Task : MonoBehaviour
     public string description;
     private string symbol = "/";
 
-    public Text descriptionText;
-    public Text currentamountText;
-    public Text symbolText;
-    public Text requiredamountText;
+    [SerializeField] internal GameObject m_uiObjectRef;
+
+    internal GameObject descriptionText;
+    internal GameObject currentamountText;
+    internal GameObject symbolText;
+    internal GameObject requiredamountText;
 
     // public Animator anim;
    // public GameObject ScratchEffect;
@@ -21,10 +23,15 @@ public class Task : MonoBehaviour
 
     void Start()
     {
-        descriptionText.text = description;
-        currentamountText.text = currentAmount.ToString();
-        requiredamountText.text = requiredAmount.ToString();
-        symbolText.text = symbol;
+        
+        descriptionText = m_uiObjectRef.transform.GetChild(0).gameObject;
+        currentamountText = m_uiObjectRef.transform.GetChild(1).gameObject;
+        symbolText = m_uiObjectRef.transform.GetChild(2).gameObject;
+        requiredamountText = m_uiObjectRef.transform.GetChild(3).gameObject;
+        descriptionText.GetComponent<Text>().text = description;
+        currentamountText.GetComponent<Text>().text = currentAmount.ToString();
+        requiredamountText.GetComponent<Text>().text = requiredAmount.ToString();
+        symbolText.GetComponent<Text>().text = symbol;
         //ScratchEffect.SetActive(false);
     }
 
@@ -45,14 +52,14 @@ public class Task : MonoBehaviour
     public void ItemsCollected()
     {
         currentAmount+=1;
-        currentamountText.text = currentAmount.ToString();
+        currentamountText.GetComponent<Text>().text = currentAmount.ToString();
     }
 
 
     public void ItemsDisposed()
     {
         currentAmount-=1;
-        currentamountText.text = currentAmount.ToString();
+        currentamountText.GetComponent<Text>().text = currentAmount.ToString();
     }
     public void TaskCompleted()
     {
