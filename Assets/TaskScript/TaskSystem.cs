@@ -8,7 +8,6 @@ public class TaskSystem : MonoBehaviour
     public List<Task> tasks = new List<Task>();
 
     public Text descriptionText;
-    public Text rewardText;
     public Text currentamountText;
     public int rewarding;
     public static int taskvalue;
@@ -44,8 +43,6 @@ public class TaskSystem : MonoBehaviour
                 tasks[0].TaskCompleted();
                 taskvalue++;
                 Debug.Log("Task has been completed");
-                rewarding+= tasks[0].reward;
-                tasks[0].reward = rewarding;
                 Debug.Log("You have been rewarded");
                 Debug.Log("You have finished a task");
             }
@@ -96,9 +93,7 @@ public class TaskSystem : MonoBehaviour
             {
                 tasks[1].TaskCompleted();
                 taskvalue++;
-                Debug.Log("Second task has been completed");
-                rewarding += tasks[1].reward;
-                tasks[1].reward = rewarding;
+                Debug.Log("Second task has been completed");             
                 Debug.Log("You have been rewarded");
                 Debug.Log("You have finished the second task");
             }
@@ -115,8 +110,6 @@ public class TaskSystem : MonoBehaviour
                 tasks[2].TaskCompleted();
                 taskvalue++;
                 Debug.Log("Third task has been completed");
-                rewarding += tasks[2].reward;
-                tasks[2].reward = rewarding;
                 Debug.Log("You have been rewarded");
                 Debug.Log("You have finished the third task");
             }
@@ -133,8 +126,6 @@ public class TaskSystem : MonoBehaviour
                 tasks[3].TaskCompleted();
                 taskvalue++;
                 Debug.Log("Fourth task has been completed");
-                rewarding += tasks[3].reward;
-                tasks[3].reward = rewarding;
                 Debug.Log("You have been rewarded");
                 Debug.Log("You have finished the fourth task");
             }
@@ -151,8 +142,6 @@ public class TaskSystem : MonoBehaviour
                 tasks[4].TaskCompleted();
                 taskvalue++;
                 //Debug.Log("Optional event task has been completed");
-                rewarding += tasks[4].reward;
-                tasks[4].reward = rewarding;
                 //Debug.Log("You have been rewarded");
                 //Debug.Log("You have finished the optional event task");
             }
@@ -169,8 +158,6 @@ public class TaskSystem : MonoBehaviour
                 tasks[5].TaskCompleted();
                 taskvalue++;
                 //Debug.Log("Optional event task has been completed");
-                rewarding += tasks[5].reward;
-                tasks[5].reward = rewarding;
                 //Debug.Log("You have been rewarded");
                 //Debug.Log("You have finished the optional event task");
             }
@@ -187,8 +174,6 @@ public class TaskSystem : MonoBehaviour
                 tasks[6].TaskCompleted();
                 taskvalue++;
                 //Debug.Log("Optional event task has been completed");
-                rewarding += tasks[6].reward;
-                tasks[6].reward = rewarding;
                 //Debug.Log("You have been rewarded");
                 //Debug.Log("You have finished the optional event task");
             }

@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 403710654}
   m_IndirectSpecularColor: {r: 0.116557986, g: 0.11891861, b: 0.10062483, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -1518,11 +1518,16 @@ MonoBehaviour:
   m_velocityScale: 1
   m_speed: 5
   m_rotationSpeed: 0.8
+  m_idleInputTime: 0
   m_timeBetweenInputs: 1
-  m_heldObjectContainer: {fileID: 0}
-  m_heldObject: {fileID: 0}
-  velocity: 0
-  fallforce: 0
+  barksound: {fileID: 0}
+  barkvolume: 0
+  pickupsound: {fileID: 0}
+  pickupvolume: 0
+  lightmatchsound: {fileID: 0}
+  lightmatchvolume: 0
+  lightcandlesound: {fileID: 0}
+  lightcandlevolume: 0
 --- !u!4 &495839720969343234
 Transform:
   m_ObjectHideFlags: 0

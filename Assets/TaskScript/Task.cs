@@ -8,24 +8,24 @@ public class Task : MonoBehaviour
 {
   
     public string description;
-    public int reward;
     private string symbol = "/";
 
     public Text descriptionText;
-    public Text rewardText;
     public Text currentamountText;
     public Text symbolText;
     public Text requiredamountText;
 
-    public Animator anim;
+    // public Animator anim;
+   // public GameObject ScratchEffect;
 
 
     void Start()
     {
         descriptionText.text = description;
         currentamountText.text = currentAmount.ToString();
-        symbolText.text = symbol;
         requiredamountText.text = requiredAmount.ToString();
+        symbolText.text = symbol;
+        //ScratchEffect.SetActive(false);
     }
 
     public enum TaskStatus
@@ -62,9 +62,9 @@ public class Task : MonoBehaviour
 
     IEnumerator Checkmark()
     {
-        anim.SetBool("isChecked", true);
+        //anim.SetBool("isChecked", true);
+     //   ScratchEffect.SetActive(true);
         yield return new WaitForSeconds(3f);
-        rewardText.text = reward.ToString();
       //  Destroy(this);
     }
 }
