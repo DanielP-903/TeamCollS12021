@@ -42,7 +42,7 @@ public class TO_Pillow : TaskObject
         m_particleSystem.Clear();
         m_particleSystem.Play();
         Debug.Log("Fluffed pillow!");
-        m_taskSystem.Method8();
+        m_taskSystem.Complete(7);
         //m_dayNightCycleRef.time = 2.0f;
     }
 }

@@ -52,6 +52,6 @@ public class TO_Seagulls : TaskObject
     public override void Complete()
     {
         m_active = false;
-        m_taskSystem.Method5();
+        m_taskSystem.Complete(4);
     }
 }
