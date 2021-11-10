@@ -25,6 +25,7 @@ public class TaskTabButton : MonoBehaviour
         anim2 = levelpanel2.GetComponent<Animator>();
         anim3 = levelpanel3.GetComponent<Animator>();
         buttonanim = mainTabbutton.GetComponent<Animator>();
+        panelvalue = 1;
     }
 
     public void SelectTab()
