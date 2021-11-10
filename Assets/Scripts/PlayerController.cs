@@ -260,6 +260,13 @@ public class PlayerController : MonoBehaviour
                 other.GetComponent<TO_EndSwitch>().Complete();
 
             }
+
+            if (other.tag == "Pillow" && m_heldObject == null)
+            {
+                Debug.Log("Fluff the pillow");
+                other.GetComponent<TO_Pillow>().Complete();
+
+            }
             if (other.GetComponent<TO_Basic>())
             {
                 if (m_heldObject == null && !other.GetComponent<TO_Basic>().m_inDestination)

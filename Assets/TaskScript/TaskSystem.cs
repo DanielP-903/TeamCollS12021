@@ -180,4 +180,20 @@ public class TaskSystem : MonoBehaviour
             }
         }
     }
+
+    public void Method8()
+    {
+        if (tasks[7].CurrentStatus == Task.TaskStatus.Open)
+        {
+            tasks[7].ItemsCollected();
+            if (tasks[7].isReached())
+            {
+                tasks[7].TaskCompleted();
+                taskvalue++;
+                //Debug.Log("Optional event task has been completed");
+                //Debug.Log("You have been rewarded");
+                //Debug.Log("You have finished the optional event task");
+            }
+        }
+    }
 }
