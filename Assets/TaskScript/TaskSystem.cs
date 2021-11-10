@@ -85,114 +85,15 @@ public class TaskSystem : MonoBehaviour
         }
     }
 
-    public void Method2()
+    public void Complete(int no)
     {
-        if(tasks[1].CurrentStatus==Task.TaskStatus.Open)
+        if(tasks[no].CurrentStatus==Task.TaskStatus.Open)
         {
-            tasks[1].ItemsCollected();
-            if(tasks[1].isReached())
+            tasks[no].ItemsCollected();
+            if(tasks[no].isReached())
             {
-                tasks[1].TaskCompleted();
+                tasks[no].TaskCompleted();
                 taskvalue++;
-                Debug.Log("Second task has been completed");             
-                Debug.Log("You have been rewarded");
-                Debug.Log("You have finished the second task");
-            }
-        }
-    }
-
-    public void Method3()
-    {
-        if (tasks[2].CurrentStatus == Task.TaskStatus.Open)
-        {
-            tasks[2].ItemsCollected();
-            if (tasks[2].isReached())
-            {
-                tasks[2].TaskCompleted();
-                taskvalue++;
-                Debug.Log("Third task has been completed");
-                Debug.Log("You have been rewarded");
-                Debug.Log("You have finished the third task");
-            }
-        }
-    }
-
-    public void Method4()
-    {
-        if (tasks[3].CurrentStatus == Task.TaskStatus.Open)
-        {
-            tasks[3].ItemsCollected();
-            if (tasks[3].isReached())
-            {
-                tasks[3].TaskCompleted();
-                taskvalue++;
-                Debug.Log("Fourth task has been completed");
-                Debug.Log("You have been rewarded");
-                Debug.Log("You have finished the fourth task");
-            }
-        }
-    }
-    
-    public void Method5()
-    {
-        if (tasks[4].CurrentStatus == Task.TaskStatus.Open)
-        {
-            tasks[4].ItemsCollected();
-            if (tasks[4].isReached())
-            {
-                tasks[4].TaskCompleted();
-                taskvalue++;
-                //Debug.Log("Optional event task has been completed");
-                //Debug.Log("You have been rewarded");
-                //Debug.Log("You have finished the optional event task");
-            }
-        }
-    }
-    
-    public void Method6()
-    {
-        if (tasks[5].CurrentStatus == Task.TaskStatus.Open)
-        {
-            tasks[5].ItemsCollected();
-            if (tasks[5].isReached())
-            {
-                tasks[5].TaskCompleted();
-                taskvalue++;
-                //Debug.Log("Optional event task has been completed");
-                //Debug.Log("You have been rewarded");
-                //Debug.Log("You have finished the optional event task");
-            }
-        }
-    }
-
-    public void Method7()
-    {
-        if (tasks[6].CurrentStatus == Task.TaskStatus.Open)
-        {
-            tasks[6].ItemsCollected();
-            if (tasks[6].isReached())
-            {
-                tasks[6].TaskCompleted();
-                taskvalue++;
-                //Debug.Log("Optional event task has been completed");
-                //Debug.Log("You have been rewarded");
-                //Debug.Log("You have finished the optional event task");
-            }
-        }
-    }
-
-    public void Method8()
-    {
-        if (tasks[7].CurrentStatus == Task.TaskStatus.Open)
-        {
-            tasks[7].ItemsCollected();
-            if (tasks[7].isReached())
-            {
-                tasks[7].TaskCompleted();
-                taskvalue++;
-                //Debug.Log("Optional event task has been completed");
-                //Debug.Log("You have been rewarded");
-                //Debug.Log("You have finished the optional event task");
             }
         }
     }

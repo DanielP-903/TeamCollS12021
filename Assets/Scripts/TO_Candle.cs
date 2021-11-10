@@ -43,6 +43,6 @@ public class TO_Candle : TaskObject
     public override void Complete()
     {
         m_active = false;
-        m_taskSystem.Method6();
+        m_taskSystem.Complete(5);
     }
 }

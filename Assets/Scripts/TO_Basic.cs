@@ -94,17 +94,17 @@ public class TO_Basic : TaskObject
 
                     case (Type.Book):
                         {
-                            m_taskSystem.Method();
+                            m_taskSystem.Complete(0);
                             break;
                         };
                     case (Type.Plate):
                         {
-                            m_taskSystem.Method2();
+                            m_taskSystem.Complete(1);
                             break;
                         };
                     case (Type.Toy):
                         {
-                            m_taskSystem.Method3();
+                            m_taskSystem.Complete(2);
                             break;
                         };
                     case (Type.Soup):
@@ -113,7 +113,7 @@ public class TO_Basic : TaskObject
                         };
                     case (Type.Coat):
                         {
-                            m_taskSystem.Method4();
+                            m_taskSystem.Complete(3);
                             break;
                         };
                     default: break;

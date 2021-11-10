@@ -31,7 +31,7 @@ public class TO_AnswerDoor : TaskObject
     public override void Complete()
     {
         m_active = false;
-        m_taskSystem.Method7();
+        m_taskSystem.Complete(6);
     }
 
     private void RandomiseDoorEvent()

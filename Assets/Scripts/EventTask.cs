@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EventTask : Task
 {
@@ -34,10 +35,10 @@ public class EventTask : Task
         m_codeTimeFrame.x = (m_timeFrame.x / m_dayNightCycleRef.fullDayLength) * 2;
         m_codeTimeFrame.y = (m_timeFrame.y / m_dayNightCycleRef.fullDayLength) * 2;
 
-        descriptionText.text = description;
-        currentamountText.text = currentAmount.ToString();
+        descriptionText.text = m_uiObjectRef.transform.GetChild(0).GetComponent<Text>().text;
+        currentamountText.text = m_uiObjectRef.transform.GetChild(1).GetComponent<Text>().text;
         symbolText.text = "/";
-        requiredamountText.text = requiredAmount.ToString();
+        requiredamountText.text = m_uiObjectRef.transform.GetChild(3).GetComponent<Text>().text;
 
 
     }
