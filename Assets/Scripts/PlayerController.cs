@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
             // AUDIO: Footstep audio?
         }
 
-
+        
         m_animator.SetBool("IsWalking", m_moveForward || m_moveBackward || m_rotLeft || m_rotRight);
 
 
