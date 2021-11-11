@@ -17,12 +17,15 @@ public class Task : MonoBehaviour
     internal GameObject symbolText;
     internal GameObject requiredamountText;
 
-    public List<Animator> anim = new List<Animator>();
+    internal List<GameObject> anim = new List<GameObject>();
 
     void Awake()
     {
-        anim[0].keepAnimatorControllerStateOnDisable = true;
-        anim[1].keepAnimatorControllerStateOnDisable = true;
+        GameObject objectRef = m_uiObjectRef.transform.GetChild(4).gameObject;
+        anim.Add(objectRef.transform.GetChild(0).gameObject);
+        anim.Add(objectRef.transform.GetChild(1).gameObject);
+        anim[0].GetComponent<Animator>().keepAnimatorControllerStateOnDisable = true;
+        anim[1].GetComponent<Animator>().keepAnimatorControllerStateOnDisable = true;
     }
     void Start()
     {
@@ -72,9 +75,9 @@ public class Task : MonoBehaviour
 
     IEnumerator Checkmark()
     {
-        anim[0].SetBool("Scratch", true);
+        anim[0].GetComponent<Animator>().SetBool("Scratch", true);
         yield return new WaitForSeconds(1f);
-        anim[1].SetBool("Scratch", true);
+        anim[1].GetComponent<Animator>().SetBool("Scratch", true);
         yield return new WaitForSeconds(3f);
       //  Destroy(this);
     }

@@ -143,6 +143,6 @@ public class DayAndNightCycle : MonoBehaviour
 
     public void QuitToMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(0);
     }
 }

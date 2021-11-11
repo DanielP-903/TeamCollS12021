@@ -25,7 +25,7 @@ public class TO_Basic : TaskObject
                 Debug.LogWarning("No Destination object assigned!");
             }
         }
-
+        m_taskSystem = GameObject.FindGameObjectWithTag("TaskSystem").GetComponent<TaskSystem>();
         LoadAssets();
     }
 

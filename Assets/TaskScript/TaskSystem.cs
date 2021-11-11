@@ -7,9 +7,9 @@ public class TaskSystem : MonoBehaviour
 {
     public List<Task> tasks = new List<Task>();
 
-    public Text descriptionText;
-    public Text currentamountText;
-    public int rewarding;
+    //public Text descriptionText;
+    //public Text currentamountText;
+    //public int rewarding;
     public static int taskvalue;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,9 @@ public class TaskSystem : MonoBehaviour
         tasks[5].CurrentStatus = Task.TaskStatus.Open;
         tasks[6].CurrentStatus = Task.TaskStatus.Open;
         tasks[7].CurrentStatus = Task.TaskStatus.Open;
-
+        tasks[8].CurrentStatus = Task.TaskStatus.Open;
+        tasks[9].CurrentStatus = Task.TaskStatus.Open;
+        tasks[10].CurrentStatus = Task.TaskStatus.Open;
     }
 
     // Update is called once per frame
