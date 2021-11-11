@@ -17,10 +17,13 @@ public class Task : MonoBehaviour
     internal GameObject symbolText;
     internal GameObject requiredamountText;
 
-    // public Animator anim;
-   // public GameObject ScratchEffect;
+    public List<Animator> anim = new List<Animator>();
 
-
+    void Awake()
+    {
+        anim[0].keepAnimatorControllerStateOnDisable = true;
+        anim[1].keepAnimatorControllerStateOnDisable = true;
+    }
     void Start()
     {
         
@@ -69,8 +72,9 @@ public class Task : MonoBehaviour
 
     IEnumerator Checkmark()
     {
-        //anim.SetBool("isChecked", true);
-     //   ScratchEffect.SetActive(true);
+        anim[0].SetBool("Scratch", true);
+        yield return new WaitForSeconds(1f);
+        anim[1].SetBool("Scratch", true);
         yield return new WaitForSeconds(3f);
       //  Destroy(this);
     }

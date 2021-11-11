@@ -14,12 +14,7 @@ public class SoundManager : MonoBehaviour
 	[Range(0, 1)]
 	public float musicsGameVolume = 0.5f;
 
-	public AudioClip track2;
-	[Range(0, 1)]
-	public float trackVolume2 = 0.5f;
-	public AudioClip track3;
-	[Range(0, 1)]
-	public float trackVolume3 = 0.5f;
+
 
 	[Tooltip("Place the sound in this to call it in another script by: SoundManager.PlaySfx(soundname);")]
 

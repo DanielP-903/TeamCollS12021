@@ -42,6 +42,7 @@ public class TaskTabButton : MonoBehaviour
         levelpanel.SetActive(false);
         levelpanel2.SetActive(true);
         levelpanel3.SetActive(false);
+     
     }
 
     public void SelectTab3()

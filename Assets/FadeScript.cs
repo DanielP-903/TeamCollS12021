@@ -17,6 +17,7 @@ public class FadeScript : MonoBehaviour
 
     private IEnumerator Fade()
     {
+        fadescreen.SetActive(true);
         yield return new WaitForSeconds(1f);
         pausecontroller.SetActive(false);
         anim.SetBool("isfadeout", true);
