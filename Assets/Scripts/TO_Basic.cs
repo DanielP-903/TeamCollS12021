@@ -16,6 +16,11 @@ public class TO_Basic : TaskObject
     [SerializeField] private float m_offsetX = 0.0f;
     [SerializeField] private Vector3 m_offsetRotation = new Vector3(0, 90.0f, 0);
 
+    void Awake()
+    {
+        m_taskSystem = GameObject.FindGameObjectWithTag("TaskSystem").GetComponent<TaskSystem>();
+    }
+
     void Start()
     {
         if (m_requiresDestination)
@@ -25,7 +30,6 @@ public class TO_Basic : TaskObject
                 Debug.LogWarning("No Destination object assigned!");
             }
         }
-        m_taskSystem = GameObject.FindGameObjectWithTag("TaskSystem").GetComponent<TaskSystem>();
         LoadAssets();
     }
 
@@ -109,6 +113,7 @@ public class TO_Basic : TaskObject
                         };
                     case (Type.Soup):
                         {
+                            m_taskSystem.Complete(11);
                             break;
                         };
                     case (Type.Coat):

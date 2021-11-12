@@ -28,6 +28,7 @@ public class TaskSystem : MonoBehaviour
         tasks[8].CurrentStatus = Task.TaskStatus.Open;
         tasks[9].CurrentStatus = Task.TaskStatus.Open;
         tasks[10].CurrentStatus = Task.TaskStatus.Open;
+        tasks[11].CurrentStatus = Task.TaskStatus.Open;
     }
 
     // Update is called once per frame
