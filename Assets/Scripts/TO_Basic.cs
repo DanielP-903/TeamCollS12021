@@ -121,6 +121,11 @@ public class TO_Basic : TaskObject
                             m_taskSystem.Complete(3);
                             break;
                         };
+                    case (Type.Clothes):
+                        {
+                            m_taskSystem.Complete(12);
+                            break;
+                        };
                     default: break;
                 }
             }

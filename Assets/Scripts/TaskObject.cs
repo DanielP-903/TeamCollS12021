@@ -11,7 +11,7 @@ public class TaskObject : MonoBehaviour
 
     public enum Type
     {
-        Default, Book, Plate, Toy, Soup, Coat, Other
+        Default, Book, Plate, Toy, Soup, Coat, Clothes, Other
     };
 
     private GameObject m_playerRef;
