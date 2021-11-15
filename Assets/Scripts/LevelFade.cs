@@ -92,10 +92,13 @@ public class LevelFade : MonoBehaviour
 
                     foreach (var gameObject in gameObjects)
                     {
-                        if (!gameObject.GetComponent<TaskObject>().IsPickedUp)
+                        if (gameObject)
                         {
-                            gameObject.GetComponent<MeshRenderer>().enabled = gameObject.transform.position.y < m_level2Threshold;
-                        }                      
+                            if (!gameObject.GetComponent<TaskObject>().IsPickedUp)
+                            {
+                                gameObject.GetComponent<MeshRenderer>().enabled = gameObject.transform.position.y < m_level2Threshold;
+                            }
+                        }     
                     }
                     break; 
                 };
@@ -111,9 +114,12 @@ public class LevelFade : MonoBehaviour
                     }
                     foreach (var gameObject in gameObjects)
                     {
-                        if (!gameObject.GetComponent<TaskObject>().IsPickedUp)
+                        if (gameObject)
                         {
-                            gameObject.GetComponent<MeshRenderer>().enabled = gameObject.transform.position.y < m_level3Threshold;
+                            if (!gameObject.GetComponent<TaskObject>().IsPickedUp)
+                            {
+                                gameObject.GetComponent<MeshRenderer>().enabled = gameObject.transform.position.y < m_level3Threshold;
+                            }
                         }
                     }
                     break;
@@ -126,9 +132,12 @@ public class LevelFade : MonoBehaviour
                     }
                     foreach (var gameObject in gameObjects)
                     {
-                        if (!gameObject.GetComponent<TaskObject>().IsPickedUp)
+                        if (gameObject)
                         {
-                            gameObject.GetComponent<MeshRenderer>().enabled = true;
+                            if (!gameObject.GetComponent<TaskObject>().IsPickedUp)
+                            {
+                                gameObject.GetComponent<MeshRenderer>().enabled = true;
+                            }
                         }
                     }
                     break;
