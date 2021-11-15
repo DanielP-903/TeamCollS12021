@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TO_Pillow : TaskObject
+public class TO_Radio : TaskObject
 {
     private DayAndNightCycle m_dayNightCycleRef;
     private ParticleSystem m_particleSystem;
@@ -33,16 +33,31 @@ public class TO_Pillow : TaskObject
         GetComponent<BoxCollider>().enabled = m_active;
         if (m_active)
         {
+
+            if(m_levelFadeRef.GetComponent<LevelFade>().currentLevel == 2)
+            {
+                if (m_particleSystem.isPlaying == false)
+                {
+                    m_particleSystem.Clear();
+                    m_particleSystem.Play();
+                }
+            }
+            else
+            {
+                if (m_particleSystem.isPlaying == true)
+                {
+                    m_particleSystem.Stop();
+                }
+            }
         }
     }
 
     public override void Complete()
     {
         m_active = false;
-        m_particleSystem.Clear();
-        m_particleSystem.Play();
-        Debug.Log("Fluffed pillow!");
-        m_taskSystem.Complete(16);
+        m_particleSystem.Stop();
+        Debug.Log("Checked Radio!");
+        m_taskSystem.Complete(13);
         //m_dayNightCycleRef.time = 2.0f;
     }
 }

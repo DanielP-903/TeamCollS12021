@@ -11,12 +11,12 @@ public class TaskObject : MonoBehaviour
 
     public enum Type
     {
-        Default, Book, Plate, Toy, Soup, Coat, Clothes, Other
+        Default, Book, Plate, Toy, Soup, Coat, Clothes, Ledger, Wood, Tape, Newspaper, Package, Other
     };
 
     private GameObject m_playerRef;
     internal PlayerController m_playerController;
-    private GameObject m_levelFadeRef;
+    internal GameObject m_levelFadeRef;
     private LevelFade m_levelFade;
     internal TaskSystem m_taskSystem;
 

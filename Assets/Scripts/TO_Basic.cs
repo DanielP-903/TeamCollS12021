@@ -111,11 +111,6 @@ public class TO_Basic : TaskObject
                             m_taskSystem.Complete(2);
                             break;
                         };
-                    case (Type.Soup):
-                        {
-                            m_taskSystem.Complete(11);
-                            break;
-                        };
                     case (Type.Coat):
                         {
                             m_taskSystem.Complete(3);
@@ -123,9 +118,25 @@ public class TO_Basic : TaskObject
                         };
                     case (Type.Clothes):
                         {
-                            m_taskSystem.Complete(12);
+                            m_taskSystem.Complete(7);
                             break;
                         };
+                    case (Type.Wood):
+                        {
+                            m_taskSystem.Complete(9);
+                            break;
+                        };
+                    case (Type.Ledger):
+                        {
+                            m_taskSystem.Complete(10);
+                            break;
+                        };
+                    case (Type.Soup):
+                        {
+                            m_taskSystem.Complete(11);
+                            break;
+                        };
+
                     default: break;
                 }
             }

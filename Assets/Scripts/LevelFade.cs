@@ -11,7 +11,7 @@ public class LevelFade : MonoBehaviour
     [SerializeField] internal GameObject m_level3;
     private GameObject m_player;
 
-    [SerializeField] private int currentLevel = 0;
+    [SerializeField] internal int currentLevel = 0;
     private int previousCurrentLevel = 0;
     GameObject[] gameObjects;
     // Start is called before the first frame update
