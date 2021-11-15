@@ -267,9 +267,15 @@ public class PlayerController : MonoBehaviour
                 other.GetComponent<TO_Pillow>().Complete();
 
             }
+            if (other.tag == "Radio" && m_heldObject == null)
+            {
+                Debug.Log("Check the radio");
+                other.GetComponent<TO_Radio>().Complete();
+
+            }
             if (other.GetComponent<TO_Basic>())
             {
-                if (m_heldObject == null && !other.GetComponent<TO_Basic>().m_inDestination)
+                if (m_heldObject == null && !other.GetComponent<TO_Basic>().isplaced)
                 {
                     other.GetComponent<TaskObject>().IsPickedUp = true;
                     m_heldObject = other.GetComponent<TaskObject>();
