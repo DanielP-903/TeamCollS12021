@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &730097195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 730097196}
+  - component: {fileID: 730097197}
+  m_Layer: 0
+  m_Name: Tape Trigger
+  m_TagString: Radio_Tape
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &730097196
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730097195}
+  m_LocalRotation: {x: -0, y: 0.70795083, z: -0, w: 0.7062618}
+  m_LocalPosition: {x: 0.13072452, y: 0.22000122, z: 0.014688253}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 3116875452473482420}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 90.137, z: 0}
+--- !u!65 &730097197
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730097195}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &96464468188808562
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,7 +403,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2308812898893383182}
-  m_LocalRotation: {x: -0, y: -0.83260673, z: -0, w: 0.55386466}
+  m_LocalRotation: {x: 0, y: -0.8326072, z: 0, w: 0.553864}
   m_LocalPosition: {x: -29.759235, y: 12.406169, z: 104.82388}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -387,9 +431,10 @@ Transform:
   - {fileID: 333671740123465328}
   - {fileID: 5126563810649283237}
   - {fileID: 3227925109137318024}
+  - {fileID: 730097196}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -92.332, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -112.735, z: 0}
 --- !u!1 &2477465551500490447
 GameObject:
   m_ObjectHideFlags: 0
