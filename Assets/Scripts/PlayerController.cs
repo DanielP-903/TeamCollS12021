@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
             if (!m_moveTutorialComplete)
             {
                 m_moveTutorialComplete = true;
-                Debug.Log("Tutorial complete!");
+                //Debug.Log("Tutorial complete!");
                 if (m_particleSystem.isPlaying)
                 {
                     m_particleSystem.Stop();
@@ -176,7 +176,7 @@ public class PlayerController : MonoBehaviour
             if (!m_moveTutorialComplete)
             {
                 m_moveTutorialComplete = true;
-                Debug.Log("Tutorial complete!");
+                //Debug.Log("Tutorial complete!");
                 if (m_particleSystem.isPlaying)
                 {
                     m_particleSystem.Stop();
@@ -337,7 +337,26 @@ public class PlayerController : MonoBehaviour
             {
                 if (m_heldObject.gameObject.GetComponent<TO_Tape>().m_day == currentDay)
                 {
-                    other.GetComponent<TO_Tape>().Complete();
+                    Debug.Log("YAY! Right day :)");
+                    m_heldObject.gameObject.GetComponent<TO_Tape>().Complete();
+                    m_heldObject.gameObject.SetActive(false);
+                    m_heldObject.IsPickedUp = false;
+                    m_heldObjectContainer.GetComponent<Rigidbody>().velocity = (m_characterController.velocity + (Vector3.up * 2)) * m_velocityScale;
+                    m_heldObject = null;
+                    m_heldObjectContainer = null;
+                    GameObject[] tapes = GameObject.FindGameObjectsWithTag("Tape");
+                    
+                    for (int i = 0; i < tapes.Length; i++)
+                    {
+                        if(tapes[i].gameObject.activeInHierarchy == true)
+                        {
+                            tapes[i].gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                            tapes[i].gameObject.GetComponent<BoxCollider>().enabled = false;
+                        }
+                    }
+
+
+                    GetComponent<BoxCollider>().enabled = true;
                 }
                 else
                 {
