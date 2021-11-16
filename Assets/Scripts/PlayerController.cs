@@ -5,6 +5,12 @@ using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.InputSystem;
 
+
+public enum Day
+{
+    Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+};
+
 public class PlayerController : MonoBehaviour
 {
     private bool m_moveForward = false;
@@ -13,6 +19,9 @@ public class PlayerController : MonoBehaviour
     private bool m_rotRight = false;
     private bool m_interact = false;
     private float m_inputTimer = 0.0f;
+
+    [SerializeField] internal Day currentDay;
+
 
     [Header("Player Speed Values")]
     [Tooltip("Velocity scale of thrown objects")]
@@ -95,7 +104,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!m_moveTutorialComplete)
         {
-            Debug.Log("Press WASD to move :)");
+            //Debug.Log("Press WASD to move :)");
             if (!m_particleSystem.isPlaying)
             {
                 m_particleSystem.Play();
@@ -323,6 +332,17 @@ public class PlayerController : MonoBehaviour
                 // AUDIO: Light candle
                 SoundManager.PlaySfx(lightcandlesound, lightcandlevolume);
 
+            }
+            else if (other.tag == "Radio_Tape" && m_heldObject.gameObject.tag == "Tape")
+            {
+                if (m_heldObject.gameObject.GetComponent<TO_Tape>().m_day == currentDay)
+                {
+                    other.GetComponent<TO_Tape>().Complete();
+                }
+                else
+                {
+                    Debug.Log("Oops! Not the right day :(");
+                }
             }
         }
     }

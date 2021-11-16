@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TO_Basic : TaskObject
 {
+
+
     [SerializeField] bool m_requiresDestination = true;
     [SerializeField] internal GameObject m_destination;
     public bool m_inDestination = false;
@@ -137,11 +139,11 @@ public class TO_Basic : TaskObject
                             m_taskSystem.Complete(11);
                             break;
                         };
-                    case (Type.Tape):
-                        {
-                            m_taskSystem.Complete(14);
-                            break;
-                        };
+                    //case (Type.Tape):
+                    //    {
+                    //        m_taskSystem.Complete(14);
+                    //        break;
+                    //    };
 
                     default: break;
                 }
