@@ -54,7 +54,8 @@ public class TO_Basic : TaskObject
     {
         if (IsPickedUp)
         {
-            transform.position = m_playerController.transform.position + (m_offsetZ * m_playerController.transform.forward) + (m_offsetY * m_playerController.transform.up) + (m_offsetX * m_playerController.transform.right);
+            //transform.position = m_playerController.transform.position + (m_offsetZ * m_playerController.transform.forward) + (m_offsetY * m_playerController.transform.up) + (m_offsetX * m_playerController.transform.right);
+            transform.position = m_neckReference.transform.position + ((m_offsetZ/2) * m_playerController.transform.forward) + (m_offsetY/5 * m_playerController.transform.up);
             transform.rotation = m_playerController.transform.rotation * Quaternion.Euler(m_offsetRotation);
             GetComponent<Rigidbody>().isKinematic = true;
             if (TryGetComponent(out BoxCollider box))
