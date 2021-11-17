@@ -29,7 +29,7 @@ public class TO_Basic : TaskObject
         {
             if (!m_destination)
             {
-                Debug.LogWarning("No Destination object assigned!");
+                Debug.LogWarning("No Destination object assigned on " + m_type.ToString());
             }
         }
         LoadAssets();
