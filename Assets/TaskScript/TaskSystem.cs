@@ -17,6 +17,8 @@ public class TaskSystem : MonoBehaviour
         // descriptionText.text = tasks[0].description;
         //   rewardText.text = tasks[0].reward.ToString();
         //  currentamountText.text = tasks[0].currentAmount.ToString();
+        PlayerPrefs.SetInt("Score", taskvalue);
+        PlayerPrefs.Save();
         for (int i = 0; i < tasks.Count; i++)
         {
             tasks[i].CurrentStatus = Task.TaskStatus.Open;

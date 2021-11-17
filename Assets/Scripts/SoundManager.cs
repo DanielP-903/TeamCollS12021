@@ -84,17 +84,34 @@ public class SoundManager : MonoBehaviour
 				{
 					musicAudio.clip = GetNextClip();
 					musicAudio.Play();
+				
 				}
 			}
+			if(daynight.time>0.45f && daynight.time<0.5f)
+            {
+				StartCoroutine(CurrentSong());
+			}
+			if(daynight.time>0.5f && daynight.time<0.55f)
+            {
+				StartCoroutine(NextSong());
+            }
 			if (daynight.time > 0.5f)
 			{
 				if (!istrack2)
 				{
-					istrack2 = true;
+					istrack2 = true;									
 					musicAudio.clip = GetNextClip();
 					musicAudio.Play();
 				}
 			}
+			if(daynight.time>0.95f && daynight.time<1f)
+            {
+				StartCoroutine(CurrentSong());
+            }
+			if(daynight.time>1f && daynight.time<1.5f)
+            {
+				StartCoroutine(NextSong());
+            }
 			if (daynight.time > 1f)
 			{
 				if (!istrack3)
@@ -190,4 +207,35 @@ public class SoundManager : MonoBehaviour
 		else
 			audioOut.PlayOneShot(clip, SoundVolume * volume);
 	}
+
+	IEnumerator CurrentSong()
+    {
+		float currentTime = 0;
+		float start = musicAudio.volume;
+		float duration = 3f;
+		float target = 0f;
+		while (currentTime < duration)
+		{
+			currentTime += Time.deltaTime;
+			musicAudio.volume = Mathf.Lerp(start, target, currentTime / duration);
+			yield return null;
+		}
+		yield break;
+	}
+
+	IEnumerator NextSong()
+    {
+	float current = 0;
+	float nextsongstart = musicAudio.volume;
+	float songduration = 5f;
+	float targetvolume = 0.3f;
+	while (current < songduration)
+	{
+		current += Time.deltaTime;
+		musicAudio.volume = Mathf.Lerp(nextsongstart, targetvolume, current / songduration);
+		Debug.Log("still running");
+		yield return null;
+	}
+	yield break;
+}
 }

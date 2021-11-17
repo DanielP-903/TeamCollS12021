@@ -6,31 +6,27 @@ public class TestSound : MonoBehaviour
 {
 
     public AudioClip sound;
-    [Range(0, 1)]
-    public float soundvolume;
-
-    public AudioClip sound2;
-    [Range(0, 1)]
-    public float soundvolume2;
-    public int value;
+    public AudioSource musicaudio;
     // Start is called before the first frame update
     void Start()
     {
-        
+        musicaudio.Play();
+        StartCoroutine(StartFade());
     }
 
-    private void OnTriggerEnter(Collider other)
+    IEnumerator StartFade()
     {
-        if(other.gameObject.tag=="Player")
+        float currentTime = 0;
+        float start = musicaudio.volume;
+        float duration = 3f;
+        float targetvolume = 0f;
+        while (currentTime < duration)
         {
-            if (value == 1)
-            {
-                SoundManager.PlaySfx(sound, soundvolume);
-            }
-            if(value==2)
-            {
-                SoundManager.PlaySfx(sound2, soundvolume2);
-            }
+            currentTime += Time.deltaTime;
+            musicaudio.volume = Mathf.Lerp(start, targetvolume, currentTime / duration);
+            Debug.Log("still running");
+            yield return null;
         }
+        yield break;
     }
 }

@@ -62,7 +62,7 @@ public class DayAndNightCycle : MonoBehaviour
                 isGameOver = true;
                 gameoverPanel.SetActive(true);
                 numberoftasks.text = TaskSystem.taskvalue.ToString();
-                Time.timeScale = 0f;
+              //  Time.timeScale = 0f;
                 
             }
             if(time<=2.0f)
