@@ -139,6 +139,11 @@ public class TO_Basic : TaskObject
                             m_taskSystem.Complete(11);
                             break;
                         };
+                    case (Type.Newspaper):
+                        {
+                            m_taskSystem.Complete(17);
+                            break;
+                        };
                     //case (Type.Tape):
                     //    {
                     //        m_taskSystem.Complete(14);
