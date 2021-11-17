@@ -4454,6 +4454,10 @@ PrefabInstance:
       propertyPath: lightcandlevolume
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4417580382073902205, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e5997477ef64fa41b59738f86098d8b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
 --- !u!114 &1498580231 stripped
@@ -25558,7 +25562,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 15.1
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
