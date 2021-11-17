@@ -25,8 +25,7 @@ public class GameFinish : MonoBehaviour
         {
             StartCoroutine(FadeOut());
             anim = fadescreen.GetComponent<Animator>();
-            score = PlayerPrefs.GetInt("Score", TaskSystem.taskvalue);
-            FinalScoreText.text = score.ToString();
+            FinalScoreText.text = PlayerPrefs.GetInt("Score", TaskSystem.taskvalue).ToString();
         }
 
 
@@ -48,7 +47,7 @@ public class GameFinish : MonoBehaviour
         fadescreen.SetActive(true);
         yield return new WaitForSeconds(1f);
         anim.SetBool("isfadeout", true);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         fadescreen.SetActive(false);            // fade remove
     }
 
@@ -60,11 +59,11 @@ public class GameFinish : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Main");
     }
 
     public void QuitToMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Menu");
     }
 }

@@ -17,6 +17,7 @@ public class TaskSystem : MonoBehaviour
         // descriptionText.text = tasks[0].description;
         //   rewardText.text = tasks[0].reward.ToString();
         //  currentamountText.text = tasks[0].currentAmount.ToString();
+        taskvalue = 0;
         PlayerPrefs.SetInt("Score", taskvalue);
         PlayerPrefs.Save();
         for (int i = 0; i < tasks.Count; i++)
@@ -86,6 +87,7 @@ public class TaskSystem : MonoBehaviour
             {
                 tasks[no].TaskCompleted();
                 taskvalue++;
+                PlayerPrefs.SetInt("Score", taskvalue);
             }
         }
     }
