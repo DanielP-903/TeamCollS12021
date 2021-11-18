@@ -5064,6 +5064,22 @@ PrefabInstance:
       propertyPath: lightcandlevolume
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3493741805182467269, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
+      propertyPath: m_idleAnimations.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493741805182467269, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
+      propertyPath: m_idleAnimations.Array.data[0]
+      value: 
+      objectReference: {fileID: -6893158291820612202, guid: ff354e6f9eaddef429c6611f280362dc, type: 3}
+    - target: {fileID: 3493741805182467269, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
+      propertyPath: m_idleAnimations.Array.data[1]
+      value: 
+      objectReference: {fileID: 3328158828640343348, guid: df65f261d6e4d2d4cbf53c1fef7508f9, type: 3}
+    - target: {fileID: 3493741805182467269, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
+      propertyPath: m_idleAnimations.Array.data[2]
+      value: 
+      objectReference: {fileID: -4868618180841509619, guid: 4941ea74f9bef434aaaebe291f76a104, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
 --- !u!114 &1498580231 stripped
@@ -9875,7 +9891,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 239.73901, y: -6.6598816}
+  m_AnchoredPosition: {x: 239.73901, y: -6.659912}
   m_SizeDelta: {x: -481.3961, y: -44.7216}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &539102591255102356

@@ -11,6 +11,11 @@ public enum Day
     Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
 };
 
+public enum IdleParams
+{
+    IsSitting, IsSneezing, IsLooking
+};
+
 public class PlayerController : MonoBehaviour
 {
     private bool m_moveForward = false;
@@ -19,9 +24,9 @@ public class PlayerController : MonoBehaviour
     private bool m_rotRight = false;
     private bool m_interact = false;
     private float m_inputTimer = 0.0f;
-
+    protected AnimatorOverrideController animatorOverrideController;
     [SerializeField] internal Day currentDay;
-
+    private IdleParams m_idleParams = IdleParams.IsSitting;
 
     [Header("Player Speed Values")]
     [Tooltip("Velocity scale of thrown objects")]
@@ -32,9 +37,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float m_rotationSpeed;
 
     [Header("Player Animation")]
-    [Tooltip("How long in seconds until Bonnie sits down from being idle")]
+    [Tooltip("How long in seconds until Bonnie goes idle")]
     [SerializeField] private float m_idleInputTime;
-
+    [Tooltip("Idle animation clip list")]
+    [SerializeField] private List<AnimationClip> m_idleAnimations;
     //[Header("Tutorial")]
     //[Tooltip("How long in seconds until Bonnie sits down from being idle")]
     private bool m_moveTutorialComplete = false;
@@ -56,6 +62,7 @@ public class PlayerController : MonoBehaviour
     private bool m_hasReceivedInput = false;
     private float m_noInputTimer = 0.0f;
     private float m_sitWaitTimer = 0.0f;
+    private float m_sneezeTimer = 1.0f;
     [Header("Sound Effects")]
     public AudioClip barksound;
     public float barkvolume;
@@ -68,6 +75,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        
+
         if (transform.parent.gameObject.TryGetComponent(out CharacterController charController))
         {
             m_characterController = charController;
@@ -97,6 +106,9 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("ERROR: Particle System component not found!");
             Debug.DebugBreak();
         }
+        
+        animatorOverrideController = new AnimatorOverrideController(m_animator.runtimeAnimatorController);
+        m_animator.runtimeAnimatorController = animatorOverrideController;
     }
 
     // Update is called once per frame
@@ -192,7 +204,7 @@ public class PlayerController : MonoBehaviour
             if (m_noInputTimer <= 0.0f)
             {
                 m_noInputTimer = 0.0f;
-                m_animator.SetBool("IsSitting", true);
+                m_animator.SetBool(m_idleParams.ToString(), true);
                 m_sitWaitTimer -= Time.deltaTime;
                 if (m_sitWaitTimer <= 0.0f)
                 {
@@ -203,16 +215,65 @@ public class PlayerController : MonoBehaviour
                 {
                     m_animator.SetFloat("SitWait", 1.0f);
                 }
+                if (m_idleParams == IdleParams.IsSneezing || m_idleParams == IdleParams.IsLooking) 
+                { 
+                    m_sneezeTimer -= Time.deltaTime;
+                    if (m_sneezeTimer <= 0.0f)
+                    {
+                        m_sneezeTimer = 0.0f;
+                        m_animator.SetBool(m_idleParams.ToString(), false);
+                    }
+                }
+
             }
         }
         else
         {
-            m_animator.SetBool("IsSitting", false);
+            m_animator.SetBool(m_idleParams.ToString(), false);
             m_animator.SetFloat("SitWait", 1.0f);
             m_noInputTimer = m_idleInputTime;
             m_sitWaitTimer = 1.0f;
+            m_sneezeTimer = 1.0f;
+            RandomiseAnimation();
         }
     }
+
+    private void RandomiseAnimation()
+    {
+        UnityEngine.Random.InitState((int)System.DateTime.Now.Ticks);
+        int randomNo = UnityEngine.Random.Range(0, m_idleAnimations.Count);
+        switch (randomNo)
+        {
+            case (0):
+                {
+                    m_idleParams = IdleParams.IsSitting;
+                    m_animator.SetBool("IsLooking", false);
+                    m_animator.SetBool("IsSneezing", false);
+                    break;
+                }
+            case (1):
+                {
+                    m_idleParams = IdleParams.IsSneezing;
+                    m_animator.SetBool("IsSitting", false);
+                    m_animator.SetBool("IsLooking", false);
+                    break;
+                }
+            case (2):
+                {
+                    m_idleParams = IdleParams.IsLooking;
+                    m_animator.SetBool("IsSitting", false);
+                    m_animator.SetBool("IsSneezing", false);
+                    break;
+                }
+            default:
+                {
+                    break;
+                }
+        }
+
+        Debug.Log("Params chosen: " + m_idleParams.ToString());
+    }
+
 
     // Input Actions
     // W
