@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private bool m_rotRight = false;
     private bool m_interact = false;
     private float m_inputTimer = 0.0f;
-    protected AnimatorOverrideController animatorOverrideController;
+
     [SerializeField] internal Day currentDay;
     private IdleParams m_idleParams = IdleParams.IsSitting;
 
@@ -107,8 +107,6 @@ public class PlayerController : MonoBehaviour
             Debug.DebugBreak();
         }
         
-        animatorOverrideController = new AnimatorOverrideController(m_animator.runtimeAnimatorController);
-        m_animator.runtimeAnimatorController = animatorOverrideController;
     }
 
     // Update is called once per frame
