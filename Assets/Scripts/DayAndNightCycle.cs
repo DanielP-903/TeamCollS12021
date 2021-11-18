@@ -33,7 +33,7 @@ public class DayAndNightCycle : MonoBehaviour
     public Text numberoftasks;
     private TaskSystem tasksystem;
 
-
+    [SerializeField] private float offset = 0.0f; 
 
     // Start is called before the first frame update
     void Start()
@@ -70,7 +70,7 @@ public class DayAndNightCycle : MonoBehaviour
                 Time.timeScale = 1f;
             }
 
-            hourhandbase.transform.eulerAngles = new Vector3(0, 0, -dayover*360f); //rotate hour hand 
+            hourhandbase.transform.eulerAngles = new Vector3(0, 0, (-dayover*360f) + offset); //rotate hour hand 
           //  Sun.transform.eulerAngles = (time - 0.25f) * circlerotation * 4.0f;  
            // Moon.transform.eulerAngles = (time - 0.75f) * circlerotation * 4.0f;
 
