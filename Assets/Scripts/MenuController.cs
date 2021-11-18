@@ -14,6 +14,7 @@ public class MenuController : MonoBehaviour
 
 	void Awake()
 	{
+
 		mainMenuCamera = Camera.main.GetComponent<MainMenuCamera>();
 	}
 

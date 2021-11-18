@@ -147,7 +147,7 @@ public class PauseController : MonoBehaviour
                 SoundManager.PlaySfx(Soundclick, soundclickvolume);
                 Debug.Log("Second");
                 break;
-            case "1360x768":
+            case "1368x768":
                 Screen.SetResolution(1368, 768, true);
                 SoundManager.PlaySfx(Soundclick, soundclickvolume);
                 Debug.Log("Third");

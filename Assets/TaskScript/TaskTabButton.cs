@@ -9,6 +9,7 @@ public class TaskTabButton : MonoBehaviour
     public GameObject levelpanel2;
     public GameObject levelpanel3;
     public GameObject mainTabbutton;
+    public GameObject[] notepad;
 
 
     public int panelvalue;
@@ -63,6 +64,9 @@ public class TaskTabButton : MonoBehaviour
                 anim.SetBool("Close", !isClose);
                 bool buttonisClose = buttonanim.GetBool("Close");
                 buttonanim.SetBool("Close", !buttonisClose);
+                notepad[0].GetComponent<Animator>().SetBool("Close", !isClose);
+                notepad[1].GetComponent<Animator>().SetBool("Close", !isClose);
+                notepad[2].GetComponent<Animator>().SetBool("Close", !isClose);
             }
         }
         if (panelvalue == 2)
@@ -73,6 +77,9 @@ public class TaskTabButton : MonoBehaviour
                 anim2.SetBool("Close", !isClose);
                 bool buttonisClose = buttonanim.GetBool("Close");
                 buttonanim.SetBool("Close", !buttonisClose);
+                notepad[0].GetComponent<Animator>().SetBool("Close", !isClose);
+                notepad[1].GetComponent<Animator>().SetBool("Close", !isClose);
+                notepad[2].GetComponent<Animator>().SetBool("Close", !isClose);
             }
         }
         if (panelvalue == 3)
@@ -83,6 +90,9 @@ public class TaskTabButton : MonoBehaviour
                 anim3.SetBool("Close", !isClose);
                 bool buttonisClose = buttonanim.GetBool("Close");
                 buttonanim.SetBool("Close", !buttonisClose);
+                notepad[0].GetComponent<Animator>().SetBool("Close", !isClose);
+                notepad[1].GetComponent<Animator>().SetBool("Close", !isClose);
+                notepad[2].GetComponent<Animator>().SetBool("Close", !isClose);
             }
         }
     }

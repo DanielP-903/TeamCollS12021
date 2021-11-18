@@ -26,6 +26,14 @@ public class GameFinish : MonoBehaviour
             StartCoroutine(FadeOut());
             anim = fadescreen.GetComponent<Animator>();
             FinalScoreText.text = PlayerPrefs.GetInt("Score", TaskSystem.taskvalue).ToString();
+            if(PlayerPrefs.GetInt("Muted",0)==0)
+            {
+                PlayerPrefs.SetInt("Muted", 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("Muted", 0);
+            }
         }
 
 
@@ -34,6 +42,7 @@ public class GameFinish : MonoBehaviour
     private IEnumerator Fade()
     {
         fadescreen.SetActive(true);
+        pausecontroller.SetActive(false);
         yield return new WaitForSeconds(1f);
         anim.SetBool("isfade", true);
         yield return new WaitForSeconds(5f);            // fade remove

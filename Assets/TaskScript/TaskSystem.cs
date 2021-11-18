@@ -20,6 +20,7 @@ public class TaskSystem : MonoBehaviour
         taskvalue = 0;
         PlayerPrefs.SetInt("Score", taskvalue);
         PlayerPrefs.Save();
+        PlayerPrefs.DeleteAll();
         for (int i = 0; i < tasks.Count; i++)
         {
             tasks[i].CurrentStatus = Task.TaskStatus.Open;

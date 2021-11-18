@@ -61,6 +61,15 @@ public class SoundManager : MonoBehaviour
 		//			musicAudio.volume = 0;
 		//		if (!GlobalValue.isSound)
 		//			soundFx.volume = 0;
+		if (PlayerPrefs.GetInt("Muted", 0) == 0)
+		{
+			PlayerPrefs.SetInt("Muted", 1);
+		}
+		else
+		{
+			PlayerPrefs.SetInt("Muted", 0);
+		}
+
 		if (scenevalue == 1)
 		{
 			PlayMusic(musicsMenu, musicMenuVolume);
@@ -126,15 +135,25 @@ public class SoundManager : MonoBehaviour
 
 	public void OffSound()
     {
-		AudioListener.pause = true;
-		musicAudio.Pause();
+		if (PlayerPrefs.GetInt("Muted", 0) == 0)
+		{
+			AudioListener.volume = 0;
+			PlayerPrefs.SetInt("Muted", 1);
+			PlayerPrefs.Save();
+			
+		}
     }
 
 	public void OnSound()
     {
-		AudioListener.pause = false;
-		musicAudio.Play();
-    }
+		if (PlayerPrefs.GetInt("Muted", 0) == 1)
+		{
+			AudioListener.volume = 1;
+			PlayerPrefs.SetInt("Muted", 0);
+			PlayerPrefs.Save();
+			
+		}
+	}
 
 
 
