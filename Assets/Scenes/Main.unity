@@ -21218,7 +21218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 916064526}
   m_LocalRotation: {x: 0.0003350729, y: -0.00049522833, z: 0.000008480458, w: 0.9999998}
-  m_LocalPosition: {x: 16.2, y: 21, z: 114.3}
+  m_LocalPosition: {x: 16.2, y: 24.2, z: 114.3}
   m_LocalScale: {x: 46.96203, y: 46.96203, z: 46.96203}
   m_Children: []
   m_Father: {fileID: 3314172572281106412}
@@ -39769,7 +39769,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2935918617426278288, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2935918617426278288, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -39855,6 +39855,22 @@ PrefabInstance:
       propertyPath: lightcandlevolume
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 3493741805182467269, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
+      propertyPath: m_idleAnimations.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493741805182467269, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
+      propertyPath: m_idleAnimations.Array.data[0]
+      value: 
+      objectReference: {fileID: 3328158828640343348, guid: df65f261d6e4d2d4cbf53c1fef7508f9, type: 3}
+    - target: {fileID: 3493741805182467269, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
+      propertyPath: m_idleAnimations.Array.data[1]
+      value: 
+      objectReference: {fileID: -4868618180841509619, guid: 4941ea74f9bef434aaaebe291f76a104, type: 3}
+    - target: {fileID: 3493741805182467269, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
+      propertyPath: m_idleAnimations.Array.data[2]
+      value: 
+      objectReference: {fileID: -6893158291820612202, guid: ff354e6f9eaddef429c6611f280362dc, type: 3}
     - target: {fileID: 3547090619393124838, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
       propertyPath: m_SlopeLimit
       value: 60
