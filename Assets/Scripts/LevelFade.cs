@@ -33,6 +33,15 @@ public class LevelFade : MonoBehaviour
         {
             meshRenderer.enabled = false;
         }
+        foreach (var skinnedMeshRenderer in m_level2.GetComponentsInChildren<SkinnedMeshRenderer>())
+        {
+            skinnedMeshRenderer.enabled = false;
+        }
+        foreach (var skinnedMeshRenderer in m_level3.GetComponentsInChildren<SkinnedMeshRenderer>())
+        {
+            skinnedMeshRenderer.enabled = false;
+        }
+
         m_player = GameObject.FindGameObjectWithTag("Player");
         if (!m_player)
         {
@@ -89,6 +98,14 @@ public class LevelFade : MonoBehaviour
                     {
                         meshRenderer.enabled = false;
                     }
+                    foreach (var skinnedMeshRenderer in m_level2.GetComponentsInChildren<SkinnedMeshRenderer>())
+                    {
+                        skinnedMeshRenderer.enabled = false;
+                    }
+                    foreach (var skinnedMeshRenderer in m_level3.GetComponentsInChildren<SkinnedMeshRenderer>())
+                    {
+                        skinnedMeshRenderer.enabled = false;
+                    }
 
                     foreach (var gameObject in gameObjects)
                     {
@@ -112,6 +129,14 @@ public class LevelFade : MonoBehaviour
                     {
                         meshRenderer.enabled = false;
                     }
+                    foreach (var skinnedMeshRenderer in m_level2.GetComponentsInChildren<SkinnedMeshRenderer>())
+                    {
+                        skinnedMeshRenderer.enabled = true;
+                    }
+                    foreach (var skinnedMeshRenderer in m_level3.GetComponentsInChildren<SkinnedMeshRenderer>())
+                    {
+                        skinnedMeshRenderer.enabled = false;
+                    }
                     foreach (var gameObject in gameObjects)
                     {
                         if (gameObject)
@@ -129,6 +154,10 @@ public class LevelFade : MonoBehaviour
                     foreach (var meshRenderer in m_level3.GetComponentsInChildren<MeshRenderer>())
                     {
                         meshRenderer.enabled = true;
+                    }
+                    foreach (var skinnedMeshRenderer in m_level3.GetComponentsInChildren<SkinnedMeshRenderer>())
+                    {
+                        skinnedMeshRenderer.enabled = true;
                     }
                     foreach (var gameObject in gameObjects)
                     {
