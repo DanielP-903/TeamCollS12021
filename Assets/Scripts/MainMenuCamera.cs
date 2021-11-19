@@ -27,10 +27,10 @@ public class MainMenuCamera : MonoBehaviour {
 //
 //		MoveBackToMainMenu ();
 
-		MoveToPosition ();
+//		MoveToPosition ();
 	}
 
-	void MoveToPosition() {
+	 public void MoveToPosition() {
 		if (positions.Count > 0) {
 
 			transform.position = Vector3.Lerp (transform.position, 
