@@ -24,6 +24,7 @@ public class MenuDayNightCycle : MonoBehaviour
     public AnimationCurve MoonIntensity;
 
     public GameObject lighthouselight;
+    internal GameObject pipe;
 
 
 
@@ -35,6 +36,8 @@ public class MenuDayNightCycle : MonoBehaviour
         TimeRate = 1.0f / fullDayLength;
         time = startTime;
         lighthouselight.SetActive(false);
+        pipe = GameObject.Find("Rotator");
+       // pipe.SetActive(false);
 
 
     }
@@ -107,10 +110,12 @@ public class MenuDayNightCycle : MonoBehaviour
           {
             lighthouselight.SetActive(true);
         lighthouselight.transform.Rotate(new Vector3(0, 45, 0) * Time.deltaTime);
-          }
+        pipe.transform.Rotate(new Vector3(0, 45, 0) * Time.deltaTime);
+        }
         else
         {
             lighthouselight.SetActive(false);
+            pipe.transform.Rotate(new Vector3(0, 0, 0) * Time.deltaTime);
         }
 
                 
