@@ -39836,6 +39836,10 @@ PrefabInstance:
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3493741805182467269, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
+      propertyPath: m_sprintSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493741805182467269, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
       propertyPath: lightmatchsound
       value: 
       objectReference: {fileID: 8300000, guid: ab68d8f0fea6cea45b8b8ccab072f5ad, type: 3}
@@ -57915,6 +57919,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7570054352074438107}
     m_Modifications:
+    - target: {fileID: 4215121093983148169, guid: e2cbb20cca3902b408e5b6f066124f35, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8a50af859ed57384d85beeadbc9bca3a, type: 2}
     - target: {fileID: 4624305680373646423, guid: e2cbb20cca3902b408e5b6f066124f35, type: 3}
       propertyPath: m_potentialTasks.Array.data[0]
       value: 
@@ -84286,6 +84294,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 02d8bed8-bd3b-42f8-aaf7-44ca9ef062eb
     m_ActionName: Master/Escape[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1498580231}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Sprint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 185dbebc-af13-479e-a61e-4739bca1f8b1
+    m_ActionName: Master/Sprint[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Master

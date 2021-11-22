@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private bool m_rotLeft = false;
     private bool m_rotRight = false;
     private bool m_interact = false;
+    private bool m_sprint = false;
     private float m_inputTimer = 0.0f;
 
     [SerializeField] internal Day currentDay;
@@ -33,6 +34,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float m_velocityScale;
     [Tooltip("Base movement speed")]
     [SerializeField] private float m_speed;
+    [Tooltip("Sprinting speed")]
+    [SerializeField] private float m_sprintSpeed;
     [Tooltip("Base rotation speed")]
     [SerializeField] private float m_rotationSpeed;
 
@@ -112,19 +115,25 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!m_moveTutorialComplete)
-        {
-            //Debug.Log("Press WASD to move :)");
-            if (!m_particleSystem.isPlaying)
-            {
-                m_particleSystem.Play();
-            }
-            // display movement bubble
-        }
+        // OLD TUTORIAL - DELETE IF NO LONGER NEEDED
+        //if (!m_moveTutorialComplete)
+        //{
+        //    //Debug.Log("Press WASD to move :)");
+        //    if (!m_particleSystem.isPlaying)
+        //    {
+        //        m_particleSystem.Play();
+        //    }
+        //    // display movement bubble
+        //}
+
+        // Movement
         m_hasReceivedInput = false;
         if (m_moveForward || m_moveBackward)
         {
-            Vector3 move = m_moveForward ? (transform.forward * m_speed * Time.deltaTime) : (-transform.forward * (m_speed / 2) * Time.deltaTime);
+            m_animator.SetBool("IsInteracting", false);
+            m_interactingTimer = 0.0f;
+            float sprint = m_sprint ? m_sprintSpeed : 1.0f;
+            Vector3 move = m_moveForward ? (transform.forward * (m_speed * sprint) * Time.deltaTime) : (-transform.forward * (m_speed / 1.5f) * Time.deltaTime);
             m_characterController.Move(move);
             m_hasReceivedInput = true;
             if (!m_moveTutorialComplete)
@@ -140,8 +149,11 @@ public class PlayerController : MonoBehaviour
         }
 
         
-        m_animator.SetBool("IsWalking", m_moveForward || m_moveBackward || m_rotLeft || m_rotRight);
-
+        m_animator.SetBool("IsWalking", m_moveForward || m_moveBackward );
+        m_animator.SetBool("IsSprinting", m_sprint && m_moveForward);
+        m_animator.SetBool("IsTurningL", m_rotLeft);
+        m_animator.SetBool("IsTurningR", m_rotRight);
+      
 
         if (m_inputTimer != 0.0f)
         {
@@ -161,8 +173,8 @@ public class PlayerController : MonoBehaviour
                 m_inputTimer = m_timeBetweenInputs;
                 m_hasReceivedInput = true;
             }
-            m_animator.SetBool("IsInteracting", true);
             m_interactingTimer = 1.625f / 5.0f;
+            m_animator.SetBool("IsInteracting", true);
         }
         else
         {
@@ -307,9 +319,15 @@ public class PlayerController : MonoBehaviour
     {
         float button = context.ReadValue<float>();
         m_interact = Math.Abs(button - 1.0f) < 0.1f ? true : false;
-        //Debug.Log("Interact detected: " + m_interact);
+        Debug.Log("Interact detected: " + m_interact);
     }
-
+    // Shift
+    public void Sprint(InputAction.CallbackContext context)
+    {
+        float value = context.ReadValue<float>();
+        m_sprint = value > 0;
+        //Debug.Log("Sprint detected");
+    }
 
     // Pick-up
     void OnTriggerStay(Collider other)
