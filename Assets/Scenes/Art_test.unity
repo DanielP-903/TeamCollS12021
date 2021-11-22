@@ -10333,15 +10333,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: daacc0830f806c04b867aec2723aa621, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.21767841
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: daacc0830f806c04b867aec2723aa621, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: daacc0830f806c04b867aec2723aa621, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.9760206
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: daacc0830f806c04b867aec2723aa621, type: 3}
       propertyPath: m_LocalRotation.z
@@ -10353,12 +10353,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: daacc0830f806c04b867aec2723aa621, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -154.855
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: daacc0830f806c04b867aec2723aa621, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: daacc0830f806c04b867aec2723aa621, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4119119a87217d24784e7e33a97160a5, type: 2}
     - target: {fileID: 919132149155446097, guid: daacc0830f806c04b867aec2723aa621, type: 3}
       propertyPath: m_Name
       value: Asset_Hamper
@@ -15614,6 +15618,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3b09d4e39219703489056ca079ae9d0d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f62962969c29d094889e31d25954b33b, type: 2}
     - target: {fileID: 919132149155446097, guid: 3b09d4e39219703489056ca079ae9d0d, type: 3}
       propertyPath: m_Name
       value: Asset_Switch_lever (2)
