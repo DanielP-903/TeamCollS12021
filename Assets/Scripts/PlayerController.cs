@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private bool m_interact = false;
     private bool m_sprint = false;
     private float m_inputTimer = 0.0f;
-
+    private bool m_colliding = false;
     [SerializeField] internal Day currentDay;
     private IdleParams m_idleParams = IdleParams.IsSitting;
 
@@ -174,7 +174,10 @@ public class PlayerController : MonoBehaviour
                 m_hasReceivedInput = true;
             }
             m_interactingTimer = 1.625f / 5.0f;
-            m_animator.SetBool("IsInteracting", true);
+            if (m_colliding)
+            {
+                m_animator.SetBool("IsInteracting", true);
+            }
         }
         else
         {
@@ -246,6 +249,8 @@ public class PlayerController : MonoBehaviour
             m_sneezeTimer = 1.0f;
             RandomiseAnimation();
         }
+
+        m_colliding = false;
     }
 
     private void RandomiseAnimation()
@@ -332,6 +337,7 @@ public class PlayerController : MonoBehaviour
     // Pick-up
     void OnTriggerStay(Collider other)
     {
+        m_colliding = true;
         if (m_interact && m_inputTimer == 0.0f)
         {
             if (other.tag == "Door" && m_heldObject == null)
