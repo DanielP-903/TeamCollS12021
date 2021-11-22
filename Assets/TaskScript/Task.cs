@@ -38,8 +38,6 @@ public class Task : MonoBehaviour
         currentamountText.GetComponent<Text>().text = currentAmount.ToString();
         requiredamountText.GetComponent<Text>().text = requiredAmount.ToString();
         symbolText.GetComponent<Text>().text = symbol;
-        anim[0].GetComponent<Animator>().SetBool("Scratch", true);
-        anim[1].GetComponent<Animator>().SetBool("Scratch", true);
         //ScratchEffect.SetActive(false);
     }
 

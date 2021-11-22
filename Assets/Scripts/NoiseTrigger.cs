@@ -30,5 +30,6 @@ public class NoiseTrigger : MonoBehaviour
         AlreadyPlayed = true;
     }
         yield return new WaitForSeconds(waitTime);
+        AlreadyPlayed = false;
 }
 }
