@@ -16,11 +16,12 @@ public class GameOverLerp : MonoBehaviour
     IEnumerator GameMove()
     {
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(15f);
         mainMenuCamera = Camera.main.GetComponent<MainMenuCamera>();
         isactive = true;
         mainMenuCamera.ChangePosition(1);
     }
+
 
     // Update is called once per frame
     void Update()

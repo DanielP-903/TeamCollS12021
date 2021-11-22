@@ -11,9 +11,12 @@ public class TaskSystem : MonoBehaviour
     //public Text currentamountText;
     //public int rewarding;
     public static int taskvalue;
+    public AudioClip harpsound;
+    public float harpvolume;
     // Start is called before the first frame update
     void Start()
     {
+        SoundManager.UiVolume = harpvolume;
         // descriptionText.text = tasks[0].description;
         //   rewardText.text = tasks[0].reward.ToString();
         //  currentamountText.text = tasks[0].currentAmount.ToString();
@@ -87,6 +90,7 @@ public class TaskSystem : MonoBehaviour
             if(tasks[no].isReached())
             {
                 tasks[no].TaskCompleted();
+                SoundManager.PlayUifx(harpsound, harpvolume);
                 taskvalue++;
                 PlayerPrefs.SetInt("Score", taskvalue);
             }

@@ -23,6 +23,7 @@ public class SoundManager : MonoBehaviour
 	public AudioSource musicAudio;
 	public AudioSource uiFx;
 	public AudioSource soundFx;
+	public AudioSource matchFx;
 	public AudioClip[] clips;
 	int clipOrder=0;
 	public bool istrack2;
@@ -41,6 +42,11 @@ public class SoundManager : MonoBehaviour
 		get { return Instance.soundFx.volume; }
 	}
 
+	public static float MatchVolume
+	{
+		set { Instance.matchFx.volume = value; }
+		get { return Instance.matchFx.volume; }
+	}
 	public static float UiVolume
 	{
 		set { Instance.uiFx.volume = value; }
@@ -174,6 +180,10 @@ public class SoundManager : MonoBehaviour
 	public static void PlaySfx(AudioClip clip, float volume)
 	{
 		Instance.PlaySound(clip, Instance.soundFx, volume);
+	}
+	public static void PlayMatchfx(AudioClip clip, float volume)
+	{
+		Instance.PlaySound(clip, Instance.matchFx, volume);
 	}
 
 	public static void PlayUifx(AudioClip clip, float volume)

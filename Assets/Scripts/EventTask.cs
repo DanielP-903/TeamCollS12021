@@ -42,6 +42,9 @@ public class EventTask : Task
         currentamountText.GetComponent<Text>().text = currentAmount.ToString();
         requiredamountText.GetComponent<Text>().text = requiredAmount.ToString();
         symbolText.GetComponent<Text>().text = "/";
+        anim[0].GetComponent<Animator>().SetBool("Scratch", true);
+        anim[1].GetComponent<Animator>().SetBool("Scratch", true);
+
 
 
     }

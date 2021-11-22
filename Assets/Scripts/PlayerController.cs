@@ -68,18 +68,19 @@ public class PlayerController : MonoBehaviour
     private float m_sneezeTimer = 1.0f;
     [Header("Sound Effects")]
     public AudioClip barksound;
-    public float barkvolume;
     public AudioClip pickupsound;
-    public float pickupvolume;
+    public AudioClip dooropensound;
+    [Range(0, 1)]
+    public float mainvolume;
     public AudioClip lightmatchsound;
+    [Range(0, 1)]
     public float lightmatchvolume;
-    public AudioClip lightcandlesound;
-    public float lightcandlevolume;
 
     void Start()
     {
-        
 
+        SoundManager.SoundVolume = mainvolume;
+        SoundManager.MatchVolume = lightmatchvolume;
         if (transform.parent.gameObject.TryGetComponent(out CharacterController charController))
         {
             m_characterController = charController;
@@ -377,13 +378,13 @@ public class PlayerController : MonoBehaviour
                     {
                         GetComponent<BoxCollider>().enabled = false;
                         // AUDIO: Pickup 
-                        SoundManager.PlaySfx(pickupsound, pickupvolume);
+                        SoundManager.PlaySfx(pickupsound, mainvolume);
                     }
                     else if (other.tag == "Match")
                     {
                         GetComponent<BoxCollider>().enabled = true;
                         // AUDIO: Light match
-                        SoundManager.PlaySfx(lightmatchsound, lightmatchvolume);
+                        SoundManager.PlayMatchfx(lightmatchsound, lightmatchvolume);
                     }
                 }
 
@@ -394,7 +395,7 @@ public class PlayerController : MonoBehaviour
                 //Debug.Log("I am interacting with the seagull trigger :)");
 
                 // AUDIO: Bark
-                SoundManager.PlaySfx(barksound, barkvolume);
+                SoundManager.PlaySfx(barksound, mainvolume);
             }
         }
 
@@ -413,7 +414,7 @@ public class PlayerController : MonoBehaviour
                // Debug.Log("I am interacting with the candle trigger :)");
 
                 // AUDIO: Light candle
-                SoundManager.PlaySfx(lightcandlesound, lightcandlevolume);
+                SoundManager.PlayMatchfx(lightmatchsound,lightmatchvolume);
 
             }
             else if (other.tag == "Radio_Tape" && m_heldObject.gameObject.tag == "Tape")
@@ -445,6 +446,21 @@ public class PlayerController : MonoBehaviour
                 {
                     Debug.Log("Oops! Not the right day :(");
                 }
+            }
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+       if(other.tag=="Noise")
+        {
+            other.GetComponent<NoiseTrigger>().PlaySound();
+        }
+       if(other.tag=="Interactable")
+        {
+            if(other.GetComponent<TO_Basic>().m_type==TaskObject.Type.Toy)
+            {
+                other.GetComponent<NoiseTrigger>().PlaySound();
             }
         }
     }

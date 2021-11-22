@@ -9,6 +9,7 @@ public class MenuController : MonoBehaviour
 	public AudioClip soundClick;
 	[Range(0, 1)]
 	public float soundClickvolume;
+	public GameObject optionsanchor;
 
 	private MainMenuCamera mainMenuCamera;
 
@@ -31,6 +32,7 @@ public class MenuController : MonoBehaviour
 		mainPanel.SetActive(false);
 		optionsPanel.SetActive(true);
 		SoundManager.PlayUifx(soundClick, soundClickvolume);
+		optionsanchor.SetActive(false);
 		//mainMenuCamera.ChangePosition(1); // changes to position
     }
 
