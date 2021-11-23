@@ -174,10 +174,16 @@ public class PlayerController : MonoBehaviour
                 m_inputTimer = m_timeBetweenInputs;
                 m_hasReceivedInput = true;
             }
-            m_interactingTimer = 1.625f / 5.0f;
             if (m_colliding)
             {
-                m_animator.SetBool("IsInteracting", true);
+                 m_interactingTimer = 1.625f / 5.0f;
+                 m_animator.SetBool("IsInteracting", true);
+            }
+            else
+            {
+                // bork
+                SoundManager.PlaySfx(barksound, mainvolume);
+                Debug.Log("Bark!");
             }
         }
         else
@@ -250,8 +256,8 @@ public class PlayerController : MonoBehaviour
             m_sneezeTimer = 1.0f;
             RandomiseAnimation();
         }
-        Debug.Log(m_colliding);
-        m_colliding = false;
+        //Debug.Log("Can bark? " + !m_colliding);
+
     }
 
     private void RandomiseAnimation()
@@ -287,7 +293,7 @@ public class PlayerController : MonoBehaviour
                 }
         }
 
-        Debug.Log("Params chosen: " + m_idleParams.ToString());
+        //Debug.Log("Params chosen: " + m_idleParams.ToString());
     }
 
 
@@ -325,7 +331,7 @@ public class PlayerController : MonoBehaviour
     {
         float button = context.ReadValue<float>();
         m_interact = Math.Abs(button - 1.0f) < 0.1f ? true : false;
-        Debug.Log("Interact detected: " + m_interact);
+       // Debug.Log("Interact detected: " + m_interact);
     }
     // Shift
     public void Sprint(InputAction.CallbackContext context)
@@ -339,7 +345,7 @@ public class PlayerController : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         // Detect non-barkable objects
-        if(other.tag == "Interactable" || other.tag == "Match")
+        if (other.tag == "Interactable" || other.tag == "Match")
         {
             m_colliding = true;
         }
@@ -451,6 +457,14 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("Oops! Not the right day :(");
                 }
             }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Interactable" || other.tag == "Match")
+        {
+            m_colliding = false;
         }
     }
 
