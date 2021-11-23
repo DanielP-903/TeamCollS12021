@@ -250,7 +250,7 @@ public class PlayerController : MonoBehaviour
             m_sneezeTimer = 1.0f;
             RandomiseAnimation();
         }
-
+        Debug.Log(m_colliding);
         m_colliding = false;
     }
 
@@ -338,7 +338,11 @@ public class PlayerController : MonoBehaviour
     // Pick-up
     void OnTriggerStay(Collider other)
     {
-        m_colliding = true;
+        // Detect non-barkable objects
+        if(other.tag == "Interactable" || other.tag == "Match")
+        {
+            m_colliding = true;
+        }
         if (m_interact && m_inputTimer == 0.0f)
         {
             if (other.tag == "Door" && m_heldObject == null)
