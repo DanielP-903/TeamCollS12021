@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Bonnie
   m_Shader: {fileID: 4800000, guid: 1c011b1638dca2d46bf5037235d4e6dc, type: 3}
-  m_ShaderKeywords: _USEDIFFUSEMAP_ON _USENORMALMAP_ON
+  m_ShaderKeywords: _DISABLESPECULAR_ON _USEDIFFUSEMAP_ON _USENORMALMAP_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -92,6 +92,7 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _DisableSpecular: 1
     - _DstBlend: 0
     - _Gloss: 3.35
     - _GlossMapScale: 1
