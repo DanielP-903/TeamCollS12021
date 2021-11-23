@@ -34,10 +34,10 @@ public class MainMenuCamera : MonoBehaviour {
 		if (positions.Count > 0) {
 
 			transform.position = Vector3.Lerp (transform.position, 
-				positions[0].transform.position, 1f * Time.deltaTime);
+				positions[0].transform.position, 0.5f * Time.deltaTime);
 
 			transform.rotation = Quaternion.Lerp (transform.rotation,
-				positions[0].transform.rotation, 1f * Time.deltaTime);
+				positions[0].transform.rotation, 0.5f * Time.deltaTime);
 		}
 	}
 

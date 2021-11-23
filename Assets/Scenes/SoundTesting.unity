@@ -663,6 +663,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8919296010583882671, guid: 50205bb69cad66e448b4552f53356ab8, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50205bb69cad66e448b4552f53356ab8, type: 3}
 --- !u!1001 &145584289
@@ -15096,6 +15100,8 @@ MonoBehaviour:
   - {fileID: 146413693}
   - {fileID: 941279645}
   - {fileID: 1780543076}
+  harpsound: {fileID: 0}
+  harpvolume: 0
 --- !u!1 &2687034598686262917
 GameObject:
   m_ObjectHideFlags: 0
