@@ -144,6 +144,11 @@ public class TO_Basic : TaskObject
                             m_taskSystem.Complete(17);
                             break;
                         };
+                    case (Type.Package):
+                        {
+                            m_taskSystem.Complete(18);
+                            break;
+                        };
                     //case (Type.Tape):
                     //    {
                     //        m_taskSystem.Complete(14);
