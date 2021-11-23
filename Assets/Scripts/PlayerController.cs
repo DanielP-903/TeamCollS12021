@@ -46,8 +46,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private List<AnimationClip> m_idleAnimations;
     //[Header("Tutorial")]
     //[Tooltip("How long in seconds until Bonnie sits down from being idle")]
-    private bool m_moveTutorialComplete = false;
-    private bool m_interactTutorialComplete = false;
+    //private bool m_moveTutorialComplete = false;
+    //private bool m_interactTutorialComplete = false;
+    private ParticleSystem m_particleSystemChild;
     private ParticleSystem m_particleSystem;
 
     [Header("Misc")]
@@ -103,6 +104,16 @@ public class PlayerController : MonoBehaviour
 
         if (gameObject.GetComponentInChildren<ParticleSystem>())
         {
+            m_particleSystemChild = gameObject.GetComponentInChildren<ParticleSystem>();
+        }
+        else
+        {
+            Debug.LogError("ERROR: Particle System component not found on children!");
+            Debug.DebugBreak();
+        }
+
+        if (gameObject.GetComponent<ParticleSystem>())
+        {
             m_particleSystem = gameObject.GetComponentInChildren<ParticleSystem>();
         }
         else
@@ -110,7 +121,7 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("ERROR: Particle System component not found!");
             Debug.DebugBreak();
         }
-        
+
     }
 
     // Update is called once per frame
@@ -120,9 +131,9 @@ public class PlayerController : MonoBehaviour
         //if (!m_moveTutorialComplete)
         //{
         //    //Debug.Log("Press WASD to move :)");
-        //    if (!m_particleSystem.isPlaying)
+        //    if (!m_particleSystemChild.isPlaying)
         //    {
-        //        m_particleSystem.Play();
+        //        m_particleSystemChild.Play();
         //    }
         //    // display movement bubble
         //}
@@ -137,15 +148,15 @@ public class PlayerController : MonoBehaviour
             Vector3 move = m_moveForward ? (transform.forward * (m_speed * sprint) * Time.deltaTime) : (-transform.forward * (m_speed / 1.5f) * Time.deltaTime);
             m_characterController.Move(move);
             m_hasReceivedInput = true;
-            if (!m_moveTutorialComplete)
-            {
-                m_moveTutorialComplete = true;
-                //Debug.Log("Tutorial complete!");
-                if (m_particleSystem.isPlaying)
-                {
-                    m_particleSystem.Stop();
-                }
-            }
+            //if (!m_moveTutorialComplete)
+            //{
+            //    m_moveTutorialComplete = true;
+            //    //Debug.Log("Tutorial complete!");
+            //    if (m_particleSystemChild.isPlaying)
+            //    {
+            //        m_particleSystemChild.Stop();
+            //    }
+            //}
             // AUDIO: Footstep audio?
         }
 
@@ -178,12 +189,15 @@ public class PlayerController : MonoBehaviour
             {
                  m_interactingTimer = 1.625f / 5.0f;
                  m_animator.SetBool("IsInteracting", true);
+
             }
             else
             {
                 // bork
                 SoundManager.PlaySfx(barksound, mainvolume);
                 Debug.Log("Bark!");
+                m_particleSystem.Clear();
+                m_particleSystem.Play();
             }
         }
         else
@@ -205,15 +219,15 @@ public class PlayerController : MonoBehaviour
             float multiplier = m_rotLeft ? -1 : 1;
             transform.Rotate(0, m_rotationSpeed * multiplier * Time.deltaTime * 200.0f, 0);
             m_hasReceivedInput = true;
-            if (!m_moveTutorialComplete)
-            {
-                m_moveTutorialComplete = true;
-                //Debug.Log("Tutorial complete!");
-                if (m_particleSystem.isPlaying)
-                {
-                    m_particleSystem.Stop();
-                }
-            }
+            //if (!m_moveTutorialComplete)
+            //{
+            //    m_moveTutorialComplete = true;
+            //    //Debug.Log("Tutorial complete!");
+            //    if (m_particleSystemChild.isPlaying)
+            //    {
+            //        m_particleSystemChild.Stop();
+            //    }
+            //}
         }
 
 
