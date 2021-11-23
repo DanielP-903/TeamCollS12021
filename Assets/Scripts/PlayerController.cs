@@ -198,10 +198,6 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Bark!");
                 m_particleSystem.Clear();
                 m_particleSystem.Play();
-                if (m_particleSystem.isPlaying == false)
-                {
-
-                }
             }
         }
         else
