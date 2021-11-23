@@ -1,24 +1,12 @@
 fileFormatVersion: 2
-guid: 46caa44f2c334064e92121b4e6216a1b
+guid: 96f82923cde58924fa1173c9d201fea7
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable: []
-  externalObjects:
+  internalIDToNameTable:
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: 82c4f080a0f0ce04b9ec8b2b7ea946df, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert3
-    second: {fileID: 2100000, guid: 57cfdedc6f3f1aa43a3de9213bebfa74, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: wood
-    second: {fileID: 2100000, guid: 8a50af859ed57384d85beeadbc9bca3a, type: 2}
+      74: 5522812681064789136
+    second: Run
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -45,11 +33,40 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Run
+      takeName: Run
+      internalID: 0
+      firstFrame: 1
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.25
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -100,7 +117,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.25
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
