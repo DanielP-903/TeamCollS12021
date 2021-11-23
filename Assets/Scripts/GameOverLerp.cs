@@ -6,6 +6,7 @@ public class GameOverLerp : MonoBehaviour
 {
     private MainMenuCamera mainMenuCamera;
     public bool isactive;
+    public bool isactive2;
     // Start is called before the first frame update
 
     void Start()
@@ -20,6 +21,14 @@ public class GameOverLerp : MonoBehaviour
         mainMenuCamera = Camera.main.GetComponent<MainMenuCamera>();
         isactive = true;
         mainMenuCamera.ChangePosition(1);
+        yield return new WaitForSeconds(5f);
+        isactive = false;
+        yield return new WaitForSeconds(15f);
+        isactive2 = true;
+        Debug.Log("started");
+        mainMenuCamera.ChangePosition(0);
+        yield return new WaitForSeconds(5f);
+        isactive2 = false;
     }
 
 
@@ -30,6 +39,10 @@ public class GameOverLerp : MonoBehaviour
         {
             mainMenuCamera.MoveToPosition();
         }
-        
+        if (isactive2)
+        {
+            mainMenuCamera.MoveToPosition();
+        }
+
     }
 }
