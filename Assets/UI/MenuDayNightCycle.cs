@@ -189,7 +189,7 @@ if (time > 2.0f)
     time = 0f;
 }
 
-if (time > 0.3f)
+if (time > 0f)
 {
     lighthouselight.SetActive(true);
     lighthouselight.transform.Rotate(new Vector3(0, 45, 0) * Time.deltaTime);
