@@ -681,6 +681,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7727355663643680291}
     - target: {fileID: 8459981690825108067, guid: 6b2c0d6f39dac0b4c9c965ded0c2c150, type: 3}
+      propertyPath: fullDayLength
+      value: 24.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459981690825108067, guid: 6b2c0d6f39dac0b4c9c965ded0c2c150, type: 3}
       propertyPath: gameoverPanel
       value: 
       objectReference: {fileID: 7727355662933005048}
@@ -688,6 +692,62 @@ PrefabInstance:
       propertyPath: numberoftasks
       value: 
       objectReference: {fileID: 7727355663344400279}
+    - target: {fileID: 8459981690825108067, guid: 6b2c0d6f39dac0b4c9c965ded0c2c150, type: 3}
+      propertyPath: MoonIntensity.m_Curve.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459981690825108067, guid: 6b2c0d6f39dac0b4c9c965ded0c2c150, type: 3}
+      propertyPath: MoonIntensity.m_Curve.Array.data[1].time
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459981690825108067, guid: 6b2c0d6f39dac0b4c9c965ded0c2c150, type: 3}
+      propertyPath: MoonIntensity.m_Curve.Array.data[2].time
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459981690825108067, guid: 6b2c0d6f39dac0b4c9c965ded0c2c150, type: 3}
+      propertyPath: MoonIntensity.m_Curve.Array.data[3].time
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459981690825108067, guid: 6b2c0d6f39dac0b4c9c965ded0c2c150, type: 3}
+      propertyPath: MoonIntensity.m_Curve.Array.data[0].value
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459981690825108067, guid: 6b2c0d6f39dac0b4c9c965ded0c2c150, type: 3}
+      propertyPath: MoonIntensity.m_Curve.Array.data[1].value
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459981690825108067, guid: 6b2c0d6f39dac0b4c9c965ded0c2c150, type: 3}
+      propertyPath: MoonIntensity.m_Curve.Array.data[2].value
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459981690825108067, guid: 6b2c0d6f39dac0b4c9c965ded0c2c150, type: 3}
+      propertyPath: MoonIntensity.m_Curve.Array.data[3].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459981690825108067, guid: 6b2c0d6f39dac0b4c9c965ded0c2c150, type: 3}
+      propertyPath: MoonIntensity.m_Curve.Array.data[1].inSlope
+      value: 0.09583044
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459981690825108067, guid: 6b2c0d6f39dac0b4c9c965ded0c2c150, type: 3}
+      propertyPath: MoonIntensity.m_Curve.Array.data[2].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459981690825108067, guid: 6b2c0d6f39dac0b4c9c965ded0c2c150, type: 3}
+      propertyPath: MoonIntensity.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459981690825108067, guid: 6b2c0d6f39dac0b4c9c965ded0c2c150, type: 3}
+      propertyPath: MoonIntensity.m_Curve.Array.data[1].outSlope
+      value: 0.09583044
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459981690825108067, guid: 6b2c0d6f39dac0b4c9c965ded0c2c150, type: 3}
+      propertyPath: MoonIntensity.m_Curve.Array.data[2].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459981690825108067, guid: 6b2c0d6f39dac0b4c9c965ded0c2c150, type: 3}
+      propertyPath: MoonIntensity.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
     - target: {fileID: 8459981691089193474, guid: 6b2c0d6f39dac0b4c9c965ded0c2c150, type: 3}
       propertyPath: m_Name
       value: Day_Night
@@ -4734,6 +4794,10 @@ PrefabInstance:
       propertyPath: pickupvolume
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 3493741805182467269, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
+      propertyPath: dooropensound
+      value: 
+      objectReference: {fileID: 8300000, guid: 61f609c4401e28c41837dd0de6744b45, type: 3}
     - target: {fileID: 3493741805182467269, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
       propertyPath: lightmatchsound
       value: 
