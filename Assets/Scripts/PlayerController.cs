@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private bool m_sprint = false;
     private float m_inputTimer = 0.0f;
     private bool m_colliding = false;
+    private float m_barkTimer = 1.0f;
     [SerializeField] internal Day currentDay;
     private IdleParams m_idleParams = IdleParams.IsSitting;
 
@@ -160,12 +161,12 @@ public class PlayerController : MonoBehaviour
             // AUDIO: Footstep audio?
         }
 
-        
-        m_animator.SetBool("IsWalking", m_moveForward || m_moveBackward );
+
+        m_animator.SetBool("IsWalking", m_moveForward || m_moveBackward);
         m_animator.SetBool("IsSprinting", m_sprint && m_moveForward);
         m_animator.SetBool("IsTurningL", m_rotLeft);
         m_animator.SetBool("IsTurningR", m_rotRight);
-      
+
 
         if (m_inputTimer != 0.0f)
         {
@@ -178,7 +179,7 @@ public class PlayerController : MonoBehaviour
             if (m_heldObject)
             {
                 m_heldObject.IsPickedUp = false;
-                m_heldObjectContainer.GetComponent<Rigidbody>().velocity = (m_characterController.velocity + (Vector3.up*2)) * m_velocityScale;
+                m_heldObjectContainer.GetComponent<Rigidbody>().velocity = (m_characterController.velocity + (Vector3.up * 2)) * m_velocityScale;
                 m_heldObject = null;
                 m_heldObjectContainer = null;
                 GetComponent<BoxCollider>().enabled = true;
@@ -187,17 +188,22 @@ public class PlayerController : MonoBehaviour
             }
             if (m_colliding)
             {
-                 m_interactingTimer = 1.625f / 5.0f;
-                 m_animator.SetBool("IsInteracting", true);
+                m_interactingTimer = 1.625f / 5.0f;
+                m_animator.SetBool("IsInteracting", true);
 
             }
             else
             {
                 // bork
-                SoundManager.PlaySfx(barksound, mainvolume);
-                Debug.Log("Bark!");
+                if (m_barkTimer <= 0.0f)
+                {
+                    SoundManager.PlaySfx(barksound, mainvolume);
+                    Debug.Log("Bark!");
+                    m_barkTimer = 1.0f;
+                
                 m_particleSystem.Clear();
                 m_particleSystem.Play();
+                }
             }
         }
         else
@@ -208,7 +214,12 @@ public class PlayerController : MonoBehaviour
                 m_animator.SetBool("IsInteracting", false);
             }
         }
-        
+
+
+        if (m_barkTimer > 0.0f)
+        {
+            m_barkTimer -= Time.deltaTime;
+        }
 
         m_characterController.Move(m_gravity*Time.deltaTime);
  
