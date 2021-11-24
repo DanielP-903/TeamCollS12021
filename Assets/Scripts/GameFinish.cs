@@ -26,13 +26,22 @@ public class GameFinish : MonoBehaviour
             StartCoroutine(FadeOut());
             anim = fadescreen.GetComponent<Animator>();
             FinalScoreText.text = PlayerPrefs.GetInt("Score", TaskSystem.taskvalue).ToString();
-            if(PlayerPrefs.GetInt("Muted",0)==0)
+            // if(PlayerPrefs.GetInt("Muted",0)==0)
+            // {
+            //     PlayerPrefs.SetInt("Muted", 1);
+            //  }
+            //   else
+            //   {
+            //      PlayerPrefs.SetInt("Muted", 0);
+            // }
+            if (PlayerPrefs.HasKey("musicvolume"))
             {
-                PlayerPrefs.SetInt("Muted", 1);
+                PlayerPrefs.SetFloat("musicvolume", 1);
+                SoundManager.Instance.Load();
             }
             else
             {
-                PlayerPrefs.SetInt("Muted", 0);
+                SoundManager.Instance.Save();
             }
         }
 

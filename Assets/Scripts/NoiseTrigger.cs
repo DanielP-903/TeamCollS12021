@@ -22,9 +22,9 @@ public class NoiseTrigger : MonoBehaviour
     StartCoroutine(PlayEffect());
 }
  
- IEnumerator PlayEffect() // too descriptive I know
+ IEnumerator PlayEffect() 
 {
-    if (!AlreadyPlayed) // this is redundant unless you remove '(ActiveObject.useGravity == false)' above
+    if (!AlreadyPlayed) 
     {
         noisesound.PlayOneShot(noiseclip,noisevolume);
         AlreadyPlayed = true;
