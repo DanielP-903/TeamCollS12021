@@ -48,8 +48,8 @@ public class MenuDayNightCycle : MonoBehaviour
     {
         if (scenevalue == 0)
         {
-            time += TimeRate * Time.deltaTime;
-            time += Time.deltaTime / fullDayLength; //  total time  full day cycle
+            //time += TimeRate * Time.deltaTime;
+            //time += Time.deltaTime / fullDayLength; //  total time  full day cycle
             dayover = time % 1f;
 
 

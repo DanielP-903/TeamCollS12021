@@ -768,8 +768,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -13.757324, y: 1.5477295}
-  m_SizeDelta: {x: 50.2577, y: 12.361}
+  m_AnchoredPosition: {x: -13.757324, y: 5}
+  m_SizeDelta: {x: 50.2577, y: 22.1149}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &84733978
 MonoBehaviour:
@@ -2068,8 +2068,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -13.757324, y: 1.276123}
-  m_SizeDelta: {x: 50.2577, y: 15.507}
+  m_AnchoredPosition: {x: -13.757324, y: 5}
+  m_SizeDelta: {x: 50.2577, y: 22.1149}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &174555944
 MonoBehaviour:
@@ -2795,7 +2795,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 4}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 8.3647, y: 16.322}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &276790165
@@ -3416,8 +3416,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -122.81207, y: 3}
-  m_SizeDelta: {x: 49.5976, y: 10.9083}
+  m_AnchoredPosition: {x: -122.81207, y: 5}
+  m_SizeDelta: {x: 49.5976, y: 22.1149}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &330627689
 MonoBehaviour:
@@ -9771,8 +9771,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -65.43921, y: 1.276123}
-  m_SizeDelta: {x: 52.783, y: 15.507}
+  m_AnchoredPosition: {x: -65.43921, y: 5}
+  m_SizeDelta: {x: 52.783, y: 22.1149}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &516153041
 MonoBehaviour:
@@ -51732,8 +51732,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -67.11731, y: 1.5477295}
-  m_SizeDelta: {x: 50.6291, y: 12.361}
+  m_AnchoredPosition: {x: -67.11731, y: 5}
+  m_SizeDelta: {x: 50.6291, y: 22.1149}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1437764756
 MonoBehaviour:
@@ -53642,8 +53642,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -122.76245, y: 1.276123}
-  m_SizeDelta: {x: 51.1152, y: 14.359}
+  m_AnchoredPosition: {x: -122.76245, y: 5}
+  m_SizeDelta: {x: 51.1152, y: 22.1149}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1709218473
 MonoBehaviour:
@@ -69162,6 +69162,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7570054352074438107}
     m_Modifications:
+    - target: {fileID: 4215121093983148169, guid: e2cbb20cca3902b408e5b6f066124f35, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8a50af859ed57384d85beeadbc9bca3a, type: 2}
     - target: {fileID: 4624305680373646423, guid: e2cbb20cca3902b408e5b6f066124f35, type: 3}
       propertyPath: doorbellsound
       value: 
@@ -86726,7 +86730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &7727355662493574021
 Animator:
   serializedVersion: 3
@@ -95215,7 +95219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &7727355663994729508
 Animator:
   serializedVersion: 3

@@ -8,7 +8,7 @@ public class GameFinish : MonoBehaviour
 {
     public GameObject fadescreen;
     private Animator anim;
-    public GameObject pausecontroller;
+    //public GameObject pausecontroller;
     public int value;
     private int score;
     public Text FinalScoreText;
@@ -51,7 +51,7 @@ public class GameFinish : MonoBehaviour
     private IEnumerator Fade()
     {
         fadescreen.SetActive(true);
-        pausecontroller.SetActive(false);
+        //pausecontroller.SetActive(false);
         yield return new WaitForSeconds(1f);
         anim.SetBool("isfade", true);
         yield return new WaitForSeconds(5f);            // fade remove
