@@ -471,6 +471,14 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("Oops! Not the right day :(");
                 }
             }
+            else if (other.tag == "Hanger" && m_heldObject.gameObject.tag == "Coat")
+            {
+                m_heldObject.gameObject.GetComponent<TO_Coat>().Complete();
+                m_heldObject.gameObject.SetActive(false);
+                m_heldObject.IsPickedUp = false;
+                m_heldObject = null;
+                m_heldObjectContainer = null;
+            }
         }
     }
 
