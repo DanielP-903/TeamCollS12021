@@ -34,15 +34,15 @@ public class GameFinish : MonoBehaviour
             //   {
             //      PlayerPrefs.SetInt("Muted", 0);
             // }
-            if (PlayerPrefs.HasKey("musicvolume"))
-            {
-                PlayerPrefs.SetFloat("musicvolume", 1);
-                SoundManager.Instance.Load();
-            }
-            else
-            {
-                SoundManager.Instance.Save();
-            }
+            //if (PlayerPrefs.HasKey("musicvolume"))
+            //{
+            //    PlayerPrefs.SetFloat("musicvolume", 1);
+            //    SoundManager.Instance.Load();
+            //}
+            //else
+            //{
+            //    SoundManager.Instance.Save();
+            //}
         }
 
 

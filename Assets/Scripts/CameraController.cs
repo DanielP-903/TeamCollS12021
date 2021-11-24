@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private GameObject m_player = null;
-    [SerializeField] private float m_offset = 10.0f;
+    private GameObject m_player = null;
+    //[SerializeField] private float m_offset = 10.0f;
     [SerializeField] private float m_cameraMoveThreshold = 0.0f;
+    [Tooltip("Camera position offset values")]
+    [SerializeField] private Vector3 m_cameraOffset = new Vector3(0,0,0);
+
 
     [Header("Start Panning Animation Values")]
     [Tooltip("How long (in seconds) before camera pans away from Bonnie")]
@@ -18,9 +21,10 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_player = GameObject.FindGameObjectWithTag("Player");
         if (!m_player)
         {
-            Debug.LogError("No PlayerController assigned!");
+            Debug.LogError("No PlayerController found!");
             Debug.Break();
         }
         if (gameObject.TryGetComponent(out Camera cam))
@@ -45,15 +49,15 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            m_camera.orthographicSize = Mathf.Lerp(m_camera.orthographicSize, 8.0f, Time.deltaTime / m_speed);
-            if (m_camera.orthographicSize > 7.99f)
+            m_camera.orthographicSize = Mathf.Lerp(m_camera.orthographicSize, 6.0f, Time.deltaTime / m_speed);
+            if (m_camera.orthographicSize > 5.99f)
             {
-                m_camera.orthographicSize = 8.0f;
+                m_camera.orthographicSize = 6.0f;
             }
         }
-        float playerLerpY = Mathf.Lerp(transform.position.y, m_player.transform.position.y + m_offset + 20.0f, Time.deltaTime);
-        float playerLerpX = Mathf.Lerp(transform.position.x, (m_player.transform.position.x - m_offset - 5.0f) / m_cameraMoveThreshold, Time.deltaTime);
-        float playerLerpZ = Mathf.Lerp(transform.position.z, (m_player.transform.position.z - m_offset - 20.0f) / m_cameraMoveThreshold, Time.deltaTime);
+        float playerLerpY = Mathf.Lerp(transform.position.y, m_player.transform.position.y + 10.0f + m_cameraOffset.y, Time.deltaTime);
+        float playerLerpX = Mathf.Lerp(transform.position.x, (m_player.transform.position.x - 10.0f - m_cameraOffset.x) / m_cameraMoveThreshold, Time.deltaTime);
+        float playerLerpZ = Mathf.Lerp(transform.position.z, (m_player.transform.position.z - 10.0f - m_cameraOffset.z) / m_cameraMoveThreshold, Time.deltaTime);
 
         Vector3 newPos = new Vector3(playerLerpX, playerLerpY, playerLerpZ);
         transform.position = newPos;

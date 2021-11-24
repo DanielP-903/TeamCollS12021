@@ -17,6 +17,7 @@ public class TO_Basic : TaskObject
     [SerializeField] private float m_offsetY = 0.0f;
     [SerializeField] private float m_offsetX = 0.0f;
     [SerializeField] private Vector3 m_offsetRotation = new Vector3(0, 90.0f, 0);
+    [SerializeField] private Vector3 m_offsetRotation2 = new Vector3(0, 90.0f, 0);
 
     void Awake()
     {
@@ -57,8 +58,8 @@ public class TO_Basic : TaskObject
         if (IsPickedUp)
         {
             //transform.position = m_playerController.transform.position + (m_offsetZ * m_playerController.transform.forward) + (m_offsetY * m_playerController.transform.up) + (m_offsetX * m_playerController.transform.right);
-            transform.position = m_neckReference.transform.position + ((m_offsetZ/2) * m_playerController.transform.forward) + (m_offsetY/5 * m_playerController.transform.up);
-            transform.rotation = m_playerController.transform.rotation * Quaternion.Euler(m_offsetRotation);
+            transform.position = m_neckReference.transform.position +  (m_offsetX * m_playerController.transform.right) + ((m_offsetZ/2) * m_playerController.transform.forward) + (m_offsetY/5 * m_playerController.transform.up);
+            transform.rotation = m_playerController.transform.rotation * Quaternion.Euler(m_offsetRotation) * (m_neckReference.transform.localRotation) * Quaternion.Euler(m_offsetRotation2);
             GetComponent<Rigidbody>().isKinematic = true;
             if (TryGetComponent(out BoxCollider box))
             {
