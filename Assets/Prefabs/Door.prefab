@@ -504,8 +504,10 @@ MonoBehaviour:
   m_levelOwnership: 0
   m_type: 0
   m_active: 0
+  m_potentialTaskObjects: []
   m_potentialTasks:
   - {fileID: 0}
+  doorbellsound: {fileID: 0}
 --- !u!1 &4673276403623169601
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,7 +564,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5358585258937238645}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.039441265, y: 1.594922, z: -0.013746013}
+  m_LocalPosition: {x: 0.039441265, y: 0.17, z: -0.013746013}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 6166261209074891401}
@@ -595,7 +597,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 5adc64bcab507bc4f82b2fd99484e368, type: 3}
+  - {fileID: 2100000, guid: dcaefbb0a757f6a4da3fd5d564ad4573, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
