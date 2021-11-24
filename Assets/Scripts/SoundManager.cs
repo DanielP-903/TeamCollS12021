@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class SoundManager : MonoBehaviour
 	public float musicsGameVolume = 0.5f;
 
 
-
 	[Tooltip("Place the sound in this to call it in another script by: SoundManager.PlaySfx(soundname);")]
 
 	public int scenevalue;
@@ -28,6 +28,7 @@ public class SoundManager : MonoBehaviour
 	int clipOrder=0;
 	public bool istrack2;
 	public bool istrack3;
+	public Slider volumeslider;
 
 	private DayAndNightCycle daynight;
 
@@ -67,16 +68,25 @@ public class SoundManager : MonoBehaviour
 		//			musicAudio.volume = 0;
 		//		if (!GlobalValue.isSound)
 		//			soundFx.volume = 0;
-		if (PlayerPrefs.GetInt("Muted", 0) == 0)
-		{
-			PlayerPrefs.SetInt("Muted", 1);
-		}
-		else
-		{
-			PlayerPrefs.SetInt("Muted", 0);
-		}
+	//	if (PlayerPrefs.GetInt("Muted", 0) == 0)
+	//	{
+	//		PlayerPrefs.SetInt("Muted", 1);
+	//	}
+	//	else
+		
+			//		PlayerPrefs.SetInt("Muted", 0);
+			//	}
+			if (PlayerPrefs.HasKey("musicvolume"))
+			{
+				PlayerPrefs.SetFloat("musicvolume", 1);
+				Load();
+			}
+			else
+			{
+				Save();
+			}
 
-		if (scenevalue == 1)
+			if (scenevalue == 1)
 		{
 			PlayMusic(musicsMenu, musicMenuVolume);
 			musicAudio.volume = musicMenuVolume;
@@ -141,24 +151,39 @@ public class SoundManager : MonoBehaviour
 
 	public void OffSound()
     {
-		if (PlayerPrefs.GetInt("Muted", 0) == 0)
-		{
+	//	if (PlayerPrefs.GetInt("Muted", 0) == 0)
+	//	{
 			AudioListener.volume = 0;
 			PlayerPrefs.SetInt("Muted", 1);
 			PlayerPrefs.Save();
 			
-		}
+	//	}
     }
 
 	public void OnSound()
     {
-		if (PlayerPrefs.GetInt("Muted", 0) == 1)
-		{
+	//	if (PlayerPrefs.GetInt("Muted", 0) == 1)
+	//	{
 			AudioListener.volume = 1;
 			PlayerPrefs.SetInt("Muted", 0);
 			PlayerPrefs.Save();
 			
-		}
+	//	}
+	}
+
+	public void ChangeVolume()
+	{
+		AudioListener.volume = volumeslider.value;
+	}
+
+	public void Load()
+	{
+		volumeslider.value = PlayerPrefs.GetFloat("musicvolume");
+	}
+
+	public void Save()
+	{
+		PlayerPrefs.SetFloat("musicvolume", volumeslider.value);
 	}
 
 
