@@ -18,8 +18,8 @@ public class TO_Basic : TaskObject
     [SerializeField] private float m_offsetX = 0.0f;
     [SerializeField] private Vector3 m_offsetRotation = new Vector3(0, 90.0f, 0);
     [SerializeField] private Vector3 m_offsetRotation2 = new Vector3(0, 90.0f, 0);
-
-    void Awake()
+    internal GameObject hungUpCoat;
+    public virtual void Awake()
     {
         m_taskSystem = GameObject.FindGameObjectWithTag("TaskSystem").GetComponent<TaskSystem>();
     }
@@ -58,8 +58,16 @@ public class TO_Basic : TaskObject
         if (IsPickedUp)
         {
             //transform.position = m_playerController.transform.position + (m_offsetZ * m_playerController.transform.forward) + (m_offsetY * m_playerController.transform.up) + (m_offsetX * m_playerController.transform.right);
-            transform.position = m_neckReference.transform.position +  (m_offsetX * m_playerController.transform.right) + ((m_offsetZ/2) * m_playerController.transform.forward) + (m_offsetY/5 * m_playerController.transform.up);
-            transform.rotation = m_playerController.transform.rotation * Quaternion.Euler(m_offsetRotation) * (m_neckReference.transform.localRotation) * Quaternion.Euler(m_offsetRotation2);
+            //transform.position = m_neckReference.transform.position +  (m_offsetX * m_playerController.transform.right) + ((m_offsetZ/2) * m_playerController.transform.forward) + (m_offsetY/5 * m_playerController.transform.up);
+            //transform.rotation = m_playerController.transform.rotation * Quaternion.Euler(m_offsetRotation) * (new Quaternion(m_neckReference.transform.rotation.x,0,0,1.0f)) * Quaternion.Euler(m_offsetRotation2);
+
+            if (transform.parent != m_neckReference.transform)
+            {
+                transform.rotation = m_neckReference.transform.rotation;
+                transform.position = m_neckReference.transform.position;
+                transform.parent = m_neckReference.transform;
+                //transform.position += m_playerController.transform.localPosition + new Vector3(0.0f, 1.0f, -1.0f);
+            }
             GetComponent<Rigidbody>().isKinematic = true;
             if (TryGetComponent(out BoxCollider box))
             {
@@ -76,6 +84,7 @@ public class TO_Basic : TaskObject
         }
         else
         {
+            transform.parent = null;
             GetComponent<Rigidbody>().isKinematic = false;
             if (TryGetComponent(out BoxCollider box))
             {
@@ -115,11 +124,11 @@ public class TO_Basic : TaskObject
                             m_taskSystem.Complete(2);
                             break;
                         };
-                    case (Type.Coat):
-                        {
-                            m_taskSystem.Complete(3);
-                            break;
-                        };
+                    //case (Type.Coat):
+                    //    {
+                    //        m_taskSystem.Complete(3);
+                    //        break;
+                    //    };
                     case (Type.Clothes):
                         {
                             m_taskSystem.Complete(7);
@@ -201,15 +210,15 @@ public class TO_Basic : TaskObject
                 m_inDestination = false;
                 Debug.Log("OH NO IT FELL OUT");
             }
-            else if (m_type == Type.Coat)
-            {
-                m_taskSystem.Coatmisplaced();
-                m_sleepTimer = 3.0f;
-                m_startSleepTimer = false;
-                isplaced = false;
-                m_inDestination = false;
-                Debug.Log("OH NO IT FELL OUT");
-            }
+            //else if (m_type == Type.Coat)
+            //{
+            //    m_taskSystem.Coatmisplaced();
+            //    m_sleepTimer = 3.0f;
+            //    m_startSleepTimer = false;
+            //    isplaced = false;
+            //    m_inDestination = false;
+            //    Debug.Log("OH NO IT FELL OUT");
+            //}
         }
 
     }
