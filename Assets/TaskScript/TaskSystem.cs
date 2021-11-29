@@ -13,6 +13,7 @@ public class TaskSystem : MonoBehaviour
     public static int taskvalue;
     public AudioClip harpsound;
     public float harpvolume;
+    private TaskTabButton taskTabButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,7 @@ public class TaskSystem : MonoBehaviour
         PlayerPrefs.SetInt("Score", taskvalue);
         PlayerPrefs.Save();
         PlayerPrefs.DeleteAll();
+        taskTabButton = GameObject.FindObjectOfType<TaskTabButton>();
         for (int i = 0; i < tasks.Count; i++)
         {
             tasks[i].CurrentStatus = Task.TaskStatus.Open;
@@ -82,6 +84,8 @@ public class TaskSystem : MonoBehaviour
         }
     }
 
+
+
     public void Complete(int no)
     {
         if(tasks[no].CurrentStatus==Task.TaskStatus.Open)
@@ -90,6 +94,7 @@ public class TaskSystem : MonoBehaviour
             if(tasks[no].isReached())
             {
                 tasks[no].TaskCompleted();
+                tasks[no].isComplete = true;
                 SoundManager.PlayUifx(harpsound, harpvolume);
                 taskvalue++;
                 PlayerPrefs.SetInt("Score", taskvalue);

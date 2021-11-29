@@ -16,6 +16,8 @@ public class Task : MonoBehaviour
     internal GameObject currentamountText;
     internal GameObject symbolText;
     internal GameObject requiredamountText;
+    private TaskTabButton taskTabButton;
+    public bool isComplete;
 
     internal List<GameObject> anim = new List<GameObject>();
 
@@ -38,6 +40,7 @@ public class Task : MonoBehaviour
         currentamountText.GetComponent<Text>().text = currentAmount.ToString();
         requiredamountText.GetComponent<Text>().text = requiredAmount.ToString();
         symbolText.GetComponent<Text>().text = symbol;
+        taskTabButton = GameObject.FindObjectOfType<TaskTabButton>();
         //ScratchEffect.SetActive(false);
     }
 
@@ -69,16 +72,32 @@ public class Task : MonoBehaviour
     }
     public void TaskCompleted()
     {
-        CurrentStatus = TaskStatus.Closed;
+            CurrentStatus = TaskStatus.Closed;
+           // StartCoroutine(Checkmark());        
+    }
+
+    public void Scratchmark()
+    {
         StartCoroutine(Checkmark());
     }
 
+    void Update()
+    {
+        if (isComplete && taskTabButton.isClose)
+        {
+           Scratchmark();
+        }
+    }
+
+
+
     IEnumerator Checkmark()
     {
-        anim[0].GetComponent<Animator>().SetBool("Scratch", true);
-        yield return new WaitForSeconds(1f);
-        anim[1].GetComponent<Animator>().SetBool("Scratch", true);
-        yield return new WaitForSeconds(3f);
+            anim[0].GetComponent<Animator>().SetBool("Scratch", true);
+            yield return new WaitForSeconds(1f);
+            anim[1].GetComponent<Animator>().SetBool("Scratch", true);
+            yield return new WaitForSeconds(3f);
+          //  anim[2].GetComponent<Animator>().SetBool("Scratch", true);
       //  Destroy(this);
     }
 }

@@ -10,6 +10,8 @@ public class PauseController : MonoBehaviour
     private bool m_Escape;
     public GameObject pausePanel;
     public GameObject settingsPanel;
+    public GameObject settingsPage;
+    public GameObject keybindingsPage;
     public AudioClip Soundclick;
     [Range(0, 1)]
     public float soundclickvolume;
@@ -64,10 +66,28 @@ public class PauseController : MonoBehaviour
     public void Settings()
     {
         settingsPanel.SetActive(true);
+        settingsPage.SetActive(true);
+        keybindingsPage.SetActive(false);
         SoundManager.PlaySfx(Soundclick, soundclickvolume);
         isPaused = true;
         pausePanel.SetActive(false);
 
+    }
+
+    public void Settings2()
+    {
+        settingsPage.SetActive(true);
+        keybindingsPage.SetActive(false);
+        SoundManager.PlaySfx(Soundclick, soundclickvolume);
+
+
+    }
+
+    public void KeyBindings()
+    {
+        settingsPage.SetActive(false);
+        keybindingsPage.SetActive(true);
+        SoundManager.PlaySfx(Soundclick, soundclickvolume);
     }
 
     public void Back()
@@ -77,6 +97,8 @@ public class PauseController : MonoBehaviour
         settingsPanel.SetActive(false);
         pausePanel.SetActive(true);
     }
+
+   
 
     public void QuitGame()
     {

@@ -17,6 +17,7 @@ public class TaskTabButton : MonoBehaviour
     private Animator anim2;
     private Animator anim3;
     private Animator buttonanim;
+    public bool isClose;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,7 @@ public class TaskTabButton : MonoBehaviour
         anim3 = levelpanel3.GetComponent<Animator>();
         buttonanim = mainTabbutton.GetComponent<Animator>();
         panelvalue = 1;
+        isClose = true;
     }
 
     public void SelectTab()
@@ -60,7 +62,7 @@ public class TaskTabButton : MonoBehaviour
         {
             if (anim != null && buttonanim !=null)
             {
-                bool isClose = anim.GetBool("Close");
+                 isClose = anim.GetBool("Close");
                 anim.SetBool("Close", !isClose);
                 bool buttonisClose = buttonanim.GetBool("Close");
                 buttonanim.SetBool("Close", !buttonisClose);
@@ -73,7 +75,7 @@ public class TaskTabButton : MonoBehaviour
         {
             if (anim != null && buttonanim != null)
             {
-                bool isClose = anim2.GetBool("Close");
+                 isClose = anim2.GetBool("Close");
                 anim2.SetBool("Close", !isClose);
                 bool buttonisClose = buttonanim.GetBool("Close");
                 buttonanim.SetBool("Close", !buttonisClose);
@@ -86,7 +88,7 @@ public class TaskTabButton : MonoBehaviour
         {
             if (anim != null && buttonanim != null)
             {
-                bool isClose = anim3.GetBool("Close");
+                 isClose = anim3.GetBool("Close");
                 anim3.SetBool("Close", !isClose);
                 bool buttonisClose = buttonanim.GetBool("Close");
                 buttonanim.SetBool("Close", !buttonisClose);
