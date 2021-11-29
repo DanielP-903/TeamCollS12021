@@ -31,8 +31,8 @@ public class EventTask : Task
             Debug.DebugBreak();
         }
 
-        m_codeTimeFrame.x = (m_timeFrame.x / m_dayNightCycleRef.fullDayLength) * 2;
-        m_codeTimeFrame.y = (m_timeFrame.y / m_dayNightCycleRef.fullDayLength) * 2;
+        //m_codeTimeFrame.x = (m_timeFrame.x / m_dayNightCycleRef.fullDayLength) * 2;
+        //m_codeTimeFrame.y = (m_timeFrame.y / m_dayNightCycleRef.fullDayLength) * 2;
 
         descriptionText = m_uiObjectRef.transform.GetChild(0).gameObject;
         currentamountText = m_uiObjectRef.transform.GetChild(1).gameObject;
@@ -54,13 +54,13 @@ public class EventTask : Task
         if (!m_isHappening && !m_dayNightCycleRef.isGameOver)
         {
             m_currentSecond = (int)((m_dayNightCycleRef.time / 2) * m_dayNightCycleRef.fullDayLength);
-            if (m_dayNightCycleRef.time >= m_codeTimeFrame.x && m_dayNightCycleRef.time < m_codeTimeFrame.y && m_currentSecond > m_savedSecond)
+            if (m_currentSecond >= (int)m_timeFrame.x && m_currentSecond <= (int)m_timeFrame.y && m_currentSecond > m_savedSecond)
             {
                 RandomiseEvents();
             }
         }
 
-        //Debug.Log("Current Second: " + (int)((m_dayNightCycleRef.time / 2) * m_dayNightCycleRef.fullDayLength));
+        Debug.Log("Current Second: " + (int)((m_dayNightCycleRef.time / 2) * m_dayNightCycleRef.fullDayLength));
 
     }
 
@@ -75,11 +75,11 @@ public class EventTask : Task
             {
                 task.m_active = true;
             }
-            //Debug.Log("Event has been triggered!");
+            Debug.Log("Event has been triggered!");
             m_isHappening = true;
         }
 
         m_savedSecond = (int) ((m_dayNightCycleRef.time/2) * m_dayNightCycleRef.fullDayLength);
-        //Debug.Log("savedSecond " + m_savedSecond + " , Caused by: " + randomNo + " out of a possible " + m_likelihood);
+        Debug.Log("savedSecond " + m_savedSecond + " , Caused by: " + randomNo + " out of a possible " + m_likelihood);
     }
 }

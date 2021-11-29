@@ -5566,7 +5566,7 @@ GameObject:
   - component: {fileID: 436442395}
   - component: {fileID: 436442394}
   m_Layer: 0
-  m_Name: CandleTrigger3 (2)
+  m_Name: CandleTrigger5
   m_TagString: Candle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11540,7 +11540,7 @@ GameObject:
   - component: {fileID: 581224100}
   - component: {fileID: 581224099}
   m_Layer: 0
-  m_Name: CandleTrigger3 (6)
+  m_Name: CandleTrigger9
   m_TagString: Candle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19333,7 +19333,7 @@ GameObject:
   - component: {fileID: 881661206}
   - component: {fileID: 881661205}
   m_Layer: 0
-  m_Name: CandleTrigger3 (3)
+  m_Name: CandleTrigger6
   m_TagString: Candle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32987,7 +32987,7 @@ GameObject:
   - component: {fileID: 1145515454}
   - component: {fileID: 1145515453}
   m_Layer: 0
-  m_Name: CandleTrigger3 (1)
+  m_Name: CandleTrigger4
   m_TagString: Candle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39493,7 +39493,7 @@ GameObject:
   - component: {fileID: 1242174044}
   - component: {fileID: 1242174043}
   m_Layer: 0
-  m_Name: CandleTrigger3 (4)
+  m_Name: CandleTrigger7
   m_TagString: Candle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44492,7 +44492,7 @@ GameObject:
   - component: {fileID: 1257905430}
   - component: {fileID: 1257905429}
   m_Layer: 0
-  m_Name: CandleTrigger3 (5)
+  m_Name: CandleTrigger8
   m_TagString: Candle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76468,57 +76468,9 @@ PrefabInstance:
       value: EventTask2
       objectReference: {fileID: 0}
     - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
-      propertyPath: rewardText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
-      propertyPath: symbolText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
-      propertyPath: description
-      value: Light the candles.
-      objectReference: {fileID: 0}
-    - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
-      propertyPath: m_likelihood
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
-      propertyPath: m_timeFrame.x
-      value: 550
-      objectReference: {fileID: 0}
-    - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
-      propertyPath: m_timeFrame.y
-      value: 565
-      objectReference: {fileID: 0}
-    - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
       propertyPath: m_uiObjectRef
       value: 
       objectReference: {fileID: 7727355663442481147}
-    - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
-      propertyPath: requiredAmount
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
-      propertyPath: descriptionText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
-      propertyPath: currentamountText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
-      propertyPath: m_dayNightCycleRef
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
-      propertyPath: requiredamountText
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
       propertyPath: m_taskObject.Array.data[0]
       value: 
@@ -76531,6 +76483,30 @@ PrefabInstance:
       propertyPath: m_taskObject.Array.data[2]
       value: 
       objectReference: {fileID: 7570054352414095759}
+    - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
+      propertyPath: m_taskObject.Array.data[3]
+      value: 
+      objectReference: {fileID: 1145515458}
+    - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
+      propertyPath: m_taskObject.Array.data[4]
+      value: 
+      objectReference: {fileID: 436442399}
+    - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
+      propertyPath: m_taskObject.Array.data[5]
+      value: 
+      objectReference: {fileID: 881661210}
+    - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
+      propertyPath: m_taskObject.Array.data[6]
+      value: 
+      objectReference: {fileID: 1242174048}
+    - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
+      propertyPath: m_taskObject.Array.data[7]
+      value: 
+      objectReference: {fileID: 1257905434}
+    - target: {fileID: 7747490769821212049, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
+      propertyPath: m_taskObject.Array.data[8]
+      value: 
+      objectReference: {fileID: 581224104}
     - target: {fileID: 7747490769821212050, guid: 9c2f430151e19f04e95f8c2356f307f0, type: 3}
       propertyPath: m_RootOrder
       value: 1
