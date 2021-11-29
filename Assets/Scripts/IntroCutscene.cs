@@ -13,6 +13,10 @@ public class IntroCutscene : MonoBehaviour
     [SerializeField] 
     private float m_introCutsceneLength = 0.0f;
 
+    [Tooltip("Potential time offset")]
+    [SerializeField]
+    private float m_timeOffset = 0.01f;
+
     private float m_introTimer = 0.0f;
     // Start is called before the first frame update
     void Start()
@@ -42,10 +46,10 @@ public class IntroCutscene : MonoBehaviour
             {
                 if (m_introClips[i].m_hasPlayed == false)
                 {
-                    if (m_introTimer >= m_introClips[i].m_timeStamp - 0.01f && m_introTimer <= m_introClips[i].m_timeStamp + 0.01f)
+                    if (m_introTimer >= m_introClips[i].m_timeStamp - m_timeOffset && m_introTimer <= m_introClips[i].m_timeStamp + m_timeOffset)
                     {
                         m_introClips[i].m_hasPlayed = true;
-                        SoundManager.PlaySfx(m_introClips[i].m_audioClip, 1.0f);
+                        GetComponent<AudioSource>().PlayOneShot(m_introClips[i].m_audioClip, 1.0f);
                     }
                 }
             } 
