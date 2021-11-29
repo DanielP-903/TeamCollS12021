@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private bool m_sprint = false;
     private float m_inputTimer = 0.0f;
     private bool m_colliding = false;
-    private float m_barkTimer = 1.0f;
+    private float m_barkTimer = 0.5f;
     [SerializeField] internal Day currentDay;
     private IdleParams m_idleParams = IdleParams.IsSitting;
 
@@ -199,7 +199,7 @@ public class PlayerController : MonoBehaviour
                 {
                     SoundManager.PlaySfx(barksound, mainvolume);
                     Debug.Log("Bark!");
-                    m_barkTimer = 1.0f;
+                    m_barkTimer = 0.5f;
                 
                 m_particleSystem.Clear();
                 m_particleSystem.Play();
