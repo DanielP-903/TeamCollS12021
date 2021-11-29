@@ -9,11 +9,12 @@ public class LevelFade : MonoBehaviour
     [SerializeField] internal GameObject m_level2;
     [SerializeField] internal float m_level3Threshold;
     [SerializeField] internal GameObject m_level3;
+    [SerializeField] internal int currentLevel = 0;
+
     private GameObject m_player;
 
-    [SerializeField] internal int currentLevel = 0;
     private int previousCurrentLevel = 0;
-    GameObject[] gameObjects;
+    private List<GameObject> gameObjects = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +50,17 @@ public class LevelFade : MonoBehaviour
             Debug.DebugBreak();
         }
 
-        gameObjects = GameObject.FindGameObjectsWithTag("Interactable");
+        GameObject[] tempObjects = GameObject.FindGameObjectsWithTag("Interactable");
+        foreach (var obj in tempObjects)
+        {
+            gameObjects.Add(obj);
+        }
+
+        tempObjects = GameObject.FindGameObjectsWithTag("Match");
+        foreach (var obj in tempObjects)
+        {
+            gameObjects.Add(obj);
+        }
 
     }
 

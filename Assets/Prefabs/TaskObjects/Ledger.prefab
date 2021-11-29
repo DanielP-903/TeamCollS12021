@@ -117,14 +117,12 @@ MonoBehaviour:
   m_active: 0
   m_requiresDestination: 1
   m_destination: {fileID: 0}
-  m_inDestination: 0
   isplaced: 0
+  m_offsetRotation: {x: 0, y: 90, z: 0}
+  m_offsetPosition: {x: 0, y: 0, z: 0}
+  m_inDestination: 0
   m_startSleepTimer: 0
   m_sleepTimer: 3
-  m_offsetZ: 0.9
-  m_offsetY: 0.6
-  m_offsetX: 0
-  m_offsetRotation: {x: 0, y: 0, z: 0}
 --- !u!65 &614916546332202017
 BoxCollider:
   m_ObjectHideFlags: 0

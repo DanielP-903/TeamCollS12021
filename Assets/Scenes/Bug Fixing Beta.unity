@@ -52947,20 +52947,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d98aea0af6b0f446bd9df2c646db75d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_levelOwnership: 0
-  m_type: 6
+  m_levelOwnership: 1
+  m_type: 0
   m_active: 0
   m_requiresDestination: 0
-  m_destination: {fileID: 6831100732273810572}
-  m_inDestination: 0
+  m_destination: {fileID: 0}
   isplaced: 0
+  m_offsetRotation: {x: 0, y: 0, z: 80}
+  m_offsetPosition: {x: 0, y: 90, z: 0}
+  m_inDestination: 0
   m_startSleepTimer: 0
   m_sleepTimer: 3
-  m_offsetZ: 0.8
-  m_offsetY: 0.5
-  m_offsetX: 0
-  m_offsetRotation: {x: 0, y: 90, z: 80}
-  m_offsetRotation2: {x: 0, y: 90, z: 0}
 --- !u!64 &1652097913
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -57759,20 +57756,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d98aea0af6b0f446bd9df2c646db75d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_levelOwnership: 0
-  m_type: 6
+  m_levelOwnership: 2
+  m_type: 0
   m_active: 0
   m_requiresDestination: 0
-  m_destination: {fileID: 6831100732273810572}
-  m_inDestination: 0
+  m_destination: {fileID: 0}
   isplaced: 0
+  m_offsetRotation: {x: 0, y: 0, z: 80}
+  m_offsetPosition: {x: 0, y: 90, z: 0}
+  m_inDestination: 0
   m_startSleepTimer: 0
   m_sleepTimer: 3
-  m_offsetZ: 0.8
-  m_offsetY: 0.5
-  m_offsetX: 0
-  m_offsetRotation: {x: 0, y: 90, z: 80}
-  m_offsetRotation2: {x: 0, y: 90, z: 0}
 --- !u!64 &2105020325
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -63017,15 +63011,12 @@ MonoBehaviour:
   m_active: 0
   m_requiresDestination: 1
   m_destination: {fileID: 193092244}
-  m_inDestination: 0
   isplaced: 0
+  m_offsetRotation: {x: 0, y: 0, z: 0}
+  m_offsetPosition: {x: 0, y: 90, z: 0}
+  m_inDestination: 0
   m_startSleepTimer: 0
   m_sleepTimer: 3
-  m_offsetZ: 0.7
-  m_offsetY: 0.4
-  m_offsetX: 0.3
-  m_offsetRotation: {x: 0, y: 90, z: 0}
-  m_offsetRotation2: {x: 0, y: 90, z: 0}
 --- !u!54 &2063744814756325967
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -67231,19 +67222,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_levelOwnership: 0
-  m_type: 6
+  m_type: 0
   m_active: 0
   m_requiresDestination: 0
-  m_destination: {fileID: 6831100732273810572}
-  m_inDestination: 0
+  m_destination: {fileID: 0}
   isplaced: 0
+  m_offsetRotation: {x: 0, y: 0, z: 80}
+  m_offsetPosition: {x: 0, y: 90, z: 0}
+  m_inDestination: 0
   m_startSleepTimer: 0
   m_sleepTimer: 3
-  m_offsetZ: 0.8
-  m_offsetY: 0.5
-  m_offsetX: 0
-  m_offsetRotation: {x: 0, y: 90, z: 80}
-  m_offsetRotation2: {x: 0, y: 90, z: 0}
 --- !u!54 &3876332801445124959
 Rigidbody:
   m_ObjectHideFlags: 0

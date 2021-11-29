@@ -8,16 +8,17 @@ public class TO_Basic : TaskObject
 
     [SerializeField] bool m_requiresDestination = true;
     [SerializeField] internal GameObject m_destination;
+    [SerializeField] internal bool isplaced;
+    [SerializeField] private Vector3 m_offsetRotation = new Vector3(0, 90.0f, 0);
+    [SerializeField] private Vector3 m_offsetPosition = new Vector3(0, 0, 0);
     public bool m_inDestination = false;
-    [SerializeField] public bool isplaced;
     public bool m_startSleepTimer = false;
     public float m_sleepTimer = 3.0f;
 
-    [SerializeField] private float m_offsetZ = 0.0f;
-    [SerializeField] private float m_offsetY = 0.0f;
-    [SerializeField] private float m_offsetX = 0.0f;
-    [SerializeField] private Vector3 m_offsetRotation = new Vector3(0, 90.0f, 0);
-    [SerializeField] private Vector3 m_offsetRotation2 = new Vector3(0, 90.0f, 0);
+    //[SerializeField] private float m_offsetZ = 0.0f;
+    //[SerializeField] private float m_offsetY = 0.0f;
+    //[SerializeField] private float m_offsetX = 0.0f;
+    //[SerializeField] private Vector3 m_offsetRotation2 = new Vector3(0, 90.0f, 0);
     internal GameObject hungUpCoat;
     public virtual void Awake()
     {
@@ -57,16 +58,11 @@ public class TO_Basic : TaskObject
     {
         if (IsPickedUp)
         {
-            //transform.position = m_playerController.transform.position + (m_offsetZ * m_playerController.transform.forward) + (m_offsetY * m_playerController.transform.up) + (m_offsetX * m_playerController.transform.right);
-            //transform.position = m_neckReference.transform.position +  (m_offsetX * m_playerController.transform.right) + ((m_offsetZ/2) * m_playerController.transform.forward) + (m_offsetY/5 * m_playerController.transform.up);
-            //transform.rotation = m_playerController.transform.rotation * Quaternion.Euler(m_offsetRotation) * (new Quaternion(m_neckReference.transform.rotation.x,0,0,1.0f)) * Quaternion.Euler(m_offsetRotation2);
-
             if (transform.parent != m_neckReference.transform)
             {
-                transform.rotation = m_neckReference.transform.rotation;
-                transform.position = m_neckReference.transform.position;
+                transform.rotation = m_neckReference.transform.rotation * Quaternion.Euler(m_offsetRotation);
+                transform.position = m_neckReference.transform.position + m_offsetPosition;
                 transform.parent = m_neckReference.transform;
-                //transform.position += m_playerController.transform.localPosition + new Vector3(0.0f, 1.0f, -1.0f);
             }
             GetComponent<Rigidbody>().isKinematic = true;
             if (TryGetComponent(out BoxCollider box))

@@ -128,17 +128,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // OLD TUTORIAL - DELETE IF NO LONGER NEEDED
-        //if (!m_moveTutorialComplete)
-        //{
-        //    //Debug.Log("Press WASD to move :)");
-        //    if (!m_particleSystemChild.isPlaying)
-        //    {
-        //        m_particleSystemChild.Play();
-        //    }
-        //    // display movement bubble
-        //}
-
         // Movement
         m_hasReceivedInput = false;
         if (m_moveForward || m_moveBackward)
@@ -149,24 +138,13 @@ public class PlayerController : MonoBehaviour
             Vector3 move = m_moveForward ? (transform.forward * (m_speed * sprint) * Time.deltaTime) : (-transform.forward * (m_speed / 1.5f) * Time.deltaTime);
             m_characterController.Move(move);
             m_hasReceivedInput = true;
-            //if (!m_moveTutorialComplete)
-            //{
-            //    m_moveTutorialComplete = true;
-            //    //Debug.Log("Tutorial complete!");
-            //    if (m_particleSystemChild.isPlaying)
-            //    {
-            //        m_particleSystemChild.Stop();
-            //    }
-            //}
             // AUDIO: Footstep audio?
         }
-
 
         m_animator.SetBool("IsWalking", m_moveForward || m_moveBackward);
         m_animator.SetBool("IsSprinting", m_sprint && m_moveForward);
         m_animator.SetBool("IsTurningL", m_rotLeft);
         m_animator.SetBool("IsTurningR", m_rotRight);
-
 
         if (m_inputTimer != 0.0f)
         {
@@ -215,7 +193,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
         if (m_barkTimer > 0.0f)
         {
             m_barkTimer -= Time.deltaTime;
@@ -223,25 +200,12 @@ public class PlayerController : MonoBehaviour
 
         m_characterController.Move(m_gravity*Time.deltaTime);
  
-    
-
         if (m_rotLeft || m_rotRight)
         {
             float multiplier = m_rotLeft ? -1 : 1;
             transform.Rotate(0, m_rotationSpeed * multiplier * Time.deltaTime * 200.0f, 0);
             m_hasReceivedInput = true;
-            //if (!m_moveTutorialComplete)
-            //{
-            //    m_moveTutorialComplete = true;
-            //    //Debug.Log("Tutorial complete!");
-            //    if (m_particleSystemChild.isPlaying)
-            //    {
-            //        m_particleSystemChild.Stop();
-            //    }
-            //}
         }
-
-
 
         if (!m_hasReceivedInput)
         {
@@ -269,7 +233,6 @@ public class PlayerController : MonoBehaviour
                         m_animator.SetBool(m_idleParams.ToString(), false);
                     }
                 }
-
             }
         }
         else
@@ -281,8 +244,6 @@ public class PlayerController : MonoBehaviour
             m_sneezeTimer = 1.0f;
             RandomiseAnimation();
         }
-        //Debug.Log("Can bark? " + !m_colliding);
-
     }
 
     private void RandomiseAnimation()
