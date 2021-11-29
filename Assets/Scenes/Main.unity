@@ -2622,7 +2622,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1226817584057097758, guid: c974a5a8e729aef4b9a78cbf63d269a6, type: 3}
 --- !u!114 &177136864 stripped
@@ -56152,16 +56152,28 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27758ccb85e020543b1550a0adea5352, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.81107
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 27758ccb85e020543b1550a0adea5352, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.81107
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 27758ccb85e020543b1550a0adea5352, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.81107
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 27758ccb85e020543b1550a0adea5352, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.0065737
+      value: 0.9925
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27758ccb85e020543b1550a0adea5352, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0079994
+      value: 1.1857
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27758ccb85e020543b1550a0adea5352, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 85.993744
+      value: 85.982
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27758ccb85e020543b1550a0adea5352, type: 3}
       propertyPath: m_LocalRotation.w
