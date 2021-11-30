@@ -13,7 +13,7 @@ public class IntroCutscene : MonoBehaviour
     [SerializeField] 
     private float m_introCutsceneLength = 0.0f;
 
-    [Tooltip("Potential time offset")]
+    [Tooltip("Potential time offset (+/- the timestamp")]
     [SerializeField]
     private float m_timeOffset = 0.01f;
 
@@ -28,6 +28,7 @@ public class IntroCutscene : MonoBehaviour
                 Debug.LogError("A timestamp is beyond the length of the cutscene!");
                 Debug.DebugBreak();
             }
+            clip.m_hasPlayed = false;
         }
     }
 
