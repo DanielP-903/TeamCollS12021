@@ -49,7 +49,7 @@ public class IntroCutscene : MonoBehaviour
                     if (m_introTimer >= m_introClips[i].m_timeStamp - m_timeOffset && m_introTimer <= m_introClips[i].m_timeStamp + m_timeOffset)
                     {
                         m_introClips[i].m_hasPlayed = true;
-                        GetComponent<AudioSource>().PlayOneShot(m_introClips[i].m_audioClip, 1.0f);
+                        m_introClips[i].GetComponent<AudioSource>().PlayOneShot(m_introClips[i].m_audioClip, 1.0f);
                     }
                 }
             } 
