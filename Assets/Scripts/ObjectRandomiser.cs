@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class ObjectRandomiser : MonoBehaviour
 {
     [SerializeField] private List<GameObject> m_bookSpawnLocations;
+    [SerializeField] private List<GameObject> m_level2BookSpawnLocations;
     [SerializeField] private List<GameObject> m_plateSpawnLocations;
     [SerializeField] private List<GameObject> m_nessieSpawnLocations;
 
@@ -15,6 +16,7 @@ public class ObjectRandomiser : MonoBehaviour
     [SerializeField] private GameObject m_nessieDestination;
     [SerializeField] private GameObject m_book;
     [SerializeField] private GameObject m_bookDestination;
+    [SerializeField] private GameObject m_level2BookDestination;
     [SerializeField] private GameObject m_plate;
     [SerializeField] private GameObject m_plateDestination;
 
@@ -26,6 +28,8 @@ public class ObjectRandomiser : MonoBehaviour
 
     [SerializeField] private TaskSystem m_taskSystem;
 
+    private LevelFade m_levelFadeRefRandomiser;
+
     private List<int> m_chosenNumbers = new List<int>();
 
     private int m_randomNo;
@@ -36,6 +40,7 @@ public class ObjectRandomiser : MonoBehaviour
     void Start()
     {
         m_playerNeck = GameObject.FindGameObjectWithTag("Player Neck");
+        m_levelFadeRefRandomiser = GameObject.FindGameObjectWithTag("LevelFade").GetComponent<LevelFade>();
         Randomise();
     }
 
@@ -66,7 +71,7 @@ public class ObjectRandomiser : MonoBehaviour
         }
     }
 
-    private void SpawnObject(TaskObject.Type type)
+    private void SpawnObject(TaskObject.Type type, int levelNo)
     {
         int m_noOf = 0;
         GameObject m_object = new GameObject();
@@ -95,8 +100,16 @@ public class ObjectRandomiser : MonoBehaviour
                 {
                     m_noOf = m_noOfBooks;
                     m_object = m_book;
-                    m_objectDestination = m_bookDestination;
-                    m_objectSpawnLocations = m_bookSpawnLocations;
+                    if (levelNo == 1)
+                    {
+                        m_objectDestination = m_bookDestination;
+                        m_objectSpawnLocations = m_bookSpawnLocations;
+                    }
+                    else
+                    {
+                        m_objectDestination = m_level2BookDestination;
+                        m_objectSpawnLocations = m_level2BookSpawnLocations;
+                    }
                     break;
                 }
             default:
@@ -107,6 +120,31 @@ public class ObjectRandomiser : MonoBehaviour
         m_object.GetComponent<TO_Basic>().m_destination = m_objectDestination;
         m_object.GetComponent<TO_Basic>().m_neckReference = m_playerNeck;
 
+        Transform parentTransform = m_levelFadeRefRandomiser.m_level1.gameObject.transform;
+
+        switch (levelNo)
+        {
+            case (1):
+                {
+                    m_object.GetComponent<TaskObject>().m_levelOwnership = TaskObject.Ownership.Level1;
+                    parentTransform = m_levelFadeRefRandomiser.m_level1.gameObject.transform;
+                    break;
+                }
+            case (2):
+                {
+                    m_object.GetComponent<TaskObject>().m_levelOwnership = TaskObject.Ownership.Level2;
+                    parentTransform = m_levelFadeRefRandomiser.m_level2.gameObject.transform;
+                    break;
+                }
+            case (3):
+                {
+                    m_object.GetComponent<TaskObject>().m_levelOwnership = TaskObject.Ownership.Level3;
+                    parentTransform = m_levelFadeRefRandomiser.m_level3.gameObject.transform;
+                    break;
+                }
+            default:
+                break;
+        }
 
         m_chosenNumbers.Clear();
         bool unique = false;
@@ -123,7 +161,7 @@ public class ObjectRandomiser : MonoBehaviour
                 }
             }
 
-            Instantiate(m_object, m_objectSpawnLocations[m_randomNo].transform.position, Quaternion.identity);
+           Instantiate(m_object, m_objectSpawnLocations[m_randomNo].transform.position, Quaternion.identity, parentTransform);
         }
     }
 
@@ -133,9 +171,10 @@ public class ObjectRandomiser : MonoBehaviour
 
         UnityEngine.Random.InitState((int)System.DateTime.Now.Ticks);
 
-        SpawnObject(TaskObject.Type.Toy);
-        SpawnObject(TaskObject.Type.Plate);
-        SpawnObject(TaskObject.Type.Book);
+        SpawnObject(TaskObject.Type.Toy,1);
+        SpawnObject(TaskObject.Type.Plate,1);
+        SpawnObject(TaskObject.Type.Book,1);
+        SpawnObject(TaskObject.Type.Book,2);
     }
 
     public void TestRandomise(InputAction.CallbackContext context)
