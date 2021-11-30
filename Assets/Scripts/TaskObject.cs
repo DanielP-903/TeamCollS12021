@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TaskObject : MonoBehaviour
 {
-    private enum Ownership
+    public enum Ownership
     {
         Level1,Level2,Level3
     };
@@ -22,7 +22,7 @@ public class TaskObject : MonoBehaviour
 
     [SerializeField] internal bool IsPickedUp { get; set; }
 
-    [SerializeField] private Ownership m_levelOwnership;
+    [SerializeField] internal Ownership m_levelOwnership;
     [SerializeField] internal Type m_type;
 
     internal GameObject m_neckReference;
