@@ -62,14 +62,12 @@ public class LevelFade : MonoBehaviour
             gameObjects.Add(obj);
         }
 
+        HideMeshes();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-
         DetermineCurrentLevel();
     }
 
@@ -125,6 +123,10 @@ public class LevelFade : MonoBehaviour
                             if (!gameObject.GetComponent<TaskObject>().IsPickedUp)
                             {
                                 gameObject.GetComponent<MeshRenderer>().enabled = gameObject.transform.position.y < m_level2Threshold;
+                                if (gameObject.GetComponent<MeshRenderer>().enabled == true && gameObject.GetComponent<TaskObject>().m_type == TaskObject.Type.Book)
+                                {
+                                    Debug.Log("help");
+                                }
                             }
                         }     
                     }

@@ -118,17 +118,17 @@ public class TaskObject : MonoBehaviour
         {
             case Ownership.Level1:
             {
-                transform.parent = m_levelFade.m_level1.transform;
+                transform.parent = m_levelFade.m_level1.gameObject.transform;
                 break;
             }
             case Ownership.Level2:
             {
-                transform.parent = m_levelFade.m_level2.transform;
+                transform.parent = m_levelFade.m_level2.gameObject.transform;
                 break;
             }
             case Ownership.Level3:
             {
-                transform.parent = m_levelFade.m_level3.transform;
+                transform.parent = m_levelFade.m_level3.gameObject.transform;
                 break;
             }
         }

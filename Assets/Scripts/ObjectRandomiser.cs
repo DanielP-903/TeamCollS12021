@@ -20,6 +20,8 @@ public class ObjectRandomiser : MonoBehaviour
     [SerializeField] private GameObject m_plate;
     [SerializeField] private GameObject m_plateDestination;
 
+    [SerializeField] private GameObject m_level2;
+
     private GameObject m_playerNeck;
 
     [SerializeField] private int m_noOfBooks;
@@ -36,8 +38,11 @@ public class ObjectRandomiser : MonoBehaviour
     private bool m_interact;
     private float m_inputTimer = 0.0f;
 
+
+    private GameObject trackObject;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         m_playerNeck = GameObject.FindGameObjectWithTag("Player Neck");
         m_levelFadeRefRandomiser = GameObject.FindGameObjectWithTag("LevelFade").GetComponent<LevelFade>();
@@ -160,8 +165,7 @@ public class ObjectRandomiser : MonoBehaviour
                     unique = true;
                 }
             }
-
-           Instantiate(m_object, m_objectSpawnLocations[m_randomNo].transform.position, Quaternion.identity, parentTransform);
+            trackObject = Instantiate(m_object, m_objectSpawnLocations[m_randomNo].transform.position, Quaternion.identity, parentTransform);
         }
     }
 
@@ -175,12 +179,5 @@ public class ObjectRandomiser : MonoBehaviour
         SpawnObject(TaskObject.Type.Plate,1);
         SpawnObject(TaskObject.Type.Book,1);
         SpawnObject(TaskObject.Type.Book,2);
-    }
-
-    public void TestRandomise(InputAction.CallbackContext context)
-    {
-        float button = context.ReadValue<float>();
-        m_interact = Math.Abs(button - 1.0f) < 0.1f ? true : false;
-        //Debug.Log("Interact detected: " + m_interact);
     }
 }

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class TO_Basic : TaskObject
 {
-
-
     [SerializeField] bool m_requiresDestination = true;
     [SerializeField] internal GameObject m_destination;
     [SerializeField] internal bool isplaced;
@@ -15,10 +13,6 @@ public class TO_Basic : TaskObject
     public bool m_startSleepTimer = false;
     public float m_sleepTimer = 3.0f;
 
-    //[SerializeField] private float m_offsetZ = 0.0f;
-    //[SerializeField] private float m_offsetY = 0.0f;
-    //[SerializeField] private float m_offsetX = 0.0f;
-    //[SerializeField] private Vector3 m_offsetRotation2 = new Vector3(0, 90.0f, 0);
     internal GameObject hungUpCoat;
     public virtual void Awake()
     {
@@ -98,124 +92,112 @@ public class TO_Basic : TaskObject
     }
     void OnTriggerEnter(Collider collider)
     {
-        if (collider == m_destination.GetComponent<Collider>() && !IsPickedUp)
+        if (m_requiresDestination)
         {
-            if (!isplaced)
+            if (collider == m_destination.GetComponent<Collider>() && !IsPickedUp)
             {
-                switch (m_type)
+                if (!isplaced)
                 {
+                    switch (m_type)
+                    {
 
-                    case (Type.Book):
-                        {
-                            m_taskSystem.Complete(0);
-                            break;
-                        };
-                    case (Type.Plate):
-                        {
-                            m_taskSystem.Complete(1);
-                            break;
-                        };
-                    case (Type.Toy):
-                        {
-                            m_taskSystem.Complete(2);
-                            break;
-                        };
-                    //case (Type.Coat):
-                    //    {
-                    //        m_taskSystem.Complete(3);
-                    //        break;
-                    //    };
-                    case (Type.Clothes):
-                        {
-                            m_taskSystem.Complete(7);
-                            break;
-                        };
-                    case (Type.Wood):
-                        {
-                            m_taskSystem.Complete(9);
-                            break;
-                        };
-                    case (Type.Ledger):
-                        {
-                            m_taskSystem.Complete(10);
-                            break;
-                        };
-                    case (Type.Soup):
-                        {
-                            m_taskSystem.Complete(11);
-                            break;
-                        };
-                    case (Type.Newspaper):
-                        {
-                            m_taskSystem.Complete(17);
-                            break;
-                        };
-                    case (Type.Package):
-                        {
-                            m_taskSystem.Complete(18);
-                            break;
-                        };
-                    //case (Type.Tape):
-                    //    {
-                    //        m_taskSystem.Complete(14);
-                    //        break;
-                    //    };
+                        case (Type.Book):
+                            {
+                                m_taskSystem.Complete(0);
+                                break;
+                            };
+                        case (Type.Plate):
+                            {
+                                m_taskSystem.Complete(1);
+                                break;
+                            };
+                        case (Type.Toy):
+                            {
+                                m_taskSystem.Complete(2);
+                                break;
+                            };
+                        case (Type.Clothes):
+                            {
+                                m_taskSystem.Complete(7);
+                                break;
+                            };
+                        case (Type.Wood):
+                            {
+                                m_taskSystem.Complete(9);
+                                break;
+                            };
+                        case (Type.Ledger):
+                            {
+                                m_taskSystem.Complete(10);
+                                break;
+                            };
+                        case (Type.Soup):
+                            {
+                                m_taskSystem.Complete(11);
+                                break;
+                            };
+                        case (Type.Newspaper):
+                            {
+                                m_taskSystem.Complete(17);
+                                break;
+                            };
+                        case (Type.Package):
+                            {
+                                m_taskSystem.Complete(18);
+                                break;
+                            };
 
-                    default: break;
+                        default: break;
+                    }
                 }
+                m_inDestination = true;
+                m_startSleepTimer = true;
+                isplaced = true;
+                m_sleepTimer = 3.0f;
             }
-            m_inDestination = true;
-            m_startSleepTimer = true;
-            m_sleepTimer = 3.0f;
-        }
-        else
-        {
-            m_inDestination = false;
-            m_startSleepTimer = false;
+            else
+            {
+                m_inDestination = false;
+                m_startSleepTimer = false;
+                isplaced = false;
+            }
         }
     }
 
     void OnTriggerExit(Collider collider)
     {
-        if (collider == m_destination.GetComponent<Collider>() && !IsPickedUp)
+        if (m_requiresDestination)
         {
-            if (m_type == Type.Book)
+            if (collider == m_destination.GetComponent<Collider>() && !IsPickedUp)
             {
-                m_taskSystem.Bookmisplaced();
-                m_sleepTimer = 3.0f;
-                m_startSleepTimer = false;
-                isplaced = false;
-                m_inDestination = false;
-                Debug.Log("OH NO IT FELL OUT");
+                if (m_type == Type.Book)
+                {
+                    m_taskSystem.Bookmisplaced();
+                    m_sleepTimer = 3.0f;
+                    m_startSleepTimer = false;
+                    isplaced = false;
+                    m_inDestination = false;
+                    Debug.Log("OH NO IT FELL OUT");
+                }
+                else if (m_type == Type.Plate)
+                {
+                    m_taskSystem.Platemisplaced();
+                    m_sleepTimer = 3.0f;
+                    m_startSleepTimer = false;
+                    isplaced = false;
+                    m_inDestination = false;
+                    Debug.Log("OH NO IT FELL OUT");
+                }
+                else if (m_type == Type.Toy)
+                {
+                    m_taskSystem.Toymisplaced();
+                    m_sleepTimer = 3.0f;
+                    m_startSleepTimer = false;
+                    isplaced = false;
+                    m_inDestination = false;
+                    Debug.Log("OH NO IT FELL OUT");
+                }
             }
-            else if(m_type==Type.Plate)
-            {
-                m_taskSystem.Platemisplaced();
-                m_sleepTimer = 3.0f;
-                m_startSleepTimer = false;
-                isplaced = false;
-                m_inDestination = false;
-                Debug.Log("OH NO IT FELL OUT");
-            }
-            else if (m_type == Type.Toy)
-            {
-                m_taskSystem.Toymisplaced();
-                m_sleepTimer = 3.0f;
-                m_startSleepTimer = false;
-                isplaced = false;
-                m_inDestination = false;
-                Debug.Log("OH NO IT FELL OUT");
-            }
-            //else if (m_type == Type.Coat)
-            //{
-            //    m_taskSystem.Coatmisplaced();
-            //    m_sleepTimer = 3.0f;
-            //    m_startSleepTimer = false;
-            //    isplaced = false;
-            //    m_inDestination = false;
-            //    Debug.Log("OH NO IT FELL OUT");
-            //}
         }
-
     }
 }
