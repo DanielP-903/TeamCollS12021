@@ -6986,7 +6986,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -49.222, y: -24.263}
+  m_AnchoredPosition: {x: -67.4, y: -73}
   m_SizeDelta: {x: 26.0055, y: 25.3806}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &315056068
@@ -70819,8 +70819,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.24, y: 1, z: 0.38}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.24, y: 1, z: 0.72599345}
+  m_Center: {x: 0.0000000321398, y: 0, z: 0.17299688}
 --- !u!1001 &1841000596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113880,6 +113880,7 @@ MonoBehaviour:
   m_level2BookDestination: {fileID: 8219569649710342364}
   m_plate: {fileID: 7115844134428843069, guid: 0e82cb4a674cedd49945947f51ffa1be, type: 3}
   m_plateDestination: {fileID: 8355850363818345725}
+  m_level2: {fileID: 0}
   m_noOfBooks: 3
   m_noOfPlates: 3
   m_noOfNessies: 1

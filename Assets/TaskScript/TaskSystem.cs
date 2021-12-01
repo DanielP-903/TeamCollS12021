@@ -84,6 +84,14 @@ public class TaskSystem : MonoBehaviour
         }
     }
 
+    public void ItemsMisPlaced(int no)
+    {
+        if (tasks[no].CurrentStatus == Task.TaskStatus.Open)
+        {
+            tasks[no].ItemsDisposed();
+        }
+    }
+
 
 
 
