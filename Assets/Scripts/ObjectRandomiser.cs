@@ -9,6 +9,7 @@ public class ObjectRandomiser : MonoBehaviour
 {
     [SerializeField] private List<GameObject> m_bookSpawnLocations;
     [SerializeField] private List<GameObject> m_level2BookSpawnLocations;
+    [SerializeField] private List<GameObject> m_level3BookSpawnLocations;
     [SerializeField] private List<GameObject> m_plateSpawnLocations;
     [SerializeField] private List<GameObject> m_nessieSpawnLocations;
 
@@ -17,6 +18,7 @@ public class ObjectRandomiser : MonoBehaviour
     [SerializeField] private GameObject m_book;
     [SerializeField] private GameObject m_bookDestination;
     [SerializeField] private GameObject m_level2BookDestination;
+    [SerializeField] private GameObject m_level3BookDestination;
     [SerializeField] private GameObject m_plate;
     [SerializeField] private GameObject m_plateDestination;
 
@@ -110,10 +112,15 @@ public class ObjectRandomiser : MonoBehaviour
                         m_objectDestination = m_bookDestination;
                         m_objectSpawnLocations = m_bookSpawnLocations;
                     }
-                    else
+                    else if (levelNo == 2)
                     {
                         m_objectDestination = m_level2BookDestination;
                         m_objectSpawnLocations = m_level2BookSpawnLocations;
+                    }
+                    else
+                    {
+                        m_objectDestination = m_level3BookDestination;
+                        m_objectSpawnLocations = m_level3BookSpawnLocations;
                     }
                     break;
                 }
@@ -165,7 +172,7 @@ public class ObjectRandomiser : MonoBehaviour
                     unique = true;
                 }
             }
-            trackObject = Instantiate(m_object, m_objectSpawnLocations[m_randomNo].transform.position, Quaternion.identity, parentTransform);
+            Instantiate(m_object, m_objectSpawnLocations[m_randomNo].transform.position, Quaternion.identity, parentTransform);
         }
     }
 
@@ -179,5 +186,6 @@ public class ObjectRandomiser : MonoBehaviour
         SpawnObject(TaskObject.Type.Plate,1);
         SpawnObject(TaskObject.Type.Book,1);
         SpawnObject(TaskObject.Type.Book,2);
+        SpawnObject(TaskObject.Type.Book,3);
     }
 }

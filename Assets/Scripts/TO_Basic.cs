@@ -11,7 +11,7 @@ public class TO_Basic : TaskObject
     [SerializeField] private Vector3 m_offsetPosition = new Vector3(0, 0, 0);
     public bool m_inDestination = false;
     public bool m_startSleepTimer = false;
-    public float m_sleepTimer = 3.0f;
+    public float m_sleepTimer = .25f;
 
     internal GameObject hungUpCoat;
     public virtual void Awake()
@@ -37,13 +37,14 @@ public class TO_Basic : TaskObject
         if (m_startSleepTimer)
         {
             m_sleepTimer -= Time.deltaTime;
-            //Debug.Log("Sleep Timer: " + m_sleepTimer);
+            Debug.Log("Sleep Timer: " + m_sleepTimer);
 
             if (m_sleepTimer < 0)
             {
                 m_startSleepTimer = false;
                 isplaced = true;
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                this.enabled = false;
             }
         }
     }
@@ -103,7 +104,18 @@ public class TO_Basic : TaskObject
 
                         case (Type.Book):
                             {
-                                m_taskSystem.Complete(0);
+                                if (m_levelOwnership == Ownership.Level2)
+                                {
+                                    m_taskSystem.Complete(8);
+                                }
+                                else if (m_levelOwnership == Ownership.Level3)
+                                {
+                                    m_taskSystem.Complete(12);
+                                }
+                                else
+                                {
+                                    m_taskSystem.Complete(0);
+                                }
                                 break;
                             };
                         case (Type.Plate):
@@ -153,12 +165,12 @@ public class TO_Basic : TaskObject
                 m_inDestination = true;
                 m_startSleepTimer = true;
                 isplaced = true;
-                m_sleepTimer = 3.0f;
+                m_sleepTimer = .25f;
             }
             else
             {
                 m_inDestination = false;
-                m_startSleepTimer = false;
+                //m_startSleepTimer = false;
                 isplaced = false;
             }
         }
