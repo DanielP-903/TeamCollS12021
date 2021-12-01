@@ -352,6 +352,7 @@ public class PlayerController : MonoBehaviour
 
             if (other.tag == "Pillow" && m_heldObject == null)
             {
+                m_colliding = true;
                 Debug.Log("Fluff the pillow");
                 other.GetComponent<TO_Pillow>().Complete();
 
@@ -456,7 +457,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Interactable" || other.tag == "Match")
+        if (other.tag == "Interactable" || other.tag == "Match" || other.tag == "Pillow")
         {
             m_colliding = false;
         }
