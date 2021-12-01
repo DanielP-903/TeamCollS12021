@@ -29,6 +29,13 @@ public class TaskTabButton : MonoBehaviour
         buttonanim = mainTabbutton.GetComponent<Animator>();
         panelvalue = 1;
         isClose = true;
+        isClose = anim.GetBool("Close");
+        anim.SetBool("Close", !isClose);
+        bool buttonisClose = buttonanim.GetBool("Close");
+        buttonanim.SetBool("Close", !buttonisClose);
+        notepad[0].GetComponent<Animator>().SetBool("Close", !isClose);
+        notepad[1].GetComponent<Animator>().SetBool("Close", !isClose);
+        notepad[2].GetComponent<Animator>().SetBool("Close", !isClose);
     }
 
     public void SelectTab()
