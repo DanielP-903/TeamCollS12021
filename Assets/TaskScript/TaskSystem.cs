@@ -86,6 +86,7 @@ public class TaskSystem : MonoBehaviour
 
 
 
+
     public void Complete(int no)
     {
         if(tasks[no].CurrentStatus==Task.TaskStatus.Open)

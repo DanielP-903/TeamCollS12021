@@ -153,6 +153,7 @@ public class TO_Basic : TaskObject
                 m_inDestination = true;
                 m_startSleepTimer = true;
                 isplaced = true;
+                GetComponent<TO_Basic>().enabled = false;
                 m_sleepTimer = 3.0f;
             }
             else
