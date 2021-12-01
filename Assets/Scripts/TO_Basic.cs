@@ -166,6 +166,7 @@ public class TO_Basic : TaskObject
                 m_startSleepTimer = true;
                 isplaced = true;
                 m_sleepTimer = .25f;
+                GetComponent<TO_Basic>().enabled = false;
             }
             else
             {
