@@ -16,6 +16,8 @@ public class ObjectRandomiser : MonoBehaviour
     [SerializeField] private GameObject m_nessie;
     [SerializeField] private GameObject m_nessieDestination;
     [SerializeField] private GameObject m_book;
+    [SerializeField] private GameObject m_bookLevel2;
+    [SerializeField] private GameObject m_bookLevel3;
     [SerializeField] private GameObject m_bookDestination;
     [SerializeField] private GameObject m_level2BookDestination;
     [SerializeField] private GameObject m_level3BookDestination;
@@ -106,19 +108,21 @@ public class ObjectRandomiser : MonoBehaviour
             case (TaskObject.Type.Book):
                 {
                     m_noOf = m_noOfBooks;
-                    m_object = m_book;
                     if (levelNo == 1)
                     {
+                        m_object = m_book;
                         m_objectDestination = m_bookDestination;
                         m_objectSpawnLocations = m_bookSpawnLocations;
                     }
                     else if (levelNo == 2)
                     {
+                        m_object = m_bookLevel2;
                         m_objectDestination = m_level2BookDestination;
                         m_objectSpawnLocations = m_level2BookSpawnLocations;
                     }
                     else
                     {
+                        m_object = m_bookLevel3;
                         m_objectDestination = m_level3BookDestination;
                         m_objectSpawnLocations = m_level3BookSpawnLocations;
                     }
