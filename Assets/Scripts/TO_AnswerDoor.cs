@@ -7,6 +7,7 @@ public class TO_AnswerDoor : TaskObject
     [SerializeField] private List<TaskObject> m_potentialTaskObjects = new List<TaskObject>();
     [SerializeField] private List<Task> m_potentialTasks = new List<Task>();
     public AudioClip doorbellsound;
+    public bool isactivated;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +41,11 @@ public class TO_AnswerDoor : TaskObject
         {
             //Debug.Log("Ding Dong!");
             // AUDIO: Doorbell sound
-            SoundManager.PlaySfx(doorbellsound, SoundManager.SoundVolume);
+            if (!isactivated)
+            {
+                isactivated = true;
+                SoundManager.PlaySfx(doorbellsound, SoundManager.SoundVolume);    
+            }
         }
     }
 
