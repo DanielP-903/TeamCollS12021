@@ -82,6 +82,15 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        int m_randomNo = UnityEngine.Random.Range(0, 3);
+        switch (m_randomNo)
+        {
+            case 0: currentDay = Day.Monday; break;
+            case 1: currentDay = Day.Tuesday; break;
+            case 2: currentDay = Day.Wednesday; break;
+            default: currentDay = Day.Monday; break;
+        }
+
         switch (currentDay)
         {
             case Day.Monday:
