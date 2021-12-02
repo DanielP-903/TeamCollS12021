@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_book3 1
+  m_Name: M_CalendarTue
   m_Shader: {fileID: 4800000, guid: 399f1dd40a6225249b4bdac7bec870ea, type: 3}
   m_ShaderKeywords: _METALLICGLOSSMAP
   m_LightmapFlags: 4
@@ -36,7 +36,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Diffuse:
-        m_Texture: {fileID: 2800000, guid: 458c31787f3bb5f49b8e014bb3fe6f1b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 73b5a8fb34593e048812626e003b783f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -44,11 +44,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f510ac2c3171eae4898b1dc0a1d439d0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8d2aebb99c3a6bc4b8027754b2628890, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 43712eec6726e404597ff878b55ae833, type: 3}
+        m_Texture: {fileID: 2800000, guid: 97604a8f87fe5564a82496ad037cfc91, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
@@ -56,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 43712eec6726e404597ff878b55ae833, type: 3}
+        m_Texture: {fileID: 2800000, guid: 97604a8f87fe5564a82496ad037cfc91, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
@@ -64,7 +64,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 389fd1a166c0edd4087d5d328c706f43, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ToonRamp:
@@ -76,7 +76,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _ASEOutlineWidth: 0.004
+    - _ASEOutlineWidth: 0.01
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -89,8 +89,8 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RimOffset: -0.64
-    - _RimPower: 0.5
+    - _RimOffset: 0.28
+    - _RimPower: 5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpecularIntensity: 0
