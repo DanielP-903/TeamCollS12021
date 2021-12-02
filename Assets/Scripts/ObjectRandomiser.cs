@@ -53,6 +53,43 @@ public class ObjectRandomiser : MonoBehaviour
         Randomise();
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+
+        float radius = .2f;
+        foreach (var loc in m_bookSpawnLocations)
+        {
+            Gizmos.DrawSphere(loc.transform.position, radius);
+        }
+
+        Gizmos.color = Color.blue;
+
+        foreach (var loc in m_level2BookSpawnLocations)
+        {
+            Gizmos.DrawSphere(loc.transform.position, radius);
+        }
+
+        Gizmos.color = Color.red;
+        foreach (var loc in m_level3BookSpawnLocations)
+        {
+            Gizmos.DrawSphere(loc.transform.position, radius);
+        }
+
+        Gizmos.color = Color.white;
+        foreach (var loc in m_plateSpawnLocations)
+        {
+            Gizmos.DrawSphere(loc.transform.position, radius);
+        }
+
+        Gizmos.color = Color.green;
+        foreach (var loc in m_nessieSpawnLocations)
+        {
+            Gizmos.DrawSphere(loc.transform.position, radius);
+        }       
+
+    }
+
     void Update()
     {
         if (m_inputTimer != 0.0f)
