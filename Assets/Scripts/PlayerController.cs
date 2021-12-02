@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
     private bool m_colliding = false;
     private float m_barkTimer = 0.5f;
     [SerializeField] internal Day currentDay;
+    [SerializeField] private GameObject m_calender;
+    [SerializeField] private List<Material> m_dayMaterials;
     private IdleParams m_idleParams = IdleParams.IsSitting;
 
     [Header("Player Speed Values")]
@@ -80,6 +82,21 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        switch (currentDay)
+        {
+            case Day.Monday:
+                m_calender.GetComponent<MeshRenderer>().material = m_dayMaterials[0];
+                break;
+            case Day.Tuesday:
+                m_calender.GetComponent<MeshRenderer>().material = m_dayMaterials[1];
+                break;
+            case Day.Wednesday:
+                m_calender.GetComponent<MeshRenderer>().material = m_dayMaterials[2];
+                break;
+            default:
+                break;
+        }
+
 
         SoundManager.SoundVolume = mainvolume;
         SoundManager.MatchVolume = lightmatchvolume;
