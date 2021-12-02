@@ -85,7 +85,7 @@ public class Task : MonoBehaviour
     {
         if (isComplete && taskTabButton.isClose)
         {
-           isComplete = false;
+           //isComplete = false;
            Scratchmark();
         }
     }

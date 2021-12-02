@@ -12,7 +12,7 @@ public class TO_Basic : TaskObject
     public bool m_inDestination = false;
     public bool m_startSleepTimer = false;
     public float m_sleepTimer = .25f;
-
+    private bool DoTrack = true;
     internal GameObject hungUpCoat;
     public virtual void Awake()
     {
@@ -21,6 +21,7 @@ public class TO_Basic : TaskObject
 
     void Start()
     {
+        DoTrack = true;
         if (m_requiresDestination)
         {
             if (!m_destination)
@@ -93,7 +94,7 @@ public class TO_Basic : TaskObject
     }
     void OnTriggerEnter(Collider collider)
     {
-        if (m_requiresDestination)
+        if (m_requiresDestination && DoTrack)
         {
             if (collider == m_destination.GetComponent<Collider>() && !IsPickedUp)
             {
@@ -110,7 +111,7 @@ public class TO_Basic : TaskObject
                                 }
                                 else if (m_levelOwnership == Ownership.Level3)
                                 {
-                                    m_taskSystem.Complete(12);
+                                     m_taskSystem.Complete(12);
                                 }
                                 else
                                 {
@@ -166,6 +167,7 @@ public class TO_Basic : TaskObject
                 m_startSleepTimer = true;
                 isplaced = true;
                 m_sleepTimer = .25f;
+                DoTrack = false;
             }
             else
             {
