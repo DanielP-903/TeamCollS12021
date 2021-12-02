@@ -184,16 +184,18 @@ public class TO_Basic : TaskObject
         {
             if (collider == m_destination.GetComponent<Collider>() && !IsPickedUp)
             {
-                if (m_type == Type.Book)
-                {
-                    m_taskSystem.Bookmisplaced();
-                    m_sleepTimer = 3.0f;
-                    m_startSleepTimer = false;
-                    isplaced = false;
-                    m_inDestination = false;
-                    Debug.Log("OH NO IT FELL OUT");
-                }
-                else if (m_type == Type.Plate)
+                //if (m_type == Type.Book)
+                //{
+                //    m_taskSystem.Bookmisplaced();
+                //    m_sleepTimer = 3.0f;
+                //    m_startSleepTimer = false;
+                //    isplaced = false;
+                //    m_inDestination = false;
+                //    Debug.Log("OH NO IT FELL OUT");
+                //}
+                //else
+                //
+                if (m_type == Type.Plate)
                 {
                     m_taskSystem.Platemisplaced();
                     m_sleepTimer = 3.0f;
