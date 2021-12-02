@@ -7,7 +7,10 @@ public class TO_AnswerDoor : TaskObject
     [SerializeField] private List<TaskObject> m_potentialTaskObjects = new List<TaskObject>();
     [SerializeField] private List<Task> m_potentialTasks = new List<Task>();
     public AudioClip doorbellsound;
+    [Range(0, 1)]
+    public float doorbellvolume;
     public bool isactivated;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,14 +42,25 @@ public class TO_AnswerDoor : TaskObject
         GetComponent<BoxCollider>().enabled = m_active;
         if (m_active)
         {
+            SoundManager.SoundVolume = doorbellvolume;
             //Debug.Log("Ding Dong!");
             // AUDIO: Doorbell sound
             if (!isactivated)
             {
                 isactivated = true;
-                SoundManager.PlaySfx(doorbellsound, SoundManager.SoundVolume);    
+                SoundManager.PlaySfx(doorbellsound,doorbellvolume);    
+            }
+            if(isactivated)
+            {
+                StartCoroutine(RestoreSound());
             }
         }
+    }
+
+    IEnumerator RestoreSound()
+    {
+        yield return new WaitForSeconds(2.5f);
+        SoundManager.SoundVolume = 0.7f;
     }
 
     public override void Complete()
