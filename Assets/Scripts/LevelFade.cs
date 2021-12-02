@@ -61,7 +61,11 @@ public class LevelFade : MonoBehaviour
         {
             gameObjects.Add(obj);
         }
-
+        tempObjects = GameObject.FindGameObjectsWithTag("Tape");
+        foreach (var obj in tempObjects)
+        {
+            gameObjects.Add(obj);
+        }
         HideMeshes();
     }
 
