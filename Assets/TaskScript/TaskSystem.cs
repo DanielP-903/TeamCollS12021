@@ -14,6 +14,8 @@ public class TaskSystem : MonoBehaviour
     public AudioClip harpsound;
     public float harpvolume;
     private TaskTabButton taskTabButton;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,10 @@ public class TaskSystem : MonoBehaviour
         }
     }
 
+    public bool GetTaskCompleted(int no)
+    {
+        return tasks[no].isComplete;
+    }
 
     public void Method()
     {
