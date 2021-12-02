@@ -77,6 +77,7 @@ public class EventTask : Task
             }
             //Debug.Log("Event has been triggered!");
             m_isHappening = true;
+           // m_taskSystem.Complete(4);
         }
 
         m_savedSecond = (int) ((m_dayNightCycleRef.time/2) * m_dayNightCycleRef.fullDayLength);
