@@ -27,6 +27,7 @@ Shader "Water/Gerstner"
 		GrabPass{ }
 		CGPROGRAM
 		#include "UnityCG.cginc"
+		#include "Lighting.cginc"
 		#pragma target 4.6
 		#pragma multi_compile _ALPHAPREMULTIPLY_ON
 		#pragma surface surf Standard alpha:fade keepalpha finalcolor:RefractionF noshadow exclude_path:deferred vertex:vertexDataFunc tessellate:tessFunction 
@@ -129,6 +130,8 @@ Shader "Water/Gerstner"
 			float distanceDepth96 = saturate( abs( ( screenDepth96 - LinearEyeDepth( ase_screenPosNorm.z ) ) / ( _DepthFadeDistance ) ) );
 			float lerpResult106 = lerp( 1.0 , _Refraction , distanceDepth96);
 			color.rgb = color.rgb + Refraction( i, o, lerpResult106, _ChromaticAberration ) * ( 1 - color.a );
+			color.rgb *= _LightColor0.rgb;
+			color.rgb += UNITY_LIGHTMODEL_AMBIENT.xyz;
 			color.a = 1;
 			#endif
 		}
