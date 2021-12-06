@@ -59,6 +59,8 @@ public class DayAndNightCycle : MonoBehaviour
         {
             if (time >= 2.0f)                  // if time is 2.0 end game
             {
+
+
                 isGameOver = true;
                 gameoverPanel.SetActive(true);
                 numberoftasks.text = TaskSystem.taskvalue.ToString();
