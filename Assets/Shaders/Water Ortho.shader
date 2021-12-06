@@ -30,6 +30,7 @@ Shader "Water/Gerstner Ortho"
 		GrabPass{ }
 		CGPROGRAM
 		#include "UnityCG.cginc"
+		#include "Lighting.cginc"
 		#pragma target 4.6
 		#pragma multi_compile _ALPHAPREMULTIPLY_ON
 		#pragma surface surf Standard alpha:fade keepalpha finalcolor:RefractionF noshadow exclude_path:deferred vertex:vertexDataFunc tessellate:tessFunction 
@@ -133,7 +134,7 @@ Shader "Water/Gerstner Ortho"
 			float screenDepth96 = (SAMPLE_DEPTH_TEXTURE( _CameraDepthTexture, ase_screenPosNorm.xy ));
 			float distanceDepth96 = saturate( abs( ( screenDepth96 - lerpResult16 ) / ( _DepthFadeDistance ) ) );
 			float lerpResult106 = lerp( 1.0 , _Refraction , distanceDepth96);
-			color.rgb = color.rgb + Refraction( i, o, lerpResult106, _ChromaticAberration ) * ( 1 - color.a );
+			color.rgb = color.rgb + Refraction( i, o, lerpResult106, _ChromaticAberration ) * ( 1 - color.a) + UNITY_LIGHTMODEL_AMBIENT.xyz;
 			color.a = 1;
 			#endif
 		}
