@@ -24,13 +24,17 @@ public class PlayerController : MonoBehaviour
     private bool m_rotRight = false;
     private bool m_interact = false;
     private bool m_sprint = false;
-    private float m_inputTimer = 0.0f;
     private bool m_colliding = false;
+    private float m_inputTimer = 0.0f;
     private float m_barkTimer = 0.5f;
+
+    private bool m_stopEndInput = false;
+
     [SerializeField] internal Day currentDay;
     [SerializeField] private GameObject m_calender;
     [SerializeField] private List<Material> m_dayMaterials;
     private IdleParams m_idleParams = IdleParams.IsSitting;
+    [SerializeField] private Transform m_endStateTransform;
 
     [Header("Player Speed Values")]
     [Tooltip("Velocity scale of thrown objects")]
@@ -47,10 +51,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float m_idleInputTime;
     [Tooltip("Idle animation clip list")]
     [SerializeField] private List<AnimationClip> m_idleAnimations;
-    //[Header("Tutorial")]
-    //[Tooltip("How long in seconds until Bonnie sits down from being idle")]
-    //private bool m_moveTutorialComplete = false;
-    //private bool m_interactTutorialComplete = false;
+
     private ParticleSystem m_particleSystemChild;
     private ParticleSystem m_particleSystem;
 
@@ -80,8 +81,13 @@ public class PlayerController : MonoBehaviour
     [Range(0, 1)]
     public float lightmatchvolume;
 
+    private DayAndNightCycle m_dayAndNightCycle;
+
     void Start()
     {
+        m_stopEndInput = false;
+        m_dayAndNightCycle = GameObject.FindGameObjectWithTag("DayNight Cycle").GetComponent<DayAndNightCycle>();
+
         int m_randomNo = UnityEngine.Random.Range(0, 3);
         switch (m_randomNo)
         {
@@ -154,122 +160,141 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Movement
-        m_hasReceivedInput = false;
-        if (m_moveForward || m_moveBackward)
+        if (!m_stopEndInput)
         {
-            m_animator.SetBool("IsInteracting", false);
-            m_interactingTimer = 0.0f;
-            float sprint = m_sprint ? m_sprintSpeed : 1.0f;
-            Vector3 move = m_moveForward ? (transform.forward * (m_speed * sprint) * Time.deltaTime) : (-transform.forward * (m_speed / 1.5f) * Time.deltaTime);
-            m_characterController.Move(move);
-            m_hasReceivedInput = true;
-            // AUDIO: Footstep audio?
+            // Movement
+            m_hasReceivedInput = false;
+            if (m_moveForward || m_moveBackward)
+            {
+                m_animator.SetBool("IsInteracting", false);
+                m_interactingTimer = 0.0f;
+                float sprint = m_sprint ? m_sprintSpeed : 1.0f;
+                Vector3 move = m_moveForward ? (transform.forward * (m_speed * sprint) * Time.deltaTime) : (-transform.forward * (m_speed / 1.5f) * Time.deltaTime);
+                m_characterController.Move(move);
+                m_hasReceivedInput = true;
+                // AUDIO: Footstep audio?
+            }
+
+            m_animator.SetBool("IsWalking", m_moveForward || m_moveBackward);
+            m_animator.SetBool("IsSprinting", m_sprint && m_moveForward);
+            m_animator.SetBool("IsTurningL", m_rotLeft);
+            m_animator.SetBool("IsTurningR", m_rotRight);
+
+            if (m_inputTimer != 0.0f)
+            {
+                m_inputTimer -= Time.deltaTime * 2;
+                m_inputTimer = m_inputTimer < 0.01f ? 0.0f : m_inputTimer;
+            }
+
+            if (m_inputTimer == 0.0f && m_interact)
+            {
+                if (m_heldObject)
+                {
+                    m_heldObject.IsPickedUp = false;
+                    m_heldObjectContainer.GetComponent<Rigidbody>().velocity = (m_characterController.velocity + (Vector3.up * 2)) * m_velocityScale;
+                    m_heldObject = null;
+                    m_heldObjectContainer = null;
+                    GetComponent<BoxCollider>().enabled = true;
+                    m_inputTimer = m_timeBetweenInputs;
+                    m_hasReceivedInput = true;
+                }
+                if (m_colliding)
+                {
+                    m_interactingTimer = 1.625f / 5.0f;
+                    m_animator.SetBool("IsInteracting", true);
+
+                }
+                else
+                {
+                    // bork
+                    if (m_barkTimer <= 0.0f)
+                    {
+                        SoundManager.PlaySfx(barksound, mainvolume);
+                        Debug.Log("Bark!");
+                        m_barkTimer = 0.5f;
+
+                        m_particleSystem.Clear();
+                        m_particleSystem.Play();
+                    }
+                }
+            }
+            else
+            {
+                m_interactingTimer -= Time.deltaTime;
+                if (m_interactingTimer <= 0.0f)
+                {
+                    m_animator.SetBool("IsInteracting", false);
+                }
+            }
+
+            if (m_barkTimer > 0.0f)
+            {
+                m_barkTimer -= Time.deltaTime;
+            }
+
+            m_characterController.Move(m_gravity * Time.deltaTime);
+
+            if (m_rotLeft || m_rotRight)
+            {
+                float multiplier = m_rotLeft ? -1 : 1;
+                transform.Rotate(0, m_rotationSpeed * multiplier * Time.deltaTime * 200.0f, 0);
+                m_hasReceivedInput = true;
+            }
+
+            if (!m_hasReceivedInput)
+            {
+                m_noInputTimer -= Time.deltaTime;
+                if (m_noInputTimer <= 0.0f)
+                {
+                    m_noInputTimer = 0.0f;
+                    m_animator.SetBool(m_idleParams.ToString(), true);
+                    m_sitWaitTimer -= Time.deltaTime;
+                    if (m_sitWaitTimer <= 0.0f)
+                    {
+                        m_sitWaitTimer = 0.0f;
+                        m_animator.SetFloat("SitWait", 0.0f);
+                    }
+                    else
+                    {
+                        m_animator.SetFloat("SitWait", 1.0f);
+                    }
+                    if (m_idleParams == IdleParams.IsSneezing || m_idleParams == IdleParams.IsLooking)
+                    {
+                        m_sneezeTimer -= Time.deltaTime;
+                        if (m_sneezeTimer <= 0.0f)
+                        {
+                            m_sneezeTimer = 0.0f;
+                            m_animator.SetBool(m_idleParams.ToString(), false);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                m_animator.SetBool(m_idleParams.ToString(), false);
+                m_animator.SetFloat("SitWait", 1.0f);
+                m_noInputTimer = m_idleInputTime;
+                m_sitWaitTimer = 1.0f;
+                m_sneezeTimer = 1.0f;
+                RandomiseAnimation();
+            }
         }
 
-        m_animator.SetBool("IsWalking", m_moveForward || m_moveBackward);
-        m_animator.SetBool("IsSprinting", m_sprint && m_moveForward);
-        m_animator.SetBool("IsTurningL", m_rotLeft);
-        m_animator.SetBool("IsTurningR", m_rotRight);
 
-        if (m_inputTimer != 0.0f)
-        {
-            m_inputTimer -= Time.deltaTime * 2;
-            m_inputTimer = m_inputTimer < 0.01f ? 0.0f : m_inputTimer;
-        }
-
-        if (m_inputTimer == 0.0f && m_interact)
+        if (m_dayAndNightCycle.time > 2.0f)
         {
             if (m_heldObject)
             {
                 m_heldObject.IsPickedUp = false;
-                m_heldObjectContainer.GetComponent<Rigidbody>().velocity = (m_characterController.velocity + (Vector3.up * 2)) * m_velocityScale;
                 m_heldObject = null;
                 m_heldObjectContainer = null;
-                GetComponent<BoxCollider>().enabled = true;
-                m_inputTimer = m_timeBetweenInputs;
-                m_hasReceivedInput = true;
             }
-            if (m_colliding)
-            {
-                m_interactingTimer = 1.625f / 5.0f;
-                m_animator.SetBool("IsInteracting", true);
-
-            }
-            else
-            {
-                // bork
-                if (m_barkTimer <= 0.0f)
-                {
-                    SoundManager.PlaySfx(barksound, mainvolume);
-                    Debug.Log("Bark!");
-                    m_barkTimer = 0.5f;
-                
-                m_particleSystem.Clear();
-                m_particleSystem.Play();
-                }
-            }
-        }
-        else
-        {
-            m_interactingTimer -= Time.deltaTime;
-            if (m_interactingTimer <= 0.0f)
-            {
-                m_animator.SetBool("IsInteracting", false);
-            }
+            transform.position = m_endStateTransform.position;
+            transform.rotation = m_endStateTransform.rotation;
+            m_stopEndInput = true;
         }
 
-        if (m_barkTimer > 0.0f)
-        {
-            m_barkTimer -= Time.deltaTime;
-        }
 
-        m_characterController.Move(m_gravity*Time.deltaTime);
- 
-        if (m_rotLeft || m_rotRight)
-        {
-            float multiplier = m_rotLeft ? -1 : 1;
-            transform.Rotate(0, m_rotationSpeed * multiplier * Time.deltaTime * 200.0f, 0);
-            m_hasReceivedInput = true;
-        }
-
-        if (!m_hasReceivedInput)
-        {
-            m_noInputTimer -= Time.deltaTime;
-            if (m_noInputTimer <= 0.0f)
-            {
-                m_noInputTimer = 0.0f;
-                m_animator.SetBool(m_idleParams.ToString(), true);
-                m_sitWaitTimer -= Time.deltaTime;
-                if (m_sitWaitTimer <= 0.0f)
-                {
-                    m_sitWaitTimer = 0.0f;
-                    m_animator.SetFloat("SitWait", 0.0f);
-                }
-                else
-                {
-                    m_animator.SetFloat("SitWait", 1.0f);
-                }
-                if (m_idleParams == IdleParams.IsSneezing || m_idleParams == IdleParams.IsLooking) 
-                { 
-                    m_sneezeTimer -= Time.deltaTime;
-                    if (m_sneezeTimer <= 0.0f)
-                    {
-                        m_sneezeTimer = 0.0f;
-                        m_animator.SetBool(m_idleParams.ToString(), false);
-                    }
-                }
-            }
-        }
-        else
-        {
-            m_animator.SetBool(m_idleParams.ToString(), false);
-            m_animator.SetFloat("SitWait", 1.0f);
-            m_noInputTimer = m_idleInputTime;
-            m_sitWaitTimer = 1.0f;
-            m_sneezeTimer = 1.0f;
-            RandomiseAnimation();
-        }
     }
 
     private void RandomiseAnimation()
