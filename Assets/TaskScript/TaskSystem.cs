@@ -34,6 +34,142 @@ public class TaskSystem : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if(tasks[0].isComplete)
+        {
+            if(taskTabButton.panelvalue==2 || taskTabButton.panelvalue==3)
+            {
+                taskTabButton.glowanim.SetBool("isGlow", true);
+            }
+            if(taskTabButton.panelvalue==1)
+            {
+                tasks[0].isComplete = false;
+                taskTabButton.glowanim.SetBool("isGlow", false);
+            }
+        }
+        if (tasks[1].isComplete)
+        {
+            if (taskTabButton.panelvalue == 2 || taskTabButton.panelvalue == 3)
+            {
+                taskTabButton.glowanim.SetBool("isGlow", true);
+            }
+            if (taskTabButton.panelvalue == 1)
+            {
+                tasks[1].isComplete = false;
+                taskTabButton.glowanim.SetBool("isGlow", false);
+            }
+        }
+        if (tasks[2].isComplete)
+        {
+            if (taskTabButton.panelvalue == 2 || taskTabButton.panelvalue == 3)
+            {
+                taskTabButton.glowanim.SetBool("isGlow", true);
+            }
+            if (taskTabButton.panelvalue == 1)
+            {
+                tasks[2].isComplete = false;
+                taskTabButton.glowanim.SetBool("isGlow", false);
+            }
+        }
+        if (tasks[7].isComplete)
+        {
+            if (taskTabButton.panelvalue == 1 || taskTabButton.panelvalue == 3)
+            {
+                taskTabButton.glowanim2.SetBool("isGlow", true);
+            }
+            if (taskTabButton.panelvalue == 2)
+            {
+                tasks[7].isComplete = false;
+                taskTabButton.glowanim2.SetBool("isGlow", false);
+            }
+        }
+        if (tasks[8].isComplete)
+        {
+            if (taskTabButton.panelvalue == 1 || taskTabButton.panelvalue == 3)
+            {
+                taskTabButton.glowanim2.SetBool("isGlow", true);
+            }
+            if (taskTabButton.panelvalue == 2)
+            {
+                tasks[8].isComplete = false;
+                taskTabButton.glowanim2.SetBool("isGlow", false);
+            }
+        }
+        if (tasks[9].isComplete)
+        {
+            if (taskTabButton.panelvalue == 1 || taskTabButton.panelvalue == 3)
+            {
+                taskTabButton.glowanim2.SetBool("isGlow", true);
+            }
+            if (taskTabButton.panelvalue == 2)
+            {
+                tasks[9].isComplete = false;
+                taskTabButton.glowanim2.SetBool("isGlow", false);
+            }
+        }
+        if (tasks[10].isComplete)
+        {
+            if (taskTabButton.panelvalue == 1 || taskTabButton.panelvalue == 3)
+            {
+                taskTabButton.glowanim2.SetBool("isGlow", true);
+            }
+            if (taskTabButton.panelvalue == 2)
+            {
+                tasks[10].isComplete = false;
+                taskTabButton.glowanim2.SetBool("isGlow", false);
+            }
+        }
+        if (tasks[12].isComplete)
+        {
+            if (taskTabButton.panelvalue == 1 || taskTabButton.panelvalue == 2)
+            {
+                taskTabButton.glowanim.SetBool("isGlow", true);
+            }
+            if (taskTabButton.panelvalue == 3)
+            {
+                tasks[12].isComplete = false;
+                taskTabButton.glowanim.SetBool("isGlow", false);
+            }
+        }
+        if (tasks[13].isComplete)
+        {
+            if (taskTabButton.panelvalue == 1 || taskTabButton.panelvalue == 2)
+            {
+                taskTabButton.glowanim3.SetBool("isGlow", true);
+            }
+            if (taskTabButton.panelvalue == 3)
+            {
+                tasks[13].isComplete = false;
+                taskTabButton.glowanim3.SetBool("isGlow", false);
+            }
+        }
+        if (tasks[14].isComplete)
+        {
+            if (taskTabButton.panelvalue == 1 || taskTabButton.panelvalue == 2)
+            {
+                taskTabButton.glowanim3.SetBool("isGlow", true);
+            }
+            if (taskTabButton.panelvalue == 3)
+            {
+                tasks[14].isComplete = false;
+                taskTabButton.glowanim3.SetBool("isGlow", false);
+            }
+        }
+        if (tasks[15].isComplete)
+        {
+            if (taskTabButton.panelvalue == 1 || taskTabButton.panelvalue == 2)
+            {
+                taskTabButton.glowanim3.SetBool("isGlow", true);
+            }
+            if (taskTabButton.panelvalue == 3)
+            {
+                tasks[15].isComplete = false;
+                taskTabButton.glowanim3.SetBool("isGlow", false);
+            }
+        }
+    }
+
     public bool GetTaskCompleted(int no)
     {
         return tasks[no].isComplete;
