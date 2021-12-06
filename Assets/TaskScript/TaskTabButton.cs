@@ -16,6 +16,9 @@ public class TaskTabButton : MonoBehaviour
     private Animator anim;
     private Animator anim2;
     private Animator anim3;
+    public Animator glowanim;
+    public Animator glowanim2;
+    public Animator glowanim3;
     private Animator buttonanim;
     public bool isClose;
     // Start is called before the first frame update
