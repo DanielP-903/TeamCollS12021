@@ -82,6 +82,11 @@ public class TaskTabButton : MonoBehaviour
                 notepad[1].GetComponent<Animator>().SetBool("Close", !isClose);
                 notepad[2].GetComponent<Animator>().SetBool("Close", !isClose);
             }
+            if(isClose)
+            {
+                Mainglowanim.SetBool("glowmain", false);
+                timer = 40;
+            }
         }
         if (panelvalue == 2)
         {
@@ -95,6 +100,11 @@ public class TaskTabButton : MonoBehaviour
                 notepad[1].GetComponent<Animator>().SetBool("Close", !isClose);
                 notepad[2].GetComponent<Animator>().SetBool("Close", !isClose);
             }
+            if (isClose)
+            {
+                Mainglowanim.SetBool("glowmain", false);
+                timer = 40;
+            }
         }
         if (panelvalue == 3)
         {
@@ -107,6 +117,32 @@ public class TaskTabButton : MonoBehaviour
                 notepad[0].GetComponent<Animator>().SetBool("Close", !isClose);
                 notepad[1].GetComponent<Animator>().SetBool("Close", !isClose);
                 notepad[2].GetComponent<Animator>().SetBool("Close", !isClose);
+            }
+            if (isClose)
+            {
+                Mainglowanim.SetBool("glowmain", false);
+                timer = 40;
+            }
+        }
+    }
+
+    void Update()
+    {
+        if (!isClose)
+        {
+            if(timer>20)
+            {
+                timer -= Time.deltaTime;
+            }
+            if (timer<20 && timer>0)
+            {
+                timer -= Time.deltaTime;
+                Mainglowanim.SetBool("glowmain", true);
+            }
+            else if(timer<0)
+            {
+                timer -= Time.deltaTime;
+                Mainglowanim.SetBool("glowmain", false);
             }
         }
     }
