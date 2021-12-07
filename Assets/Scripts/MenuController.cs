@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-	public GameObject mainPanel, optionsPanel, quitPanel;
+	public GameObject mainPanel, optionsPanel, quitPanel,settingsPage,keybindingsPage;
 	public AudioClip soundClick;
 	[Range(0, 1)]
 	public float soundClickvolume;
@@ -31,10 +31,25 @@ public class MenuController : MonoBehaviour
     {
 		mainPanel.SetActive(false);
 		optionsPanel.SetActive(true);
+		settingsPage.SetActive(true);
+		keybindingsPage.SetActive(false);
 		SoundManager.PlayUifx(soundClick, soundClickvolume);
 		optionsanchor.SetActive(false);
 		//mainMenuCamera.ChangePosition(1); // changes to position
     }
+
+	public void SettingsPage2()
+    {
+		settingsPage.SetActive(true);
+		keybindingsPage.SetActive(false);
+		SoundManager.PlayUifx(soundClick, soundClickvolume);
+	}
+	public void Keybindings()
+	{
+		settingsPage.SetActive(false);
+		keybindingsPage.SetActive(true);
+		SoundManager.PlayUifx(soundClick, soundClickvolume);
+	}
 
 	public void BackToMainMenu()
 	{
