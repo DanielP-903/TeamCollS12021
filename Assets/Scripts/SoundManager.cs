@@ -287,7 +287,7 @@ public class SoundManager : MonoBehaviour
 	{
 		current += Time.deltaTime;
 		musicAudio.volume = Mathf.Lerp(nextsongstart, targetvolume, current / songduration);
-		Debug.Log("still running");
+		//Debug.Log("still running");
 		yield return null;
 	}
 	yield break;

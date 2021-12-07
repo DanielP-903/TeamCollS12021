@@ -54,7 +54,7 @@ public class GameFinish : MonoBehaviour
         //pausecontroller.SetActive(false);
         yield return new WaitForSeconds(1f);
         anim.SetBool("isfade", true);
-        yield return new WaitForSeconds(5f);            // fade remove
+        yield return new WaitForSeconds(3f);            // fade remove
         SceneManager.LoadScene("GameOver");
         
         

@@ -3241,7 +3241,7 @@ PrefabInstance:
       objectReference: {fileID: 7727355663643680291}
     - target: {fileID: 8459981690825108067, guid: 6b2c0d6f39dac0b4c9c965ded0c2c150, type: 3}
       propertyPath: fullDayLength
-      value: 100
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 8459981690825108067, guid: 6b2c0d6f39dac0b4c9c965ded0c2c150, type: 3}
       propertyPath: gameoverPanel
@@ -9653,13 +9653,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408927809}
-  m_LocalRotation: {x: 0.0005098242, y: -0.49253446, z: -0.00041551667, w: 0.8702927}
-  m_LocalPosition: {x: 2.355588, y: 57.682426, z: -11.152999}
+  m_LocalRotation: {x: 0.000532393, y: -0.44279313, z: -0.0003861767, w: 0.89662355}
+  m_LocalPosition: {x: 1.9954795, y: 57.68235, z: -11.0433235}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3314172572281106412}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0.027, y: -59.015, z: -0.07}
+  m_LocalEulerAnglesHint: {x: 0.035, y: -52.565, z: -0.067}
 --- !u!1001 &412023914
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17421,12 +17421,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7711792731540760721, guid: 52f77b9a20657fd4f935e225bb8fb32d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.03435811
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711792731540760721, guid: 52f77b9a20657fd4f935e225bb8fb32d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1107774
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711792731540760721, guid: 52f77b9a20657fd4f935e225bb8fb32d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.29137442
+      objectReference: {fileID: 0}
     - target: {fileID: 7808661818441522869, guid: 52f77b9a20657fd4f935e225bb8fb32d, type: 3}
       propertyPath: m_Name
       value: End Switch
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52f77b9a20657fd4f935e225bb8fb32d, type: 3}
+--- !u!1 &554166421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7808661818220584733, guid: 52f77b9a20657fd4f935e225bb8fb32d, type: 3}
+  m_PrefabInstance: {fileID: 554166420}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &559457107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39894,6 +39911,14 @@ PrefabInstance:
       propertyPath: m_calender
       value: 
       objectReference: {fileID: 1807616567}
+    - target: {fileID: 3493741805182467269, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
+      propertyPath: m_endSwitch
+      value: 
+      objectReference: {fileID: 554166421}
+    - target: {fileID: 3493741805182467269, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
+      propertyPath: m_fadeScreen
+      value: 
+      objectReference: {fileID: 2132786353}
     - target: {fileID: 3493741805182467269, guid: c3c1f6984d98a28458e0e79109f27f7b, type: 3}
       propertyPath: m_endStateTransform
       value: 
@@ -80563,7 +80588,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 239.73901, y: -6.660042}
+  m_AnchoredPosition: {x: 239.73901, y: -6.660034}
   m_SizeDelta: {x: -481.3961, y: -44.7216}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &539102591255102356

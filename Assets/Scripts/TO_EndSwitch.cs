@@ -5,7 +5,7 @@ using UnityEngine;
 public class TO_EndSwitch : TaskObject
 {
     private DayAndNightCycle m_dayNightCycleRef;
-    [SerializeField] private Animator m_animator;
+    [SerializeField] internal Animator m_animator;
     void Start()
     {
         m_dayNightCycleRef = GameObject.FindGameObjectWithTag("DayNight Cycle").GetComponent<DayAndNightCycle>();
@@ -38,6 +38,6 @@ public class TO_EndSwitch : TaskObject
         m_active = false;
         Debug.Log("End Game!");
         m_animator.SetBool("Activate", true);
-        m_dayNightCycleRef.time = 1.98f;
+        m_dayNightCycleRef.time = 1.99f;
     }
 }

@@ -52,7 +52,13 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Idle animation clip list")]
     [SerializeField] private List<AnimationClip> m_idleAnimations;
 
-    private ParticleSystem m_particleSystemChild;
+    [Header("External Animation")]
+    [Tooltip("Fade to black screen object")]
+    [SerializeField] private GameObject m_fadeScreen;
+    [Tooltip("The end switch to allow Bonnie to trigger it in the ending cutscene")]
+    [SerializeField] private GameObject m_endSwitch;
+
+    private Animator m_fadeScreenAnimator;
     private ParticleSystem m_particleSystem;
 
     [Header("Misc")]
@@ -89,13 +95,13 @@ public class PlayerController : MonoBehaviour
         m_dayAndNightCycle = GameObject.FindGameObjectWithTag("DayNight Cycle").GetComponent<DayAndNightCycle>();
 
         int m_randomNo = UnityEngine.Random.Range(0, 3);
-        switch (m_randomNo)
+        currentDay = m_randomNo switch
         {
-            case 0: currentDay = Day.Monday; break;
-            case 1: currentDay = Day.Tuesday; break;
-            case 2: currentDay = Day.Wednesday; break;
-            default: currentDay = Day.Monday; break;
-        }
+            0 => Day.Monday,
+            1 => Day.Tuesday,
+            2 => Day.Wednesday,
+            _ => Day.Monday,
+        };
 
         switch (currentDay)
         {
@@ -135,16 +141,6 @@ public class PlayerController : MonoBehaviour
             Debug.DebugBreak();
         }
 
-        if (gameObject.GetComponentInChildren<ParticleSystem>())
-        {
-            m_particleSystemChild = gameObject.GetComponentInChildren<ParticleSystem>();
-        }
-        else
-        {
-            Debug.LogError("ERROR: Particle System component not found on children!");
-            Debug.DebugBreak();
-        }
-
         if (gameObject.GetComponent<ParticleSystem>())
         {
             m_particleSystem = gameObject.GetComponentInChildren<ParticleSystem>();
@@ -154,6 +150,17 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("ERROR: Particle System component not found!");
             Debug.DebugBreak();
         }
+
+        if (m_fadeScreen)
+        {
+            m_fadeScreenAnimator = m_fadeScreen.GetComponent<Animator>();
+        }
+        else
+        {
+            Debug.LogError("ERROR: Fadescreen not set on Player!");
+            Debug.DebugBreak();
+        }
+        
 
     }
 
@@ -169,7 +176,7 @@ public class PlayerController : MonoBehaviour
                 m_animator.SetBool("IsInteracting", false);
                 m_interactingTimer = 0.0f;
                 float sprint = m_sprint ? m_sprintSpeed : 1.0f;
-                Vector3 move = m_moveForward ? (transform.forward * (m_speed * sprint) * Time.deltaTime) : (-transform.forward * (m_speed / 1.5f) * Time.deltaTime);
+                Vector3 move = m_moveForward ? (m_speed * sprint * Time.deltaTime * transform.forward) : (m_speed / 1.5f * Time.deltaTime * -transform.forward);
                 m_characterController.Move(move);
                 m_hasReceivedInput = true;
                 // AUDIO: Footstep audio?
@@ -280,21 +287,42 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
-        if (m_dayAndNightCycle.time > 2.0f)
+        // DAY/NIGHT END CYCLE AND MOVE BONNIE TO END POS
+        if (m_dayAndNightCycle.time > 1.97f && m_dayAndNightCycle.time < 1.975f)
         {
+            m_fadeScreen.SetActive(true);
+            m_fadeScreenAnimator.speed = 1.0f;
+            m_fadeScreenAnimator.SetBool("isfade", true);
+            m_fadeScreenAnimator.SetBool("isfadeout", false);
+        }
+        else if (m_dayAndNightCycle.time >= 1.977f && m_dayAndNightCycle.time < 1.98f)
+        {
+            m_fadeScreenAnimator.speed = 2.0f;
+            m_fadeScreenAnimator.SetBool("isfade", false);
+            m_fadeScreenAnimator.SetBool("isfadeout", true);
             if (m_heldObject)
             {
                 m_heldObject.IsPickedUp = false;
                 m_heldObject = null;
                 m_heldObjectContainer = null;
             }
-            transform.position = m_endStateTransform.position;
-            transform.rotation = m_endStateTransform.rotation;
+            transform.SetPositionAndRotation(m_endStateTransform.position, m_endStateTransform.rotation);
             m_stopEndInput = true;
         }
-
-
+        else if (m_dayAndNightCycle.time >= 1.98f && m_dayAndNightCycle.time < 1.985f)
+        {
+            if (!m_animator.GetBool("IsPullingLever"))
+            {
+                m_animator.SetBool("IsPullingLever", true);
+                m_endSwitch.GetComponent<Animator>().SetBool("Activate", true);
+            }
+        }
+        else if (m_dayAndNightCycle.time >= 1.99f)
+        {
+            m_fadeScreenAnimator.speed = 1.0f;
+            m_fadeScreenAnimator.SetBool("isfade", true);
+            m_fadeScreenAnimator.SetBool("isfadeout", false);
+        }
     }
 
     private void RandomiseAnimation()
@@ -367,7 +395,7 @@ public class PlayerController : MonoBehaviour
     public void Interact(InputAction.CallbackContext context)
     {
         float button = context.ReadValue<float>();
-        m_interact = Math.Abs(button - 1.0f) < 0.1f ? true : false;
+        m_interact = Math.Abs(button - 1.0f) < 0.1f;
        // Debug.Log("Interact detected: " + m_interact);
     }
     // Shift
@@ -382,33 +410,37 @@ public class PlayerController : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         // Detect non-barkable objects
-        if (other.tag == "Interactable" || other.tag == "Match")
+        if (other.CompareTag("Interactable") || other.CompareTag("Match"))
         {
             m_colliding = true;
         }
         if (m_interact && m_inputTimer == 0.0f)
         {
-            if (other.tag == "Door" && m_heldObject == null)
+            if (other.CompareTag("Door") && m_heldObject == null)
             {
                 //Debug.Log("Interacting with door :)");
                 other.GetComponent<TO_AnswerDoor>().Complete();
 
             }
-            if (other.tag == "End Switch" && m_heldObject == null)
+            if (other.CompareTag("End Switch") && m_heldObject == null)
             {
                 Debug.Log("Please end the game :)");
                 other.GetComponent<TO_EndSwitch>().Complete();
-
+                if (!m_animator.GetBool("IsPullingLever"))
+                {
+                    m_animator.SetBool("IsPullingLever", true);
+                    m_stopEndInput = true;
+                }
             }
 
-            if (other.tag == "Pillow" && m_heldObject == null)
+            if (other.CompareTag("Pillow") && m_heldObject == null)
             {
                 m_colliding = true;
                 Debug.Log("Fluff the pillow");
                 other.GetComponent<TO_Pillow>().Complete();
 
             }
-            if (other.tag == "Radio" && m_heldObject == null)
+            if (other.CompareTag("Radio") && m_heldObject == null)
             {
                 Debug.Log("Check the radio");
                 other.GetComponent<TO_Radio>().Complete();
@@ -422,13 +454,13 @@ public class PlayerController : MonoBehaviour
                     m_heldObject = other.GetComponent<TaskObject>();
                     m_heldObjectContainer = other.gameObject;
                     m_inputTimer = m_timeBetweenInputs;
-                    if (other.tag == "Interactable")
+                    if (other.CompareTag("Interactable"))
                     {
                         GetComponent<BoxCollider>().enabled = false;
                         // AUDIO: Pickup 
                         SoundManager.PlaySfx(pickupsound, mainvolume);
                     }
-                    else if (other.tag == "Match")
+                    else if (other.CompareTag("Match"))
                     {
                         GetComponent<BoxCollider>().enabled = true;
                         // AUDIO: Light match
@@ -437,7 +469,7 @@ public class PlayerController : MonoBehaviour
                 }
 
             }
-            else if (other.tag == "Seagull" && m_heldObject == null)
+            else if (other.CompareTag("Seagull") && m_heldObject == null)
             {
                 other.GetComponent<TO_Seagulls>().Complete();
                 //Debug.Log("I am interacting with the seagull trigger :)");
@@ -449,7 +481,7 @@ public class PlayerController : MonoBehaviour
 
         if (m_heldObject != null)
         {
-            if (other.tag == "Candle" && m_heldObject.gameObject.tag == "Match")
+            if (other.CompareTag("Candle") && m_heldObject.gameObject.CompareTag("Match"))
             {
                 other.GetComponent<TO_Candle>().Complete();
                 if (!other.GetComponent<ParticleSystem>().isPlaying)
@@ -465,7 +497,7 @@ public class PlayerController : MonoBehaviour
                 SoundManager.PlayMatchfx(lightmatchsound,lightmatchvolume);
 
             }
-            else if (other.tag == "Radio_Tape" && m_heldObject.gameObject.tag == "Tape")
+            else if (other.CompareTag("Radio_Tape") && m_heldObject.gameObject.CompareTag("Tape"))
             {
                 if (m_heldObject.gameObject.GetComponent<TO_Tape>().m_day == currentDay)
                 {
@@ -480,10 +512,10 @@ public class PlayerController : MonoBehaviour
                     
                     for (int i = 0; i < tapes.Length; i++)
                     {
-                        if(tapes[i].gameObject.activeInHierarchy == true)
+                        if(tapes[i].activeInHierarchy == true)
                         {
-                            tapes[i].gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-                            tapes[i].gameObject.GetComponent<BoxCollider>().enabled = false;
+                            tapes[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                            tapes[i].GetComponent<BoxCollider>().enabled = false;
                         }
                     }
 
@@ -495,7 +527,7 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("Oops! Not the right day :(");
                 }
             }
-            else if (other.tag == "Hanger" && m_heldObject.gameObject.tag == "Coat")
+            else if (other.CompareTag("Hanger") && m_heldObject.gameObject.CompareTag("Coat"))
             {
                 m_heldObject.gameObject.GetComponent<TO_Coat>().Complete();
                 m_heldObject.gameObject.SetActive(false);
@@ -508,7 +540,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Interactable" || other.tag == "Match" || other.tag == "Pillow")
+        if (other.CompareTag("Interactable") || other.CompareTag("Match") || other.CompareTag("Pillow"))
         {
             m_colliding = false;
         }
@@ -516,11 +548,11 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-       if(other.tag=="Noise")
+       if(other.CompareTag("Noise"))
         {
             other.GetComponent<NoiseTrigger>().PlaySound();
         }
-       if(other.tag=="Interactable")
+       if(other.CompareTag("Interactable"))
         {
             if(other.GetComponent<TO_Basic>().m_type==TaskObject.Type.Toy)
             {
