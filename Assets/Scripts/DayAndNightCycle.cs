@@ -33,7 +33,8 @@ public class DayAndNightCycle : MonoBehaviour
     public Text numberoftasks;
     private TaskSystem tasksystem;
 
-    [SerializeField] private float offset = 0.0f; 
+    [SerializeField] private float offset = 0.0f;
+    [SerializeField] private Animator glowclockanim;
 
     // Start is called before the first frame update
     void Start()
@@ -120,6 +121,15 @@ public class DayAndNightCycle : MonoBehaviour
                     Moon.gameObject.GetComponent<Light>().enabled = false;
                 else if (Moon.intensity > 0 && Moon.gameObject.activeInHierarchy) // enable
                     Moon.gameObject.GetComponent<Light>().enabled = true;
+            }
+
+            if(time>1.7f)
+            {
+                glowclockanim.SetBool("isglowclock", true);
+            }
+            if(time>1.9f)
+            {
+                glowclockanim.SetBool("isglowclock", false);
             }
 
                 
