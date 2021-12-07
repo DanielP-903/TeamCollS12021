@@ -19,8 +19,10 @@ public class TaskTabButton : MonoBehaviour
     public Animator glowanim;
     public Animator glowanim2;
     public Animator glowanim3;
+    public Animator Mainglowanim;
     private Animator buttonanim;
     public bool isClose;
+    public float timer;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +57,7 @@ public class TaskTabButton : MonoBehaviour
         levelpanel.SetActive(false);
         levelpanel2.SetActive(true);
         levelpanel3.SetActive(false);
-     
+
     }
 
     public void SelectTab3()
@@ -70,9 +72,9 @@ public class TaskTabButton : MonoBehaviour
     {
         if (panelvalue == 1)
         {
-            if (anim != null && buttonanim !=null)
+            if (anim != null && buttonanim != null)
             {
-                 isClose = anim.GetBool("Close");
+                isClose = anim.GetBool("Close");
                 anim.SetBool("Close", !isClose);
                 bool buttonisClose = buttonanim.GetBool("Close");
                 buttonanim.SetBool("Close", !buttonisClose);
@@ -85,7 +87,7 @@ public class TaskTabButton : MonoBehaviour
         {
             if (anim != null && buttonanim != null)
             {
-                 isClose = anim2.GetBool("Close");
+                isClose = anim2.GetBool("Close");
                 anim2.SetBool("Close", !isClose);
                 bool buttonisClose = buttonanim.GetBool("Close");
                 buttonanim.SetBool("Close", !buttonisClose);
@@ -98,7 +100,7 @@ public class TaskTabButton : MonoBehaviour
         {
             if (anim != null && buttonanim != null)
             {
-                 isClose = anim3.GetBool("Close");
+                isClose = anim3.GetBool("Close");
                 anim3.SetBool("Close", !isClose);
                 bool buttonisClose = buttonanim.GetBool("Close");
                 buttonanim.SetBool("Close", !buttonisClose);
@@ -108,12 +110,4 @@ public class TaskTabButton : MonoBehaviour
             }
         }
     }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
-

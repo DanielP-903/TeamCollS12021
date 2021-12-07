@@ -54,7 +54,7 @@ public class DayAndNightCycle : MonoBehaviour
 
         time += TimeRate * Time.deltaTime;     
         time += Time.deltaTime / fullDayLength; //  total time  full day cycle
-        dayover = time % 1f;
+        dayover = time % -5f;
 
         if (!isGameOver)
         {

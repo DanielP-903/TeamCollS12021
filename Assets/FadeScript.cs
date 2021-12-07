@@ -21,7 +21,7 @@ public class FadeScript : MonoBehaviour
         yield return new WaitForSeconds(1f);
         pausecontroller.SetActive(false);
         anim.SetBool("isfadeout", true);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         fadescreen.SetActive(false);            // fade remove
         pausecontroller.SetActive(true);
     }
