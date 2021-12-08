@@ -483,18 +483,20 @@ public class PlayerController : MonoBehaviour
         {
             if (other.CompareTag("Candle") && m_heldObject.gameObject.CompareTag("Match"))
             {
-                other.GetComponent<TO_Candle>().Complete();
-                if (!other.GetComponent<ParticleSystem>().isPlaying)
+                if (!other.GetComponent<TO_Candle>().Lit)
                 {
-                    other.GetComponent<ParticleSystem>().Play();
+                    other.GetComponent<TO_Candle>().Complete();
+                    if (!other.GetComponent<ParticleSystem>().isPlaying)
+                    {
+                        other.GetComponent<ParticleSystem>().Play();
+                    }
+
+                    other.GetComponent<Light>().enabled = true;
+                    // Debug.Log("I am interacting with the candle trigger :)");
+
+                    // AUDIO: Light candle
+                    SoundManager.PlayMatchfx(lightmatchsound,lightmatchvolume);
                 }
-
-                other.GetComponent<Light>().enabled = true;
-
-               // Debug.Log("I am interacting with the candle trigger :)");
-
-                // AUDIO: Light candle
-                SoundManager.PlayMatchfx(lightmatchsound,lightmatchvolume);
 
             }
             else if (other.CompareTag("Radio_Tape") && m_heldObject.gameObject.CompareTag("Tape"))

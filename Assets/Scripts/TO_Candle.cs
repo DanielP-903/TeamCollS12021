@@ -25,14 +25,34 @@ public class TO_Candle : TaskObject
         m_particleSystem = particleSystem;
         m_particleSystem.Stop();
 
+        Lit = false;
     }
 
     void Update()
     {
         GetComponent<BoxCollider>().enabled = m_active;
+        if (Lit)
+        {
+            m_active = false;
+            if (m_levelFadeRef.GetComponent<LevelFade>().currentLevel == ((int)m_levelOwnership))
+            {
+                if (m_particleSystem.isPlaying == false)
+                {
+                    m_particleSystem.Clear();
+                    m_particleSystem.Play();
+                }
+            }
+            else
+            {
+                if (m_particleSystem.isPlaying == true)
+                {
+                    m_particleSystem.Stop();
+                }
+            }
+        }
         if (m_active)
         {
-
+            
             //Debug.Log("active");
             // Do Candle
 
@@ -44,5 +64,6 @@ public class TO_Candle : TaskObject
     {
         m_active = false;
         m_taskSystem.Complete(5);
+        Lit = true;
     }
 }

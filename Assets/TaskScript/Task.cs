@@ -25,9 +25,12 @@ public class Task : MonoBehaviour
     {
         GameObject objectRef = m_uiObjectRef.transform.GetChild(4).gameObject;
         anim.Add(objectRef.transform.GetChild(0).gameObject);
-        anim.Add(objectRef.transform.GetChild(1).gameObject);
         anim[0].GetComponent<Animator>().keepAnimatorControllerStateOnDisable = true;
-        anim[1].GetComponent<Animator>().keepAnimatorControllerStateOnDisable = true;
+        if (objectRef.transform.childCount > 1)
+        {
+            anim.Add(objectRef.transform.GetChild(1).gameObject);
+            anim[1].GetComponent<Animator>().keepAnimatorControllerStateOnDisable = true;
+        }
     }
     void Start()
     {
@@ -96,8 +99,10 @@ public class Task : MonoBehaviour
     {
             anim[0].GetComponent<Animator>().SetBool("Scratch", true);
             yield return new WaitForSeconds(1f);
+        if (anim.Count > 1) {
             anim[1].GetComponent<Animator>().SetBool("Scratch", true);
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(3f); 
+        }
           //  anim[2].GetComponent<Animator>().SetBool("Scratch", true);
       //  Destroy(this);
     }

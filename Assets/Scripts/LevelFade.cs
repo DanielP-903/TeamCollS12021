@@ -15,6 +15,7 @@ public class LevelFade : MonoBehaviour
 
     private int previousCurrentLevel = 0;
     private List<GameObject> gameObjects = new List<GameObject>();
+    private List<GameObject> candles = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +67,13 @@ public class LevelFade : MonoBehaviour
         {
             gameObjects.Add(obj);
         }
+
+        //tempObjects = GameObject.FindGameObjectsWithTag("Candle");
+        //foreach (var obj in tempObjects)
+        //{
+        //    gameObjects.Add(obj);
+        //}
+
         HideMeshes();
     }
 
