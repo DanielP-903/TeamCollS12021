@@ -36,6 +36,7 @@ public class TaskSystem : MonoBehaviour
 
     void Update()
     {
+      
         if (taskTabButton.isClose)
         {
             if (tasks[0].isComplete)
