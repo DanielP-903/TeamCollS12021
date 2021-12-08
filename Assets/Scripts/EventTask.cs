@@ -42,6 +42,7 @@ public class EventTask : Task
         currentamountText.GetComponent<Text>().text = currentAmount.ToString();
         requiredamountText.GetComponent<Text>().text = requiredAmount.ToString();
         symbolText.GetComponent<Text>().text = "/";
+        taskTabButton = GameObject.FindObjectOfType<TaskTabButton>();
 
 
 
