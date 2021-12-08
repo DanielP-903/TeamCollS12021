@@ -59,7 +59,11 @@ public class EventTask : Task
                 RandomiseEvents();
             }
         }
-
+        if (isComplete && taskTabButton.isClose)
+        {
+            //isComplete = false;
+            Scratchmark();
+        }
         //Debug.Log("Current Second: " + (int)((m_dayNightCycleRef.time / 2) * m_dayNightCycleRef.fullDayLength));
 
     }

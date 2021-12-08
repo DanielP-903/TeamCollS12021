@@ -16,7 +16,7 @@ public class Task : MonoBehaviour
     internal GameObject currentamountText;
     internal GameObject symbolText;
     internal GameObject requiredamountText;
-    private TaskTabButton taskTabButton;
+    internal TaskTabButton taskTabButton;
     public bool isComplete;
 
     internal List<GameObject> anim = new List<GameObject>();
