@@ -54,7 +54,16 @@ public class DayAndNightCycle : MonoBehaviour
 
         time += TimeRate * Time.deltaTime;     
         time += Time.deltaTime / fullDayLength; //  total time  full day cycle
-        dayover = time % -5f;
+       // dayover = time *1f;
+
+        if(time<1.0f)
+        {
+            dayover = time * 1f;   // increase seconds
+        }
+        if(time>1.0f)
+        {
+            dayover = time * 2f;    // increase seconds night time
+        }
 
         if (!isGameOver)
         {
