@@ -76,7 +76,7 @@ public class Task : MonoBehaviour
     public void TaskCompleted()
     {
             CurrentStatus = TaskStatus.Closed;
-           // StartCoroutine(Checkmark());        
+            Scratchmark();
     }
 
     public void Scratchmark()
